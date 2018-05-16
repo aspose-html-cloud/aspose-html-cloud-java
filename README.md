@@ -1,9 +1,21 @@
-# aspose-html-cloud-java
-Java library for communicating with the Aspose.HTML for Cloud API
+# Aspose HTML Cloud SDK 
+
+This repository contains Aspose.HTML Cloud SDK source code. This SDK allows you to work with Aspose.HTML Cloud REST APIs in your applications quickly and easily.
+
+See [API Reference](https://apireference.aspose.cloud/html/) for full API specification.
+
+## How to use the SDK?
+The complete source code is available in this repository folder, you can either directly use it in your project.
+
 
 ## Requirements
 
 Building the API client library requires [Maven](https://maven.apache.org/) to be installed.
+
+### Prerequisites
+
+To use Aspose HTML for Cloud SDK you need to register an account with [Aspose Cloud](https://www.aspose.cloud/) and lookup/create App Key and SID at [Cloud Dashboard](https://dashboard.aspose.cloud/#/apps). There is free quota available. For more details, see [Aspose Cloud Pricing](https://purchase.aspose.cloud/pricing).
+
 
 ## Installation
 
@@ -27,19 +39,11 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-    <groupId>io.swagger</groupId>
-    <artifactId>swagger-java-client</artifactId>
+    <groupId>com.aspose</groupId>
+    <artifactId>aspose-html-cloud</artifactId>
     <version>1.0.0</version>
     <scope>compile</scope>
 </dependency>
-```
-
-### Gradle users
-
-Add this dependency to your project's build file:
-
-```groovy
-compile "io.swagger:swagger-java-client:1.0.0"
 ```
 
 ### Others
@@ -50,18 +54,31 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/swagger-java-client-1.0.0.jar
+* target/aspose-html-cloud-1.0.0.jar
 * target/lib/*.jar
 
-## Getting Started
+### Sample usage
 
-Please follow the [installation](#installation) instruction and execute the following Java code:
+Before fill all fields in /setting/config.json   
+
+Example:   
+```json
+{
+    "basePath":"https://api.aspose.cloud/v1.1",
+    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+    "storage":"\\data\\",
+    "testdata":"\\testdata\\",
+    "defaultUserAgent":"Webkit",
+    "debug": false
+}
+```
 
 ```java
 
 import com.aspose.html.client.invoker.*;
 import com.aspose.html.client.invoker.auth.*;
-import com.aspose.html.client.model.*;
 import com.aspose.html.client.api.ConversionApi;
 
 import java.io.File;
@@ -73,22 +90,25 @@ public class ConversionApiExample {
         
         ConversionApi apiInstance = new ConversionApi();
         String name = "name_example"; // String | Document name.
-        String outFormat = "outFormat_example"; // String | Resulting image format.
-        Integer width = 56; // Integer | Resulting image width. 
-        Integer height = 56; // Integer | Resulting image height. 
-        Integer leftMargin = 56; // Integer | Left resulting image margin.
-        Integer rightMargin = 56; // Integer | Right resulting image margin.
-        Integer topMargin = 56; // Integer | Top resulting image margin.
-        Integer bottomMargin = 56; // Integer | Bottom resulting image margin.
-        Integer xResolution = 56; // Integer | Horizontal resolution of resulting image.
-        Integer yResolution = 56; // Integer | Vertical resolution of resulting image.
+        String outFormat = "jpg"; // String | Resulting image format.
+        Integer width = 800; // Integer | Resulting image width. 
+        Integer height = 1000; // Integer | Resulting image height. 
+        Integer leftMargin = 10; // Integer | Left resulting image margin.
+        Integer rightMargin = 10; // Integer | Right resulting image margin.
+        Integer topMargin = 10; // Integer | Top resulting image margin.
+        Integer bottomMargin = 10; // Integer | Bottom resulting image margin.
+        Integer xResolution = 300; // Integer | Horizontal resolution of resulting image.
+        Integer yResolution = 300; // Integer | Vertical resolution of resulting image.
         String folder = "folder_example"; // String | The document folder.
         String storage = "storage_example"; // String | The document storage.
         try {
-            File result = apiInstance.conversionGetConvertDocumentToImage(name, outFormat, width, height, leftMargin, rightMargin, topMargin, bottomMargin, xResolution, yResolution, folder, storage);
-            System.out.println(result);
+            File result = apiInstance.GetConvertDocumentToImage(name, outFormat, width, height, leftMargin, rightMargin, topMargin, bottomMargin, xResolution, yResolution, folder, storage);
+
+    		//Save to test directory
+    		File copyFile = new File("~/testdir/test.jpg");
+    		result.renameTo(copyFile);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ConversionApi#conversionGetConvertDocumentToImage");
+            System.err.println("Exception when calling ConversionApi#GetConvertDocumentToImage");
             e.printStackTrace();
         }
     }
@@ -102,57 +122,27 @@ All URIs are relative to *https://api.aspose.cloud/v1.1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ConversionApi* | [**conversionGetConvertDocumentToImage**](docs/ConversionApi.md#conversionGetConvertDocumentToImage) | **GET** /html/{name}/convert/image/{outFormat} | Convert the HTML document from the storage by its name to the specified image format.
-*ConversionApi* | [**conversionGetConvertDocumentToImageByUrl**](docs/ConversionApi.md#conversionGetConvertDocumentToImageByUrl) | **GET** /html/convert/image/{outFormat} | Convert the HTML page from the web by its URL to the specified image format.
-*ConversionApi* | [**conversionGetConvertDocumentToPdf**](docs/ConversionApi.md#conversionGetConvertDocumentToPdf) | **GET** /html/{name}/convert/pdf | Convert the HTML document from the storage by its name to PDF.
-*ConversionApi* | [**conversionGetConvertDocumentToPdfByUrl**](docs/ConversionApi.md#conversionGetConvertDocumentToPdfByUrl) | **GET** /html/convert/pdf | Convert the HTML page from the web by its URL to PDF.
-*ConversionApi* | [**conversionGetConvertDocumentToXps**](docs/ConversionApi.md#conversionGetConvertDocumentToXps) | **GET** /html/{name}/convert/xps | Convert the HTML document from the storage by its name to XPS.
-*ConversionApi* | [**conversionGetConvertDocumentToXpsByUrl**](docs/ConversionApi.md#conversionGetConvertDocumentToXpsByUrl) | **GET** /html/convert/xps | Convert the HTML page from the web by its URL to XPS.
-*ConversionApi* | [**conversionPutConvertDocumentToImage**](docs/ConversionApi.md#conversionPutConvertDocumentToImage) | **PUT** /html/convert/image/{outFormat} | Convert the HTML document to the specified image format.
-*ConversionApi* | [**conversionPutConvertDocumentToPdf**](docs/ConversionApi.md#conversionPutConvertDocumentToPdf) | **PUT** /html/convert/pdf | Convert the HTML document to PDF.
-*ConversionApi* | [**conversionPutConvertDocumentToXps**](docs/ConversionApi.md#conversionPutConvertDocumentToXps) | **PUT** /html/convert/xps | Convert the HTML document to XPS.
-*DocumentApi* | [**documentGetDocument**](docs/DocumentApi.md#documentGetDocument) | **GET** /html/{name} | Return the HTML document by the name from default or specified storage.
-*DocumentApi* | [**documentGetDocumentFragmentByXPath**](docs/DocumentApi.md#documentGetDocumentFragmentByXPath) | **GET** /html/{name}/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query. 
-*DocumentApi* | [**documentGetDocumentImages**](docs/DocumentApi.md#documentGetDocumentImages) | **GET** /html/{name}/images/all | Return all HTML document images packaged as a ZIP archive.
-*TranslationApi* | [**translationGetTranslateDocument**](docs/TranslationApi.md#translationGetTranslateDocument) | **GET** /html/{name}/translate/{srcLang}/{resLang} | Translate the HTML document specified by the name from default or specified storage.
-*TranslationApi* | [**translationGetTranslateDocumentByUrl**](docs/TranslationApi.md#translationGetTranslateDocumentByUrl) | **GET** /html/translate/{srcLang}/{resLang} | Translate the HTML document specified by its URL.
-*TranslationApi* | [**translationPutTranslateDocument**](docs/TranslationApi.md#translationPutTranslateDocument) | **PUT** /html/{name}/translate/{srcLang}/{resLang} | Translate the HTML document specified by the name from default or specified storage.
-*TranslationApi* | [**translationPutTranslateDocumentByUrl**](docs/TranslationApi.md#translationPutTranslateDocumentByUrl) | **PUT** /html/translate/{srcLang}/{resLang} | Translate the HTML document specified by its URL.
-
-
-## Documentation for Models
-
-
-
-## Documentation for Authorization
-
-Authentication schemes defined for the API:
-### appsid
-
-- **Type**: API key
-- **API key parameter name**: appsid
-- **Location**: URL query string
-
-### oauth
-
-- **Type**: OAuth
-- **Flow**: application
-- **Authorization URL**: api.aspose.cloud/oauth2/token
-- **Scopes**: N/A
-
-### signature
-
-- **Type**: API key
-- **API key parameter name**: signature
-- **Location**: URL query string
+*ConversionApi* | **GetConvertDocumentToImage** | **GET** /html/{name}/convert/image/{outFormat} | Convert the HTML document from the storage by its name to the specified image format.
+*ConversionApi* | **GetConvertDocumentToImageByUrl** | **GET** /html/convert/image/{outFormat} | Convert the HTML page from the web by its URL to the specified image format.
+*ConversionApi* | **GetConvertDocumentToPdf** | **GET** /html/{name}/convert/pdf | Convert the HTML document from the storage by its name to PDF.
+*ConversionApi* | **GetConvertDocumentToPdfByUrl** | **GET** /html/convert/pdf | Convert the HTML page from the web by its URL to PDF.
+*ConversionApi* | **GetConvertDocumentToXps** | **GET** /html/{name}/convert/xps | Convert the HTML document from the storage by its name to XPS.
+*ConversionApi* | **GetConvertDocumentToXpsByUrl** | **GET** /html/convert/xps | Convert the HTML page from the web by its URL to XPS.
+*DocumentApi* | **GetDocument** | **GET** /html/{name} | Return the HTML document by the name from default or specified storage.
+*DocumentApi* | **GetDocumentFragmentByXPath** | **GET** /html/{name}/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query. 
+*DocumentApi* | **GetDocumentImages** | **GET** /html/{name}/images/all | Return all HTML document images packaged as a ZIP archive.
+*TranslationApi* | **GetTranslateDocument** | **GET** /html/{name}/translate/{srcLang}/{resLang} | Translate the HTML document specified by the name from default or specified storage.
+*TranslationApi* | **GetTranslateDocumentByUrl** | **GET** /html/translate/{srcLang}/{resLang} | Translate the HTML document specified by its URL.
 
 
 ## Recommendation
 
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
 
-## Author
+### Examples
 
+[Tests](./src/test/java/com/aspose/html/client/api) contain various examples of using the Aspose.HTML SDK.
 
+[Docs](./docs/) Full javadoc for Aspose.HTML Api SDK
 
 
