@@ -133,6 +133,8 @@ Class | Method | HTTP request | Description
 *DocumentApi* | **GetDocumentImages** | **GET** /html/{name}/images/all | Return all HTML document images packaged as a ZIP archive.
 *TranslationApi* | **GetTranslateDocument** | **GET** /html/{name}/translate/{srcLang}/{resLang} | Translate the HTML document specified by the name from default or specified storage.
 *TranslationApi* | **GetTranslateDocumentByUrl** | **GET** /html/translate/{srcLang}/{resLang} | Translate the HTML document specified by its URL.
+*SummarizationApi* | [**GetDetectHtmlKeywords**](docs/SummarizationApi.md#GetDetectHtmlKeywords) | **GET** /html/{name}/summ/keywords | Get the HTML document keywords using the keyword detection service.
+*SummarizationApi* | [**GetDetectHtmlKeywordsByUrl**](docs/SummarizationApi.md#GetDetectHtmlKeywordsByUrl) | **GET** /html/summ/keywords | Get the keywords from HTML document from Web specified by its URL using the keyword detection service
 
 
 ## Recommendation
@@ -143,6 +145,6 @@ It's recommended to create an instance of `ApiClient` per thread in a multithrea
 
 [Tests](./src/test/java/com/aspose/html/client/api) contain various examples of using the Aspose.HTML SDK.
 
-[Docs](./docs/) Full javadoc for Aspose.HTML Api SDK
+[Docs](./doc/) Full javadoc for Aspose.HTML Api SDK
 
 

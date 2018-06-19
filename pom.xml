@@ -2,11 +2,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.aspose</groupId>
-    <artifactId>aspose-html-cloud</artifactId>
+    <artifactId>aspose-cloud-html</artifactId>
     <packaging>jar</packaging>
-    <name>aspose-html-cloud</name>
-    <version>1.0.0</version>
-    <url>http://www.aspose.com</url>
+    <name>aspose-cloud-html</name>
+    <version>1.0.1</version>
+    <url>https://products.aspose.cloud/html</url>
     <description>Aspose cloud java SDK</description>
     <licenses>
         <license>
@@ -199,25 +199,12 @@
     </profiles>
 
     <dependencies>
-        <dependency>
-            <groupId>com.aspose</groupId>
-            <artifactId>aspose-cloud-storage</artifactId>
-            <version>1.0.0</version>
-            <scope>compile</scope>
-        </dependency>
         <!-- Pdf library -->
 		<dependency>
 		    <groupId>org.apache.pdfbox</groupId>
 		    <artifactId>pdfbox</artifactId>
 		    <version>2.0.8</version>
 		</dependency>
-        <!-- For Class RandomStringUtils -->	
-		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-lang3</artifactId>
-		    <version>3.0</version>
-		</dependency>
-	
         <dependency>
             <groupId>com.squareup.okhttp</groupId>
             <artifactId>okhttp</artifactId>
