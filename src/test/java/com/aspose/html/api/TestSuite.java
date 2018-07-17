@@ -51,7 +51,12 @@ import com.aspose.storage.api.*;
 			SummarizationApiTest.class,
 			FileApiTest.class,
 			FolderApiTest.class,
-			StorageApiTest.class
+			StorageApiTest.class,
+			PutConvertImgTest.class,
+			PutConvertPdfTest.class,
+			PutConvertXpsTest.class,
+			PutConvertDocImgTest.class,
+			PutConvertDocPdfTest.class
 		})
 public class TestSuite {
 

@@ -6,5 +6,5 @@
     "storage":"\\data\\",
     "testdata":"\\testdata\\",
     "defaultUserAgent":"Webkit",
-    "debug": true
+    "debug": false
 }
