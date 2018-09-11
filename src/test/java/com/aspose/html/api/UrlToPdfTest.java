@@ -28,19 +28,14 @@
 package com.aspose.html.api;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Collection;
-import static java.lang.System.out;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runners.Parameterized;
 import org.junit.runner.RunWith;
 import static org.junit.Assert.assertEquals;
-
-import org.apache.pdfbox.pdmodel.*;
 
 import com.aspose.html.api.ConversionApi;
 import com.aspose.html.client.Configuration;
@@ -158,8 +153,6 @@ public class UrlToPdfTest {
     
     @Test
     public void test() {
- 
-    	PDDocument pdf = null;
     	
     	try {
     		File answer = api.GetConvertDocumentToPdfByUrl(
@@ -179,31 +172,8 @@ public class UrlToPdfTest {
  
     		//Assert contentType
     		assertEquals("application/pdf", Files.probeContentType(copyFile.toPath()));
-    		
-    		// PDF info
-    		pdf = PDDocument.load(copyFile);
-    		
-    		//Test width, height delta 30%
-    		if (width != null && height != null) {
-    			assertEquals(width,new Integer((int)pdf.getPage(0).getMediaBox().getWidth()),width/30);
-    			assertEquals(height,new Integer((int)pdf.getPage(0).getMediaBox().getHeight()),height/30);
-
-    			out.println("width: expected - " + width 
-    	    			+ " actual - " + (int)pdf.getPage(0).getMediaBox().getWidth());
-    	    		
-	    		out.println("height: expected - " + height 
-	        			+ " actual - " + (int)pdf.getPage(0).getMediaBox().getHeight());
-
-    		}
         }catch(Exception e) {
         	e.printStackTrace();
-        }finally {
-        	if(pdf != null)
-				try {
-					pdf.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
         }
     }
 }

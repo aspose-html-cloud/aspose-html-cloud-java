@@ -76,7 +76,7 @@ public class TranslationApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call GetTranslateDocumentCall(String name, String srcLang, String resLang, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call GetTranslateDocumentCall(String name, String srcLang, String resLang, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -174,7 +174,7 @@ public class TranslationApi {
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> GetTranslateDocumentWithHttpInfo(String name, String srcLang, String resLang, String storage, String folder) throws ApiException {
+    private ApiResponse<File> GetTranslateDocumentWithHttpInfo(String name, String srcLang, String resLang, String storage, String folder) throws ApiException {
         com.squareup.okhttp.Call call = GetTranslateDocumentValidateBeforeCall(name, srcLang, resLang, storage, folder, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -228,7 +228,7 @@ public class TranslationApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call GetTranslateDocumentByUrlCall(String sourceUrl, String srcLang, String resLang, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call GetTranslateDocumentByUrlCall(String sourceUrl, String srcLang, String resLang, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -319,7 +319,7 @@ public class TranslationApi {
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> GetTranslateDocumentByUrlWithHttpInfo(String sourceUrl, String srcLang, String resLang) throws ApiException {
+    private ApiResponse<File> GetTranslateDocumentByUrlWithHttpInfo(String sourceUrl, String srcLang, String resLang) throws ApiException {
         com.squareup.okhttp.Call call = GetTranslateDocumentByUrlValidateBeforeCall(sourceUrl, srcLang, resLang, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);

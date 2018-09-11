@@ -75,7 +75,7 @@ public class OcrApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call GetRecognizeAndImportToHtmlCall(String name, String ocrEngineLang, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call GetRecognizeAndImportToHtmlCall(String name, String ocrEngineLang, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -161,7 +161,7 @@ public class OcrApi {
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> GetRecognizeAndImportToHtmlWithHttpInfo(String name, String ocrEngineLang, String folder, String storage) throws ApiException {
+    private ApiResponse<File> GetRecognizeAndImportToHtmlWithHttpInfo(String name, String ocrEngineLang, String folder, String storage) throws ApiException {
         com.squareup.okhttp.Call call = GetRecognizeAndImportToHtmlValidateBeforeCall(name, ocrEngineLang, folder, storage, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -216,7 +216,7 @@ public class OcrApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call GetRecognizeAndTranslateToHtmlCall(String name, String srcLang, String resLang, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call GetRecognizeAndTranslateToHtmlCall(String name, String srcLang, String resLang, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -314,7 +314,7 @@ public class OcrApi {
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> GetRecognizeAndTranslateToHtmlWithHttpInfo(String name, String srcLang, String resLang, String folder, String storage) throws ApiException {
+    private ApiResponse<File> GetRecognizeAndTranslateToHtmlWithHttpInfo(String name, String srcLang, String resLang, String folder, String storage) throws ApiException {
         com.squareup.okhttp.Call call = GetRecognizeAndTranslateToHtmlValidateBeforeCall(name, srcLang, resLang, folder, storage, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);

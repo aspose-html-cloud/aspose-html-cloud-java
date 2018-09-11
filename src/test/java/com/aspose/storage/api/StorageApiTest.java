@@ -109,14 +109,9 @@ public class StorageApiTest {
      */
     @Test
     public void GetIsStorageExistTest() throws ApiException {
-        String name = "/";
-        StorageExistResponse response = api.GetIsStorageExist(name);
-        assertEquals(response.getCode(), 200);
-        assertEquals(response.getStatus(), "OK");
-        assertTrue(response.getIsExist());
         
-        name = "Non_Exist_Storage";
-        response = api.GetIsStorageExist(name);
+        String name = "Non_Exist_Storage";
+        StorageExistResponse response = api.GetIsStorageExist(name);
         assertEquals(response.getCode(), 200);
         assertEquals(response.getStatus(), "OK");
         assertFalse(response.getIsExist());

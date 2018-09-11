@@ -85,7 +85,7 @@ public class ConversionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call GetConvertDocumentToImageCall(String name, String outFormat, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, Integer xResolution, Integer yResolution, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call GetConvertDocumentToImageCall(String name, String outFormat, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, Integer xResolution, Integer yResolution, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -207,7 +207,7 @@ public class ConversionApi {
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> GetConvertDocumentToImageWithHttpInfo(String name, String outFormat, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, Integer xResolution, Integer yResolution, String folder, String storage) throws ApiException {
+    private ApiResponse<File> GetConvertDocumentToImageWithHttpInfo(String name, String outFormat, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, Integer xResolution, Integer yResolution, String folder, String storage) throws ApiException {
         com.squareup.okhttp.Call call = GetConvertDocumentToImageValidateBeforeCall(name, outFormat, width, height, leftMargin, rightMargin, topMargin, bottomMargin, xResolution, yResolution, folder, storage, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -277,7 +277,7 @@ public class ConversionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call GetConvertDocumentToImageByUrlCall(String sourceUrl, String outFormat, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, Integer xResolution, Integer yResolution, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call GetConvertDocumentToImageByUrlCall(String sourceUrl, String outFormat, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, Integer xResolution, Integer yResolution, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -400,7 +400,7 @@ public class ConversionApi {
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> GetConvertDocumentToImageByUrlWithHttpInfo(String sourceUrl, String outFormat, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, Integer xResolution, Integer yResolution, String folder, String storage) throws ApiException {
+    private ApiResponse<File> GetConvertDocumentToImageByUrlWithHttpInfo(String sourceUrl, String outFormat, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, Integer xResolution, Integer yResolution, String folder, String storage) throws ApiException {
         com.squareup.okhttp.Call call = GetConvertDocumentToImageByUrlValidateBeforeCall(sourceUrl, outFormat, width, height, leftMargin, rightMargin, topMargin, bottomMargin, xResolution, yResolution, folder, storage, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -467,7 +467,7 @@ public class ConversionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call GetConvertDocumentToPdfCall(String name, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call GetConvertDocumentToPdfCall(String name, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -573,7 +573,7 @@ public class ConversionApi {
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> GetConvertDocumentToPdfWithHttpInfo(String name, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage) throws ApiException {
+    private ApiResponse<File> GetConvertDocumentToPdfWithHttpInfo(String name, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage) throws ApiException {
         com.squareup.okhttp.Call call = GetConvertDocumentToPdfValidateBeforeCall(name, width, height, leftMargin, rightMargin, topMargin, bottomMargin, folder, storage, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -637,7 +637,7 @@ public class ConversionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call GetConvertDocumentToPdfByUrlCall(String sourceUrl, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call GetConvertDocumentToPdfByUrlCall(String sourceUrl, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -744,7 +744,7 @@ public class ConversionApi {
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> GetConvertDocumentToPdfByUrlWithHttpInfo(String sourceUrl, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage) throws ApiException {
+    private ApiResponse<File> GetConvertDocumentToPdfByUrlWithHttpInfo(String sourceUrl, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage) throws ApiException {
         com.squareup.okhttp.Call call = GetConvertDocumentToPdfByUrlValidateBeforeCall(sourceUrl, width, height, leftMargin, rightMargin, topMargin, bottomMargin, folder, storage, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -808,7 +808,7 @@ public class ConversionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call GetConvertDocumentToXpsCall(String name, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call GetConvertDocumentToXpsCall(String name, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -914,7 +914,7 @@ public class ConversionApi {
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> GetConvertDocumentToXpsWithHttpInfo(String name, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage) throws ApiException {
+    private ApiResponse<File> GetConvertDocumentToXpsWithHttpInfo(String name, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage) throws ApiException {
         com.squareup.okhttp.Call call = GetConvertDocumentToXpsValidateBeforeCall(name, width, height, leftMargin, rightMargin, topMargin, bottomMargin, folder, storage, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -978,7 +978,7 @@ public class ConversionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call GetConvertDocumentToXpsByUrlCall(String sourceUrl, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call GetConvertDocumentToXpsByUrlCall(String sourceUrl, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1085,7 +1085,7 @@ public class ConversionApi {
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> GetConvertDocumentToXpsByUrlWithHttpInfo(String sourceUrl, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage) throws ApiException {
+    private ApiResponse<File> GetConvertDocumentToXpsByUrlWithHttpInfo(String sourceUrl, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage) throws ApiException {
         com.squareup.okhttp.Call call = GetConvertDocumentToXpsByUrlValidateBeforeCall(sourceUrl, width, height, leftMargin, rightMargin, topMargin, bottomMargin, folder, storage, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1151,7 +1151,7 @@ public class ConversionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call PutConvertDocumentInRequestToImageCall(String outPath, String outFormat, File file, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, Integer resolution, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call PutConvertDocumentInRequestToImageCall(String outPath, String outFormat, File file, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, Integer resolution, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
     	try {
@@ -1283,7 +1283,7 @@ public class ConversionApi {
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> PutConvertDocumentInRequestToImageWithHttpInfo(String outPath, String outFormat, File file, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, Integer resolution) throws ApiException {
+    private ApiResponse<File> PutConvertDocumentInRequestToImageWithHttpInfo(String outPath, String outFormat, File file, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, Integer resolution) throws ApiException {
         com.squareup.okhttp.Call call = PutConvertDocumentInRequestToImageValidateBeforeCall(outPath, outFormat, file, width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1347,7 +1347,7 @@ public class ConversionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call PutConvertDocumentInRequestToPdfCall(String outPath, File file, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call PutConvertDocumentInRequestToPdfCall(String outPath, File file, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         try {
@@ -1466,7 +1466,7 @@ public class ConversionApi {
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> PutConvertDocumentInRequestToPdfWithHttpInfo(String outPath, File file, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin) throws ApiException {
+    private ApiResponse<File> PutConvertDocumentInRequestToPdfWithHttpInfo(String outPath, File file, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin) throws ApiException {
         com.squareup.okhttp.Call call = PutConvertDocumentInRequestToPdfValidateBeforeCall(outPath, file, width, height, leftMargin, rightMargin, topMargin, bottomMargin, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1528,7 +1528,7 @@ public class ConversionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call PutConvertDocumentInRequestToXpsCall(String outPath, File file, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call PutConvertDocumentInRequestToXpsCall(String outPath, File file, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
     	try {
@@ -1647,7 +1647,7 @@ public class ConversionApi {
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> PutConvertDocumentInRequestToXpsWithHttpInfo(String outPath, File file, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin) throws ApiException {
+    private ApiResponse<File> PutConvertDocumentInRequestToXpsWithHttpInfo(String outPath, File file, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin) throws ApiException {
         com.squareup.okhttp.Call call = PutConvertDocumentInRequestToXpsValidateBeforeCall(outPath, file, width, height, leftMargin, rightMargin, topMargin, bottomMargin, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1713,7 +1713,7 @@ public class ConversionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call PutConvertDocumentToImageCall(String name, String outPath, String outFormat, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, Integer resolution, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call PutConvertDocumentToImageCall(String name, String outPath, String outFormat, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, Integer resolution, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1841,7 +1841,7 @@ public class ConversionApi {
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> PutConvertDocumentToImageWithHttpInfo(String name, String outPath, String outFormat, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, Integer resolution, String folder, String storage) throws ApiException {
+    private ApiResponse<File> PutConvertDocumentToImageWithHttpInfo(String name, String outPath, String outFormat, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, Integer resolution, String folder, String storage) throws ApiException {
         com.squareup.okhttp.Call call = PutConvertDocumentToImageValidateBeforeCall(name, outPath, outFormat, width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1909,7 +1909,7 @@ public class ConversionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call PutConvertDocumentToPdfCall(String name, String outPath, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call PutConvertDocumentToPdfCall(String name, String outPath, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2025,7 +2025,7 @@ public class ConversionApi {
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> PutConvertDocumentToPdfWithHttpInfo(String name, String outPath, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage) throws ApiException {
+    private ApiResponse<File> PutConvertDocumentToPdfWithHttpInfo(String name, String outPath, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage) throws ApiException {
         com.squareup.okhttp.Call call = PutConvertDocumentToPdfValidateBeforeCall(name, outPath, width, height, leftMargin, rightMargin, topMargin, bottomMargin, folder, storage, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -2091,7 +2091,7 @@ public class ConversionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call PutConvertDocumentToXpsCall(String name, String outPath, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call PutConvertDocumentToXpsCall(String name, String outPath, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2207,7 +2207,7 @@ public class ConversionApi {
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> PutConvertDocumentToXpsWithHttpInfo(String name, String outPath, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage) throws ApiException {
+    private ApiResponse<File> PutConvertDocumentToXpsWithHttpInfo(String name, String outPath, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage) throws ApiException {
         com.squareup.okhttp.Call call = PutConvertDocumentToXpsValidateBeforeCall(name, outPath, width, height, leftMargin, rightMargin, topMargin, bottomMargin, folder, storage, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);

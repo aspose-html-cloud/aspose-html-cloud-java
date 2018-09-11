@@ -36,7 +36,6 @@ import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.apache.pdfbox.pdmodel.PDDocument;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -166,8 +165,7 @@ public class HtmlToPdfTest {
     
     @Test
     public void test() {
-    	PDDocument pdf = null;
-    	
+   	
        	File f = new File(Configuration.getTestDataDir(), name);
     	if(!f.exists())
     		out.println("Local file not found");
@@ -197,30 +195,8 @@ public class HtmlToPdfTest {
     		//Assert contentType
     		assertEquals("application/pdf", Files.probeContentType(copyFile.toPath()));
     		
-    		// PDF info
-    		pdf = PDDocument.load(copyFile);
-    		
-    		//Test width, height delta 30%
-    		if (width != null && height != null) {
-    			assertEquals(width,new Integer((int)pdf.getPage(0).getMediaBox().getWidth()),width/30);
-    			assertEquals(height,new Integer((int)pdf.getPage(0).getMediaBox().getHeight()),height/30);
-
-    			out.println("width: expected - " + width 
-    	    			+ " actual - " + (int)pdf.getPage(0).getMediaBox().getWidth());
-    	    		
-	    		out.println("height: expected - " + height 
-	        			+ " actual - " + (int)pdf.getPage(0).getMediaBox().getHeight());
-
-    		}
         }catch(Exception e) {
         	e.printStackTrace();
-        }finally {
-        	if(pdf != null)
-				try {
-					pdf.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
         }
     }
 }

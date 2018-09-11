@@ -78,7 +78,7 @@ public class SummarizationApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call GetDetectHtmlKeywordsCall(String name, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call GetDetectHtmlKeywordsCall(String name, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -160,7 +160,7 @@ public class SummarizationApi {
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> GetDetectHtmlKeywordsWithHttpInfo(String name, String folder, String storage) throws ApiException {
+    private ApiResponse<File> GetDetectHtmlKeywordsWithHttpInfo(String name, String folder, String storage) throws ApiException {
         com.squareup.okhttp.Call call = GetDetectHtmlKeywordsValidateBeforeCall(name, folder, storage, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -210,7 +210,7 @@ public class SummarizationApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call GetDetectHtmlKeywordsByUrlCall(String sourceUrl, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call GetDetectHtmlKeywordsByUrlCall(String sourceUrl, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -285,7 +285,7 @@ public class SummarizationApi {
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<File> GetDetectHtmlKeywordsByUrlWithHttpInfo(String sourceUrl) throws ApiException {
+    private ApiResponse<File> GetDetectHtmlKeywordsByUrlWithHttpInfo(String sourceUrl) throws ApiException {
         com.squareup.okhttp.Call call = GetDetectHtmlKeywordsByUrlValidateBeforeCall(sourceUrl, null, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return apiClient.execute(call, localVarReturnType);

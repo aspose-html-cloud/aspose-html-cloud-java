@@ -56,7 +56,9 @@ import com.aspose.storage.api.*;
 			PutConvertPdfTest.class,
 			PutConvertXpsTest.class,
 			PutConvertDocImgTest.class,
-			PutConvertDocPdfTest.class
+			PutConvertDocPdfTest.class,
+			DocLoadCSSTest.class,
+			DocLoadCSSUrlTest.class
 		})
 public class TestSuite {
 
