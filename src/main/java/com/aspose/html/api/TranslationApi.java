@@ -67,8 +67,8 @@ public class TranslationApi {
     /**
      * Build call for GetTranslateDocument
      * @param name Document name. (required)
-     * @param srcLang Source language. (required)
-     * @param resLang Result language. (required)
+     * @param srcLang Source language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
+     * @param resLang Result language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
      * @param progressListener Progress listener
@@ -151,8 +151,8 @@ public class TranslationApi {
      * Translate the HTML document specified by the name from default or specified storage.
      * 
      * @param name Document name. (required)
-     * @param srcLang Source language. (required)
-     * @param resLang Result language. (required)
+     * @param srcLang Source language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
+     * @param resLang Result language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
      * @return File
@@ -167,8 +167,8 @@ public class TranslationApi {
      * Translate the HTML document specified by the name from default or specified storage.
      * 
      * @param name Document name. (required)
-     * @param srcLang Source language. (required)
-     * @param resLang Result language. (required)
+     * @param srcLang Source language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
+     * @param resLang Result language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
      * @return ApiResponse&lt;File&gt;
@@ -184,8 +184,8 @@ public class TranslationApi {
      * Translate the HTML document specified by the name from default or specified storage. (asynchronously)
      * 
      * @param name Document name. (required)
-     * @param srcLang Source language. (required)
-     * @param resLang Result language. (required)
+     * @param srcLang Source language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
+     * @param resLang Result language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param storage The document storage. (optional)
      * @param folder The document folder. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -221,8 +221,8 @@ public class TranslationApi {
     /**
      * Build call for GetTranslateDocumentByUrl
      * @param sourceUrl Source document URL. (required)
-     * @param srcLang Source language. (required)
-     * @param resLang Result language. (required)
+     * @param srcLang Source language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
+     * @param resLang Result language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -300,8 +300,8 @@ public class TranslationApi {
      * Translate the HTML document specified by its URL.
      * 
      * @param sourceUrl Source document URL. (required)
-     * @param srcLang Source language. (required)
-     * @param resLang Result language. (required)
+     * @param srcLang Source language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
+     * @param resLang Result language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -314,8 +314,8 @@ public class TranslationApi {
      * Translate the HTML document specified by its URL.
      * 
      * @param sourceUrl Source document URL. (required)
-     * @param srcLang Source language. (required)
-     * @param resLang Result language. (required)
+     * @param srcLang Source language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
+     * @param resLang Result language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -329,8 +329,8 @@ public class TranslationApi {
      * Translate the HTML document specified by its URL. (asynchronously)
      * 
      * @param sourceUrl Source document URL. (required)
-     * @param srcLang Source language. (required)
-     * @param resLang Result language. (required)
+     * @param srcLang Source language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
+     * @param resLang Result language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
