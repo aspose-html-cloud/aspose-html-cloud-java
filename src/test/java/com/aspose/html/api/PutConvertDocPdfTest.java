@@ -29,6 +29,7 @@ package com.aspose.html.api;
 
 import static java.lang.System.out;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.util.Arrays;
@@ -187,6 +188,7 @@ public class PutConvertDocPdfTest {
 
     	}catch(Exception e) {
         	e.printStackTrace();
+            fail();
         }
     }
 }

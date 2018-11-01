@@ -66,7 +66,8 @@ public class TranslationApi {
 
     /**
      * Build call for GetTranslateDocument
-     * @param name Document name. (required)
+     * Allowed values for language pairs is en-de, en-fr, en-ru, de-en, ru-en, en-zh, zh-en.
+     * @param name Document name (required). Html file in the storage.
      * @param srcLang Source language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param resLang Result language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param storage The document storage. (optional)
@@ -149,8 +150,8 @@ public class TranslationApi {
 
     /**
      * Translate the HTML document specified by the name from default or specified storage.
-     * 
-     * @param name Document name. (required)
+     * Allowed values for language pairs is en-de, en-fr, en-ru, de-en, ru-en, en-zh, zh-en.
+     * @param name Document name (required). Html file in the storage.
      * @param srcLang Source language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param resLang Result language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param storage The document storage. (optional)
@@ -165,8 +166,8 @@ public class TranslationApi {
 
     /**
      * Translate the HTML document specified by the name from default or specified storage.
-     * 
-     * @param name Document name. (required)
+     * Allowed values for language pairs is en-de, en-fr, en-ru, de-en, ru-en, en-zh, zh-en.
+     * @param name Document name (required). Html file in the storage.
      * @param srcLang Source language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param resLang Result language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param storage The document storage. (optional)
@@ -182,8 +183,8 @@ public class TranslationApi {
 
     /**
      * Translate the HTML document specified by the name from default or specified storage. (asynchronously)
-     * 
-     * @param name Document name. (required)
+     * Allowed values for language pairs is en-de, en-fr, en-ru, de-en, ru-en, en-zh, zh-en.
+     * @param name Document name (required). Html file in the storage.
      * @param srcLang Source language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param resLang Result language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param storage The document storage. (optional)
@@ -220,6 +221,7 @@ public class TranslationApi {
     }
     /**
      * Build call for GetTranslateDocumentByUrl
+     * Allowed values for language pairs is en-de, en-fr, en-ru, de-en, ru-en, en-zh, zh-en.
      * @param sourceUrl Source document URL. (required)
      * @param srcLang Source language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param resLang Result language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
@@ -298,7 +300,7 @@ public class TranslationApi {
 
     /**
      * Translate the HTML document specified by its URL.
-     * 
+     * Allowed values for language pairs is en-de, en-fr, en-ru, de-en, ru-en, en-zh, zh-en.
      * @param sourceUrl Source document URL. (required)
      * @param srcLang Source language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param resLang Result language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
@@ -312,7 +314,7 @@ public class TranslationApi {
 
     /**
      * Translate the HTML document specified by its URL.
-     * 
+     * Allowed values for language pairs is en-de, en-fr, en-ru, de-en, ru-en, en-zh, zh-en.
      * @param sourceUrl Source document URL. (required)
      * @param srcLang Source language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param resLang Result language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
@@ -327,7 +329,7 @@ public class TranslationApi {
 
     /**
      * Translate the HTML document specified by its URL. (asynchronously)
-     * 
+     * Allowed values for language pairs is en-de, en-fr, en-ru, de-en, ru-en, en-zh, zh-en.
      * @param sourceUrl Source document URL. (required)
      * @param srcLang Source language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param resLang Result language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").

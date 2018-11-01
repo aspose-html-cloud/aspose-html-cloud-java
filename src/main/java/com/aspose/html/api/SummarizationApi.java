@@ -70,7 +70,7 @@ public class SummarizationApi {
 
     /**
      * Build call for GetDetectHtmlKeywords
-     * @param name Document name. (required)
+     * @param name Document name (required). Html file in the storage.
      * @param folder Document folder. (optional)
      * @param storage Document storage. (optional)
      * @param progressListener Progress listener
@@ -140,7 +140,7 @@ public class SummarizationApi {
     /**
      * Get the HTML document keywords using the keyword detection service.
      * 
-     * @param name Document name. (required)
+     * @param name Document name (required). Html file in the storage.
      * @param folder Document folder. (optional)
      * @param storage Document storage. (optional)
      * @return File
@@ -154,7 +154,7 @@ public class SummarizationApi {
     /**
      * Get the HTML document keywords using the keyword detection service.
      * 
-     * @param name Document name. (required)
+     * @param name Document name (required). Html file in the storage.
      * @param folder Document folder. (optional)
      * @param storage Document storage. (optional)
      * @return ApiResponse&lt;File&gt;
@@ -169,7 +169,7 @@ public class SummarizationApi {
     /**
      * Get the HTML document keywords using the keyword detection service. (asynchronously)
      * 
-     * @param name Document name. (required)
+     * @param name Document name (required). Html file in the storage.
      * @param folder Document folder. (optional)
      * @param storage Document storage. (optional)
      * @param callback The callback to be executed when the API call finishes

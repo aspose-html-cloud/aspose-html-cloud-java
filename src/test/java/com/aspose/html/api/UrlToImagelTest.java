@@ -38,6 +38,7 @@ import org.junit.Test;
 import org.junit.runners.Parameterized;
 import org.junit.runner.RunWith;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import org.apache.commons.imaging.ImageInfo;
 import org.apache.commons.imaging.Imaging;
@@ -205,6 +206,7 @@ public class UrlToImagelTest {
 //    		}
         }catch(Exception e) {
         	e.printStackTrace();
+        	fail();
         }
     }
 }

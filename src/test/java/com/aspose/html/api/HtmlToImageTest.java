@@ -29,6 +29,7 @@ package com.aspose.html.api;
 
 import static java.lang.System.out;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -248,6 +249,7 @@ public class HtmlToImageTest {
 //    		}
         }catch(Exception e) {
         	e.printStackTrace();
+            fail();
         }
     }
 }

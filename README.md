@@ -115,26 +115,66 @@ public class ConversionApiExample {
 }
 
 ```
-
-## Documentation for API Endpoints
+# Documentation for API Endpoints
 
 All URIs are relative to *https://api.aspose.cloud/v1.1*
 
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*ConversionApi* | **GetConvertDocumentToImage** | **GET** /html/{name}/convert/image/{outFormat} | Convert the HTML document from the storage by its name to the specified image format.
-*ConversionApi* | **GetConvertDocumentToImageByUrl** | **GET** /html/convert/image/{outFormat} | Convert the HTML page from the web by its URL to the specified image format.
-*ConversionApi* | **GetConvertDocumentToPdf** | **GET** /html/{name}/convert/pdf | Convert the HTML document from the storage by its name to PDF.
-*ConversionApi* | **GetConvertDocumentToPdfByUrl** | **GET** /html/convert/pdf | Convert the HTML page from the web by its URL to PDF.
-*ConversionApi* | **GetConvertDocumentToXps** | **GET** /html/{name}/convert/xps | Convert the HTML document from the storage by its name to XPS.
-*ConversionApi* | **GetConvertDocumentToXpsByUrl** | **GET** /html/convert/xps | Convert the HTML page from the web by its URL to XPS.
-*DocumentApi* | **GetDocument** | **GET** /html/{name} | Return the HTML document by the name from default or specified storage.
-*DocumentApi* | **GetDocumentFragmentByXPath** | **GET** /html/{name}/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query. 
-*DocumentApi* | **GetDocumentImages** | **GET** /html/{name}/images/all | Return all HTML document images packaged as a ZIP archive.
-*TranslationApi* | **GetTranslateDocument** | **GET** /html/{name}/translate/{srcLang}/{resLang} | Translate the HTML document specified by the name from default or specified storage.
-*TranslationApi* | **GetTranslateDocumentByUrl** | **GET** /html/translate/{srcLang}/{resLang} | Translate the HTML document specified by its URL.
-*SummarizationApi* | [**GetDetectHtmlKeywords**](docs/SummarizationApi.md#GetDetectHtmlKeywords) | **GET** /html/{name}/summ/keywords | Get the HTML document keywords using the keyword detection service.
-*SummarizationApi* | [**GetDetectHtmlKeywordsByUrl**](docs/SummarizationApi.md#GetDetectHtmlKeywordsByUrl) | **GET** /html/summ/keywords | Get the keywords from HTML document from Web specified by its URL using the keyword detection service
+
+## ConversionApi
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+**GetConvertDocumentToImage** | **GET** html/{name}/convert/image/{outFormat} | Convert the HTML document from the storage by its name to the specified image format.
+**GetConvertDocumentToImageByUrl** | **GET** html/convert/image/{outFormat} | Convert the HTML page from the web by its URL to the specified image format.
+**GetConvertDocumentToPdf** | **GET** html/{name}/convert/pdf | Convert the HTML document from the storage by its name to PDF.
+**GetConvertDocumentToPdfByUrl** | **GET** html/convert/pdf | Convert the HTML page from the web by its URL to PDF.
+**GetConvertDocumentToXps** | **GET** html/{name}/convert/xps | Convert the HTML document from the storage by its name to XPS.
+**GetConvertDocumentToXpsByUrl** | **GET** html/convert/xps | Convert the HTML page from the web by its URL to XPS.
+**PutConvertDocumentInRequestToImage** | **PUT** html/convert/image/{outFormat} | Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
+**PutConvertDocumentInRequestToPdf** | **PUT** html/convert/pdf | Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
+**PutConvertDocumentInRequestToXps** | **PUT** html/convert/xps | Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
+**PutConvertDocumentToImage** | **PUT** html/{name}/convert/image/{outFormat} | Converts the HTML document (located on storage) to the specified image format and uploads resulting file to storage.
+**PutConvertDocumentToPdf** | **PUT** html/{name}/convert/pdf | Converts the HTML document (located on storage) to PDF and uploads resulting file to storage.
+**PutConvertDocumentToXps** | **PUT** html/{name}/convert/xps | Converts the HTML document (located on storage) to XPS and uploads resulting file to storage.
+
+## DocumentApi
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+**GetDocumentFragmentByXPath** | **GET** html/{name}/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query.
+**GetDocumentFragmentByXPathByUrl** | **GET** html/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query by the source page URL.
+**GetDocumentFragmentsByCSSSelector** | **GET** /html/{name}/fragments/css/{outFormat} | Return list of HTML fragments matching the specified CSS selector.
+**GetDocumentFragmentsByCSSSelectorByUrl** | **GET** /html/fragments/css/{outFormat} | Return list of HTML fragments matching the specified CSS selector by the source page URL.
+**GetDocumentImages** | **GET** html/{name}/images/all | Return all HTML document images packaged as a ZIP archive.
+**GetDocumentImagesByUrl** | **GET** html/images/all | Return all HTML page images packaged as a ZIP archive by the source page URL.
+
+## OcrApi
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+**GetRecognizeAndImportToHtml** | **GET** html/{name}/ocr/import | Recognize text from the image file in the storage and import it to HTML format.
+**GetRecognizeAndTranslateToHtml** | **GET** html/{name}/ocr/translate/{srcLang}/{resLang} | Recognize text from the image file in the storage, import it to HTML format and translate to specified language.
+
+## TranslationApi
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+**GetTranslateDocument** | **GET** html/{name}/translate/{srcLang}/{resLang} | Translate the HTML document specified by the name from default or specified storage. 
+**GetTranslateDocumentByUrl** | **GET** html/translate/{srcLang}/{resLang} | Translate the HTML document from Web specified by its URL.
+
+## SummarizationApi
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+**GetDetectHtmlKeywords** | **GET** html/{name}/summ/keywords | Get the HTML document keywords using the keyword detection service.
+**GetDetectHtmlKeywordsByUrl** | **GET** html/summ/keywords | Get the keywords from HTML document from Web specified by its URL using the keyword detection service
+
+## TemplateMergeApi    
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+*GetMergeHtmlTemplate* | **GET** /html/{templateName}/merge | Populate HTML document template with data located as a file in the storage.
+*PutMergeHtmlTemplate* | **PUT** /html/{templateName}/merge | Populate HTML document template with data from the request body. Result document will be saved to storage.
 
 
 ## Recommendation

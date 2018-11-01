@@ -37,6 +37,7 @@ import com.aspose.storage.model.FileExistResponse;
 import static java.lang.System.out;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 
@@ -99,13 +100,19 @@ public class SummarizationApiTest {
     @Test
     public void GetDetectHtmlKeywordsByUrlTest() throws ApiException {
         String sourceUrl = "https://www.le.ac.uk/oerresources/bdra/html/page_01.htm";
-        File answer = api.GetDetectHtmlKeywordsByUrl(sourceUrl);
-
-        assertTrue(answer.exists());
-        
-		//Save to test directory
-		File copyFile = new File(localFolder + "KeywordUrl.json");
-		answer.renameTo(copyFile);
+    
+        try {
+	        File answer = api.GetDetectHtmlKeywordsByUrl(sourceUrl);
+	
+	        assertTrue(answer.exists());
+	        
+			//Save to test directory
+			File copyFile = new File(localFolder + "KeywordUrl.json");
+			answer.renameTo(copyFile);
+        } catch(Exception e) {
+        	e.printStackTrace();
+        	fail();
+        }
     }
     
 }

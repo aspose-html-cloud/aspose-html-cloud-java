@@ -36,6 +36,7 @@ import org.junit.Test;
 import org.junit.runners.Parameterized;
 import org.junit.runner.RunWith;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import com.aspose.html.api.ConversionApi;
 import com.aspose.html.client.Configuration;
@@ -174,6 +175,7 @@ public class UrlToPdfTest {
     		assertEquals("application/pdf", Files.probeContentType(copyFile.toPath()));
         }catch(Exception e) {
         	e.printStackTrace();
+        	fail();
         }
     }
 }

@@ -37,7 +37,6 @@ import com.aspose.storage.api.*;
 @SuiteClasses(
 		{
 			DocLoadFragmentTest.class,
-			DocLoadTest.class,
 			OcrTranslateTest.class,
 			OcrTest.class,
 			TranslateDocTest.class,
@@ -58,7 +57,8 @@ import com.aspose.storage.api.*;
 			PutConvertDocImgTest.class,
 			PutConvertDocPdfTest.class,
 			DocLoadCSSTest.class,
-			DocLoadCSSUrlTest.class
+			DocLoadCSSUrlTest.class,
+			TemplateMergeApiTest.class
 		})
 public class TestSuite {
 

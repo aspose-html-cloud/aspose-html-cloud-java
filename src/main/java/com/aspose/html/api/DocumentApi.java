@@ -65,142 +65,8 @@ public class DocumentApi {
     }
 
     /**
-     * Build call for GetDocument
-     * @param name The document name. (required)
-     * @param storage The document folder (optional)
-     * @param folder The document folder. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    private com.squareup.okhttp.Call GetDocumentCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/html/{name}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (storage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
-        if (folder != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "multipart/form-data", "application/zip"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    private com.squareup.okhttp.Call GetDocumentValidateBeforeCall(String name, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling GetDocument(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = GetDocumentCall(name, storage, folder, progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * Return the HTML document by the name from default or specified storage.
-     * 
-     * @param name The document name. (required)
-     * @param storage The document folder (optional)
-     * @param folder The document folder. (optional)
-     * @return File
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public File GetDocument(String name, String storage, String folder) throws ApiException {
-    	ApiResponse<File> resp = GetDocumentWithHttpInfo(name, storage, folder);
-        return resp.getData();
-    }
-
-    /**
-     * Return the HTML document by the name from default or specified storage.
-     * 
-     * @param name The document name. (required)
-     * @param storage The document folder (optional)
-     * @param folder The document folder. (optional)
-     * @return ApiResponse&lt;File&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    private ApiResponse<File> GetDocumentWithHttpInfo(String name, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = GetDocumentValidateBeforeCall(name, storage, folder, null, null);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Return the HTML document by the name from default or specified storage. (asynchronously)
-     * 
-     * @param name The document name. (required)
-     * @param storage The document folder (optional)
-     * @param folder The document folder. (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call GetDocumentAsync(String name, String storage, String folder, final ApiCallback<File> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = GetDocumentValidateBeforeCall(name, storage, folder, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
      * Build call for GetDocumentFragmentByXPath
-     * @param name The document name. (required)
+     * @param name The document name (required). Presented as zip archive with one html file in the root or html file.
      * @param xPath XPath query string. (required)
      * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
      * @param storage The document storage. (optional)
@@ -285,7 +151,7 @@ public class DocumentApi {
     /**
      * Return list of HTML fragments matching the specified XPath query. 
      * 
-     * @param name The document name. (required)
+     * @param name The document name (required). Presented as zip archive with one html file in the root or html file.
      * @param xPath XPath query string. (required)
      * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
      * @param storage The document storage. (optional)
@@ -301,7 +167,7 @@ public class DocumentApi {
     /**
      * Return list of HTML fragments matching the specified XPath query. 
      * 
-     * @param name The document name. (required)
+     * @param name The document name (required). Presented as zip archive with one html file in the root or html file.
      * @param xPath XPath query string. (required)
      * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
      * @param storage The document storage. (optional)
@@ -318,7 +184,7 @@ public class DocumentApi {
     /**
      * Return list of HTML fragments matching the specified XPath query.  (asynchronously)
      * 
-     * @param name The document name. (required)
+     * @param name The document name (required). Presented as zip archive with one html file in the root or html file.
      * @param xPath XPath query string. (required)
      * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
      * @param storage The document storage. (optional)
@@ -501,7 +367,7 @@ public class DocumentApi {
     
     /**
      * Build call for GetDocumentFragmentsByCSSSelector
-     * @param name The document name. (required)
+     * @param name The document name (required). Presented as zip archive with one html file in the root or html file.
      * @param selector CSS selector string. (required)
      * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
      * @param folder The document folder. (optional)
@@ -587,7 +453,7 @@ public class DocumentApi {
     /**
      * Return list of HTML fragments matching the specified CSS selector.
      * 
-     * @param name The document name. (required)
+     * @param name The document name (required). Presented as zip archive with one html file in the root or html file.
      * @param selector CSS selector string. (required)
      * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
      * @param folder The document folder. (optional)
@@ -603,7 +469,7 @@ public class DocumentApi {
     /**
      * Return list of HTML fragments matching the specified CSS selector.
      * 
-     * @param name The document name. (required)
+     * @param name The document name (required). Presented as zip archive with one html file in the root or html file.
      * @param selector CSS selector string. (required)
      * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
      * @param folder The document folder. (optional)
@@ -620,7 +486,7 @@ public class DocumentApi {
     /**
      * Return list of HTML fragments matching the specified CSS selector. (asynchronously)
      * 
-     * @param name The document name. (required)
+     * @param name The document name (required). Presented as zip archive with one html file in the root or html file.
      * @param selector CSS selector string. (required)
      * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
      * @param folder The document folder. (optional)
@@ -805,7 +671,7 @@ public class DocumentApi {
     
     /**
      * Build call for GetDocumentImages
-     * @param name The document name. (required)
+     * @param name The document name (required). Presented as zip archive with one html file in the root.
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
      * @param progressListener Progress listener
@@ -875,7 +741,7 @@ public class DocumentApi {
     /**
      * Return all HTML document images packaged as a ZIP archive.
      * 
-     * @param name The document name. (required)
+     * @param name The document name (required). Presented as zip archive with one html file in the root.
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
      * @return File
@@ -889,7 +755,7 @@ public class DocumentApi {
     /**
      * Return all HTML document images packaged as a ZIP archive.
      * 
-     * @param name The document name. (required)
+     * @param name The document name (required). Presented as zip archive with one html file in the root.
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
      * @return ApiResponse&lt;File&gt;
@@ -904,7 +770,7 @@ public class DocumentApi {
     /**
      * Return all HTML document images packaged as a ZIP archive. (asynchronously)
      * 
-     * @param name The document name. (required)
+     * @param name The document name (required). Presented as zip archive with one html file in the root.
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -1062,6 +928,4 @@ public class DocumentApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
-
-    
 }

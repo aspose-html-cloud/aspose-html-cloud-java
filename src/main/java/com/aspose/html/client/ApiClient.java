@@ -938,6 +938,7 @@ public class ApiClient {
                     }
                     String value = parameterToString(param.getValue());
                     url.append(escapeString(param.getName())).append("=").append(escapeString(value));
+                    //url.append(param.getName()).append("=").append(value);
                 }
             }
         }
