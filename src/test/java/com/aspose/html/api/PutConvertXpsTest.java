@@ -28,12 +28,10 @@
 package com.aspose.html.api;
 
 import static java.lang.System.out;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.File;
-import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -45,7 +43,6 @@ import org.junit.runners.Parameterized;
 import com.aspose.html.api.ConversionApi;
 import com.aspose.html.client.Configuration;
 import com.aspose.storage.api.StorageApi;
-import com.aspose.storage.model.FileExistResponse;
 
 @RunWith(Parameterized.class)
 public class PutConvertXpsTest {

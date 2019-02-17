@@ -94,7 +94,6 @@ public class ConversionApi {
             .replaceAll("\\{" + "outFormat" + "\\}", apiClient.escapeString(outFormat.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (width != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
         if (height != null)
@@ -145,7 +144,7 @@ public class ConversionApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     private com.squareup.okhttp.Call GetConvertDocumentToImageValidateBeforeCall(String name, String outFormat, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, Integer xResolution, Integer yResolution, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
@@ -285,7 +284,6 @@ public class ConversionApi {
             .replaceAll("\\{" + "outFormat" + "\\}", apiClient.escapeString(outFormat.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (sourceUrl != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("sourceUrl", sourceUrl));
         if (width != null)
@@ -338,7 +336,7 @@ public class ConversionApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     private com.squareup.okhttp.Call GetConvertDocumentToImageByUrlValidateBeforeCall(String sourceUrl, String outFormat, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, Integer xResolution, Integer yResolution, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
@@ -475,7 +473,6 @@ public class ConversionApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (width != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
         if (height != null)
@@ -522,7 +519,7 @@ public class ConversionApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     private com.squareup.okhttp.Call GetConvertDocumentToPdfValidateBeforeCall(String name, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
@@ -644,7 +641,6 @@ public class ConversionApi {
         String localVarPath = "/html/convert/pdf";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (sourceUrl != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("sourceUrl", sourceUrl));
         if (width != null)
@@ -693,7 +689,7 @@ public class ConversionApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     private com.squareup.okhttp.Call GetConvertDocumentToPdfByUrlValidateBeforeCall(String sourceUrl, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
@@ -816,7 +812,6 @@ public class ConversionApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (width != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("width", width));
         if (height != null)
@@ -863,7 +858,7 @@ public class ConversionApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     private com.squareup.okhttp.Call GetConvertDocumentToXpsValidateBeforeCall(String name, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
@@ -985,7 +980,6 @@ public class ConversionApi {
         String localVarPath = "/html/convert/xps";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (sourceUrl != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("sourceUrl", sourceUrl));
         if (width != null)
@@ -1034,7 +1028,7 @@ public class ConversionApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     private com.squareup.okhttp.Call GetConvertDocumentToXpsByUrlValidateBeforeCall(String sourceUrl, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
@@ -1168,7 +1162,6 @@ public class ConversionApi {
             .replaceAll("\\{" + "outFormat" + "\\}", apiClient.escapeString(outFormat.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (outPath != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
         if (width != null)
@@ -1219,10 +1212,9 @@ public class ConversionApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call PutConvertDocumentInRequestToImageValidateBeforeCall(String outPath, String outFormat, File file, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, Integer resolution, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'outPath' is set
@@ -1363,7 +1355,6 @@ public class ConversionApi {
         String localVarPath = "/html/convert/pdf";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (outPath != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
         if (width != null)
@@ -1411,10 +1402,9 @@ public class ConversionApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call PutConvertDocumentInRequestToPdfValidateBeforeCall(String outPath, File file, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'outPath' is set
@@ -1544,7 +1534,6 @@ public class ConversionApi {
         String localVarPath = "/html/convert/xps";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (outPath != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
         if (width != null)
@@ -1592,10 +1581,9 @@ public class ConversionApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call PutConvertDocumentInRequestToXpsValidateBeforeCall(String outPath, File file, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'outPath' is set
@@ -1722,7 +1710,6 @@ public class ConversionApi {
             .replaceAll("\\{" + "outFormat" + "\\}", apiClient.escapeString(outFormat.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (outPath != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
         if (width != null)
@@ -1773,10 +1760,9 @@ public class ConversionApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call PutConvertDocumentToImageValidateBeforeCall(String name, String outPath, String outFormat, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, Integer resolution, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
@@ -1917,7 +1903,6 @@ public class ConversionApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (outPath != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
         if (width != null)
@@ -1966,10 +1951,9 @@ public class ConversionApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call PutConvertDocumentToPdfValidateBeforeCall(String name, String outPath, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
@@ -2074,6 +2058,8 @@ public class ConversionApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
+ 
+    
     /**
      * Build call for PutConvertDocumentToXps
      * @param name Document name. (required)
@@ -2099,7 +2085,6 @@ public class ConversionApi {
             .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (outPath != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
         if (width != null)
@@ -2148,10 +2133,9 @@ public class ConversionApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call PutConvertDocumentToXpsValidateBeforeCall(String name, String outPath, Integer width, Integer height, Integer leftMargin, Integer rightMargin, Integer topMargin, Integer bottomMargin, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'name' is set
@@ -2252,6 +2236,793 @@ public class ConversionApi {
         }
 
         com.squareup.okhttp.Call call = PutConvertDocumentToXpsValidateBeforeCall(name, outPath, width, height, leftMargin, rightMargin, topMargin, bottomMargin, folder, storage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+
+    /* Build call for GetConvertDocumentToMHTMLByUrl */
+    private com.squareup.okhttp.Call GetConvertDocumentToMHTMLByUrlCall(String sourceUrl, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // verify the required parameter 'sourceUrl' is set
+        if (sourceUrl == null) {
+            throw new ApiException("Missing the required parameter 'sourceUrl' when calling GetConvertDocumentToMHTMLByUrl(Async)");
+        }
+
+        // create path and map variables
+        String localVarPath = "/html/convert/mhtml".replaceAll("\\{format\\}","json");
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (sourceUrl != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("sourceUrl", sourceUrl));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "multipart/form-data"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    /**
+     * Converts the HTML page from Web by its URL to MHTML returns resulting file in response content.
+     * 
+     * @param sourceUrl Source page URL. (required)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File GetConvertDocumentToMHTMLByUrl(String sourceUrl) throws ApiException {
+        ApiResponse<File> resp = GetConvertDocumentToMHTMLByUrlWithHttpInfo(sourceUrl);
+        return resp.getData();
+    }
+
+    /**
+     * Converts the HTML page from Web by its URL to MHTML returns resulting file in response content.
+     * 
+     * @param sourceUrl Source page URL. (required)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<File> GetConvertDocumentToMHTMLByUrlWithHttpInfo(String sourceUrl) throws ApiException {
+        com.squareup.okhttp.Call call = GetConvertDocumentToMHTMLByUrlCall(sourceUrl, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Converts the HTML page from Web by its URL to MHTML returns resulting file in response content. (asynchronously)
+     * 
+     * @param sourceUrl Source page URL. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call GetConvertDocumentToMHTMLByUrlAsync(String sourceUrl, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = GetConvertDocumentToMHTMLByUrlCall(sourceUrl, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    
+    /* Build call for GetConvertDocumentToMarkdown */
+    private com.squareup.okhttp.Call GetConvertDocumentToMarkdownCall(String name, Boolean useGit, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling GetConvertDocumentToMarkdown(Async)");
+        }
+    
+        // create path and map variables
+        String localVarPath = "/html/{name}/convert/md"
+        .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (useGit != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("useGit", useGit));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "multipart/form-data"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    /**
+     * Converts the HTML document (located on storage) to Markdown and returns resulting file in response content.
+     * 
+     * @param name Document name. (required)
+     * @param useGit Use Git Markdown flavor to save. (optional, default to false)
+     * @param folder Source document folder. (optional)
+     * @param storage Source document storage. (optional)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File GetConvertDocumentToMarkdown(String name, Boolean useGit, String folder, String storage) throws ApiException {
+        ApiResponse<File> resp = GetConvertDocumentToMarkdownWithHttpInfo(name, useGit, folder, storage);
+        return resp.getData();
+    }
+
+    /**
+     * Converts the HTML document (located on storage) to Markdown and returns resulting file in response content.
+     * 
+     * @param name Document name. (required)
+     * @param useGit Use Git Markdown flavor to save. (optional, default to false)
+     * @param folder Source document folder. (optional)
+     * @param storage Source document storage. (optional)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    private ApiResponse<File> GetConvertDocumentToMarkdownWithHttpInfo(String name, Boolean useGit, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = GetConvertDocumentToMarkdownCall(name, useGit, folder, storage, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Converts the HTML document (located on storage) to Markdown and returns resulting file in response content. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param useGit Use Git Markdown flavor to save. (optional, default to false)
+     * @param folder Source document folder. (optional)
+     * @param storage Source document storage. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call GetConvertDocumentToMarkdownAsync(String name, Boolean useGit, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = GetConvertDocumentToMarkdownCall(name, useGit, folder, storage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    
+    
+    /* Build call for PutConvertDocumentInRequestToMHTML */
+    private com.squareup.okhttp.Call PutConvertDocumentInRequestToMHTMLCall(String outPath, File file, Integer maxDepth, String javaScript, String urlRestrict, String defaults, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // verify the required parameter 'outPath' is set
+        if (outPath == null) {
+            throw new ApiException("Missing the required parameter 'outPath' when calling PutConvertDocumentInRequestToMHTML(Async)");
+        }
+        
+        // verify the required parameter 'file' is set
+        if (file == null) {
+            throw new ApiException("Missing the required parameter 'file' when calling PutConvertDocumentInRequestToMHTML(Async)");
+        }
+        
+
+        // create path and map variables
+        String localVarPath = "/html/convert/mhtml";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (outPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
+        if (maxDepth != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("maxDepth", maxDepth));
+        if (javaScript != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("javaScript", javaScript));
+        if (urlRestrict != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("urlRestrict", urlRestrict));
+        if (defaults != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("defaults", defaults));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        if (file != null)
+        localVarFormParams.put("file", file);
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "multipart/form-data"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    /**
+     * Converts the HTML document (in request content) to MHTML and uploads resulting file to storage by specified path.
+     * 
+     * @param outPath Full resulting file path in the storage (ex. /folder1/folder2/result.mht) (required)
+     * @param file A file to be converted. (required)
+     * @param maxDepth Specifies the maximum resource handling depth. Default is 1. (optional)
+     * @param javaScript Specifies the way scripts will be handled by. Supported values are: &#39;Save&#39; and &#39;Embed&#39;; default is &#39;Save&#39;. (optional)
+     * @param urlRestrict Specifies restrictions applied to URLs of handled resources. Supported values are: &#39;RootAndSubFolders&#39; &#39;SameHost&#39; and &#39;None&#39;. Default is &#39;RootAndSubFolders&#39;. (optional)
+     * @param defaults Specifies the default way of resources handling. Supported values are: &#39;Save&#39;, &#39;Embed&#39; and &#39;Discard&#39;; default is &#39;Save&#39;. (optional)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File PutConvertDocumentInRequestToMHTML(String outPath, File file, Integer maxDepth, String javaScript, String urlRestrict, String defaults) throws ApiException {
+        ApiResponse<File> resp = PutConvertDocumentInRequestToMHTMLWithHttpInfo(outPath, file, maxDepth, javaScript, urlRestrict, defaults);
+        return resp.getData();
+    }
+
+    /**
+     * Converts the HTML document (in request content) to MHTML and uploads resulting file to storage by specified path.
+     * 
+     * @param outPath Full resulting file path in the storage (ex. /folder1/folder2/result.mht) (required)
+     * @param file A file to be converted. (required)
+     * @param maxDepth Specifies the maximum resource handling depth. Default is 1. (optional)
+     * @param javaScript Specifies the way scripts will be handled by. Supported values are: &#39;Save&#39; and &#39;Embed&#39;; default is &#39;Save&#39;. (optional)
+     * @param urlRestrict Specifies restrictions applied to URLs of handled resources. Supported values are: &#39;RootAndSubFolders&#39; &#39;SameHost&#39; and &#39;None&#39;. Default is &#39;RootAndSubFolders&#39;. (optional)
+     * @param defaults Specifies the default way of resources handling. Supported values are: &#39;Save&#39;, &#39;Embed&#39; and &#39;Discard&#39;; default is &#39;Save&#39;. (optional)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    private ApiResponse<File> PutConvertDocumentInRequestToMHTMLWithHttpInfo(String outPath, File file, Integer maxDepth, String javaScript, String urlRestrict, String defaults) throws ApiException {
+        com.squareup.okhttp.Call call = PutConvertDocumentInRequestToMHTMLCall(outPath, file, maxDepth, javaScript, urlRestrict, defaults, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Converts the HTML document (in request content) to MHTML and uploads resulting file to storage by specified path. (asynchronously)
+     * 
+     * @param outPath Full resulting file path in the storage (ex. /folder1/folder2/result.mht) (required)
+     * @param file A file to be converted. (required)
+     * @param maxDepth Specifies the maximum resource handling depth. Default is 1. (optional)
+     * @param javaScript Specifies the way scripts will be handled by. Supported values are: &#39;Save&#39; and &#39;Embed&#39;; default is &#39;Save&#39;. (optional)
+     * @param urlRestrict Specifies restrictions applied to URLs of handled resources. Supported values are: &#39;RootAndSubFolders&#39; &#39;SameHost&#39; and &#39;None&#39;. Default is &#39;RootAndSubFolders&#39;. (optional)
+     * @param defaults Specifies the default way of resources handling. Supported values are: &#39;Save&#39;, &#39;Embed&#39; and &#39;Discard&#39;; default is &#39;Save&#39;. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call PutConvertDocumentInRequestToMHTMLAsync(String outPath, File file, Integer maxDepth, String javaScript, String urlRestrict, String defaults, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = PutConvertDocumentInRequestToMHTMLCall(outPath, file, maxDepth, javaScript, urlRestrict, defaults, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    
+    
+    /* Build call for PutConvertDocumentInRequestToMarkdown */
+    private com.squareup.okhttp.Call PutConvertDocumentInRequestToMarkdownCall(String outPath, File file, Boolean useGit, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // verify the required parameter 'outPath' is set
+        if (outPath == null) {
+            throw new ApiException("Missing the required parameter 'outPath' when calling PutConvertDocumentInRequestToMarkdown(Async)");
+        }
+        
+        // verify the required parameter 'file' is set
+        if (file == null) {
+            throw new ApiException("Missing the required parameter 'file' when calling PutConvertDocumentInRequestToMarkdown(Async)");
+        }
+        
+        try {
+            byte[] bytes = Files.readAllBytes(file.toPath());
+            localVarPostBody = bytes;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        // create path and map variables
+        String localVarPath = "/html/convert/md";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (outPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
+        if (useGit != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("useGit", useGit));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+//        if (file != null)
+//        localVarFormParams.put("file", file);
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/octet-stream"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    /**
+     * Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
+     * 
+     * @param outPath Full resulting file path in the storage (ex. /folder1/folder2/result.md) (required)
+     * @param file A file to be converted. (required)
+     * @param useGit Use Git Markdown flavor to save. (optional, default to false)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File PutConvertDocumentInRequestToMarkdown(String outPath, File file, Boolean useGit) throws ApiException {
+        ApiResponse<File> resp = PutConvertDocumentInRequestToMarkdownWithHttpInfo(outPath, file, useGit);
+        return resp.getData();
+    }
+
+    /**
+     * Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
+     * 
+     * @param outPath Full resulting file path in the storage (ex. /folder1/folder2/result.md) (required)
+     * @param file A file to be converted. (required)
+     * @param useGit Use Git Markdown flavor to save. (optional, default to false)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    private ApiResponse<File> PutConvertDocumentInRequestToMarkdownWithHttpInfo(String outPath, File file, Boolean useGit) throws ApiException {
+        com.squareup.okhttp.Call call = PutConvertDocumentInRequestToMarkdownCall(outPath, file, useGit, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path. (asynchronously)
+     * 
+     * @param outPath Full resulting file path in the storage (ex. /folder1/folder2/result.md) (required)
+     * @param file A file to be converted. (required)
+     * @param useGit Use Git Markdown flavor to save. (optional, default to false)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call PutConvertDocumentInRequestToMarkdownAsync(String outPath, File file, Boolean useGit, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = PutConvertDocumentInRequestToMarkdownCall(outPath, file, useGit, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    
+    
+    /* Build call for PutConvertDocumentToMHTML */
+    private com.squareup.okhttp.Call PutConvertDocumentToMHTMLCall(String name, String outPath, Integer maxDepth, String javaScript, String urlRestrict, String defaults, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling PutConvertDocumentToMHTML(Async)");
+        }
+        
+        // verify the required parameter 'outPath' is set
+        if (outPath == null) {
+            throw new ApiException("Missing the required parameter 'outPath' when calling PutConvertDocumentToMHTML(Async)");
+        }
+        
+
+        // create path and map variables
+        String localVarPath = "/html/{name}/convert/mhtml"
+        .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (outPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
+        if (maxDepth != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("maxDepth", maxDepth));
+        if (javaScript != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("javaScript", javaScript));
+        if (urlRestrict != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("urlRestrict", urlRestrict));
+        if (defaults != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("defaults", defaults));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    /**
+     * Converts the HTML document (located on storage) to MHTML and uploads resulting file to storage by specified path.
+     * 
+     * @param name Document name. (required)
+     * @param outPath Full resulting file path in the storage (ex. /folder1/folder2/result.mht) (required)
+     * @param maxDepth Specifies the maximum resource handling depth. Default is 1. (optional)
+     * @param javaScript Specifies the way scripts will be handled by. Supported values are: &#39;Save&#39; and &#39;Embed&#39;; default is &#39;Save&#39;. (optional)
+     * @param urlRestrict Specifies restrictions applied to URLs of handled resources. Supported values are: &#39;RootAndSubFolders&#39; &#39;SameHost&#39; and &#39;None&#39;. Default is &#39;RootAndSubFolders&#39;. (optional)
+     * @param defaults Specifies the default way of resources handling. Supported values are: &#39;Save&#39;, &#39;Embed&#39; and &#39;Discard&#39;; default is &#39;Save&#39;. (optional)
+     * @param folder The source document folder. (optional)
+     * @param storage The source and resulting document storage. (optional)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File PutConvertDocumentToMHTML(String name, String outPath, Integer maxDepth, String javaScript, String urlRestrict, String defaults, String folder, String storage) throws ApiException {
+        ApiResponse<File> resp = PutConvertDocumentToMHTMLWithHttpInfo(name, outPath, maxDepth, javaScript, urlRestrict, defaults, folder, storage);
+        return resp.getData();
+    }
+
+    /**
+     * Converts the HTML document (located on storage) to MHTML and uploads resulting file to storage by specified path.
+     * 
+     * @param name Document name. (required)
+     * @param outPath Full resulting file path in the storage (ex. /folder1/folder2/result.mht) (required)
+     * @param maxDepth Specifies the maximum resource handling depth. Default is 1. (optional)
+     * @param javaScript Specifies the way scripts will be handled by. Supported values are: &#39;Save&#39; and &#39;Embed&#39;; default is &#39;Save&#39;. (optional)
+     * @param urlRestrict Specifies restrictions applied to URLs of handled resources. Supported values are: &#39;RootAndSubFolders&#39; &#39;SameHost&#39; and &#39;None&#39;. Default is &#39;RootAndSubFolders&#39;. (optional)
+     * @param defaults Specifies the default way of resources handling. Supported values are: &#39;Save&#39;, &#39;Embed&#39; and &#39;Discard&#39;; default is &#39;Save&#39;. (optional)
+     * @param folder The source document folder. (optional)
+     * @param storage The source and resulting document storage. (optional)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    private ApiResponse<File> PutConvertDocumentToMHTMLWithHttpInfo(String name, String outPath, Integer maxDepth, String javaScript, String urlRestrict, String defaults, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = PutConvertDocumentToMHTMLCall(name, outPath, maxDepth, javaScript, urlRestrict, defaults, folder, storage, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Converts the HTML document (located on storage) to MHTML and uploads resulting file to storage by specified path. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param outPath Full resulting file path in the storage (ex. /folder1/folder2/result.mht) (required)
+     * @param maxDepth Specifies the maximum resource handling depth. Default is 1. (optional)
+     * @param javaScript Specifies the way scripts will be handled by. Supported values are: &#39;Save&#39; and &#39;Embed&#39;; default is &#39;Save&#39;. (optional)
+     * @param urlRestrict Specifies restrictions applied to URLs of handled resources. Supported values are: &#39;RootAndSubFolders&#39; &#39;SameHost&#39; and &#39;None&#39;. Default is &#39;RootAndSubFolders&#39;. (optional)
+     * @param defaults Specifies the default way of resources handling. Supported values are: &#39;Save&#39;, &#39;Embed&#39; and &#39;Discard&#39;; default is &#39;Save&#39;. (optional)
+     * @param folder The source document folder. (optional)
+     * @param storage The source and resulting document storage. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call PutConvertDocumentToMHTMLAsync(String name, String outPath, Integer maxDepth, String javaScript, String urlRestrict, String defaults, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = PutConvertDocumentToMHTMLCall(name, outPath, maxDepth, javaScript, urlRestrict, defaults, folder, storage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    
+    
+    /* Build call for PutConvertDocumentToMarkdown */
+    private com.squareup.okhttp.Call PutConvertDocumentToMarkdownCall(String name, String outPath, Boolean useGit, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling PutConvertDocumentToMarkdown(Async)");
+        }
+        
+        // verify the required parameter 'outPath' is set
+        if (outPath == null) {
+            throw new ApiException("Missing the required parameter 'outPath' when calling PutConvertDocumentToMarkdown(Async)");
+        }
+        
+
+        // create path and map variables
+        String localVarPath = "/html/{name}/convert/md"
+        .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (outPath != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
+        if (useGit != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("useGit", useGit));
+        if (folder != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
+        if (storage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    /**
+     * Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
+     * 
+     * @param name Document name. (required)
+     * @param outPath Full resulting file path in the storage (ex. /folder1/folder2/result.md) (required)
+     * @param useGit Use Git Markdown flavor to save. (optional, default to false)
+     * @param folder The source document folder. (optional)
+     * @param storage The source and resulting document storage. (optional)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File PutConvertDocumentToMarkdown(String name, String outPath, Boolean useGit, String folder, String storage) throws ApiException {
+        ApiResponse<File> resp = PutConvertDocumentToMarkdownWithHttpInfo(name, outPath, useGit, folder, storage);
+        return resp.getData();
+    }
+
+    /**
+     * Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
+     * 
+     * @param name Document name. (required)
+     * @param outPath Full resulting file path in the storage (ex. /folder1/folder2/result.md) (required)
+     * @param useGit Use Git Markdown flavor to save. (optional, default to false)
+     * @param folder The source document folder. (optional)
+     * @param storage The source and resulting document storage. (optional)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    private ApiResponse<File> PutConvertDocumentToMarkdownWithHttpInfo(String name, String outPath, Boolean useGit, String folder, String storage) throws ApiException {
+        com.squareup.okhttp.Call call = PutConvertDocumentToMarkdownCall(name, outPath, useGit, folder, storage, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path. (asynchronously)
+     * 
+     * @param name Document name. (required)
+     * @param outPath Full resulting file path in the storage (ex. /folder1/folder2/result.md) (required)
+     * @param useGit Use Git Markdown flavor to save. (optional, default to false)
+     * @param folder The source document folder. (optional)
+     * @param storage The source and resulting document storage. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call PutConvertDocumentToMarkdownAsync(String name, String outPath, Boolean useGit, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = PutConvertDocumentToMarkdownCall(name, outPath, useGit, folder, storage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

@@ -40,7 +40,6 @@ import com.aspose.storage.model.MoveFolderResponse;
 import com.aspose.storage.model.RemoveFolderResponse;
 import com.aspose.storage.model.ResponseMessage;
 import org.junit.Test;
-import org.junit.Ignore;
 
 /**
  * API tests for FolderApi

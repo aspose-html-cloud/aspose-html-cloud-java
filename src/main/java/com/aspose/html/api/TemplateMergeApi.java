@@ -89,7 +89,6 @@ public class TemplateMergeApi {
             .replaceAll("\\{" + "templateName" + "\\}", apiClient.escapeString(templateName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (dataPath != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("dataPath", dataPath));
         if (options != null)
@@ -128,10 +127,9 @@ public class TemplateMergeApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call GetMergeHtmlTemplateValidateBeforeCall(String templateName, String dataPath, String options, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'templateName' is set
@@ -252,7 +250,6 @@ public class TemplateMergeApi {
             .replaceAll("\\{" + "templateName" + "\\}", apiClient.escapeString(templateName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (outPath != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("outPath", outPath));
         if (options != null)
@@ -293,10 +290,9 @@ public class TemplateMergeApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
-    @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call PutMergeHtmlTemplateValidateBeforeCall(String templateName, String outPath, File file, String options, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'templateName' is set

@@ -83,7 +83,7 @@ public class ApiClient {
      */
     public ApiClient() {
     	httpClient = new OkHttpClient();
-        httpClient.setReadTimeout(300, TimeUnit.SECONDS);
+        httpClient.setReadTimeout(1200, TimeUnit.SECONDS);
 
         verifyingSsl = true;
 
@@ -840,7 +840,6 @@ public class ApiClient {
      * @param path The sub-path of the HTTP URL
      * @param method The request method, one of "GET", "HEAD", "OPTIONS", "POST", "PUT", "PATCH" and "DELETE"
      * @param queryParams The query parameters
-     * @param collectionQueryParams The collection query parameters
      * @param body The request body object
      * @param headerParams The header parameters
      * @param formParams The form parameters
@@ -849,8 +848,8 @@ public class ApiClient {
      * @return The HTTP call
      * @throws ApiException If fail to serialize the request body object
      */
-    public Call buildCall(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String[] authNames, ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Request request = buildRequest(path, method, queryParams, collectionQueryParams, body, headerParams, formParams, authNames, progressRequestListener);
+    public Call buildCall(String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String[] authNames, ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Request request = buildRequest(path, method, queryParams, body, headerParams, formParams, authNames, progressRequestListener);
 
         return httpClient.newCall(request);
     }
@@ -861,7 +860,6 @@ public class ApiClient {
      * @param path The sub-path of the HTTP URL
      * @param method The request method, one of "GET", "HEAD", "OPTIONS", "POST", "PUT", "PATCH" and "DELETE"
      * @param queryParams The query parameters
-     * @param collectionQueryParams The collection query parameters
      * @param body The request body object
      * @param headerParams The header parameters
      * @param formParams The form parameters
@@ -870,9 +868,9 @@ public class ApiClient {
      * @return The HTTP request 
      * @throws ApiException If fail to serialize the request body object
      */
-    public Request buildRequest(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String[] authNames, ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public Request buildRequest(String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String[] authNames, ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
     
-        final String url = buildUrl(path, queryParams, collectionQueryParams);
+        final String url = buildUrl(path, queryParams);
         final Request.Builder reqBuilder = new Request.Builder().url(url);
         processHeaderParams(headerParams, reqBuilder);
 
@@ -918,10 +916,9 @@ public class ApiClient {
      *
      * @param path The sub path
      * @param queryParams The query parameters
-     * @param collectionQueryParams The collection query parameters
      * @return The full URL
      */
-    public String buildUrl(String path, List<Pair> queryParams, List<Pair> collectionQueryParams) {
+    public String buildUrl(String path, List<Pair> queryParams) {
         final StringBuilder url = new StringBuilder();
         url.append(Configuration.getBasePath()).append(path);
 
@@ -942,24 +939,6 @@ public class ApiClient {
                 }
             }
         }
-
-        if (collectionQueryParams != null && !collectionQueryParams.isEmpty()) {
-            String prefix = url.toString().contains("?") ? "&" : "?";
-            for (Pair param : collectionQueryParams) {
-                if (param.getValue() != null) {
-                    if (prefix != null) {
-                        url.append(prefix);
-                        prefix = null;
-                    } else {
-                        url.append("&");
-                    }
-                    String value = parameterToString(param.getValue());
-                    // collection query parameter value already escaped as part of parameterToPairs
-                    url.append(escapeString(param.getName())).append("=").append(value);
-                }
-            }
-        }
-
         return url.toString();
     }
 

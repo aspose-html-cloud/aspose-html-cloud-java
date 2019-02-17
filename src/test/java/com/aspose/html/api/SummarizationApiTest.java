@@ -42,7 +42,6 @@ import static org.junit.Assert.fail;
 import java.io.File;
 
 import org.junit.Test;
-import org.junit.Ignore;
 
 /**
  * API tests for SummarizationApi
@@ -86,6 +85,7 @@ public class SummarizationApiTest {
     		answer.renameTo(copyFile);
         }catch(Exception e) {
         	e.printStackTrace();
+        	fail();
         }
     }
     

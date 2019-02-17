@@ -58,7 +58,12 @@ import com.aspose.storage.api.*;
 			PutConvertDocPdfTest.class,
 			DocLoadCSSTest.class,
 			DocLoadCSSUrlTest.class,
-			TemplateMergeApiTest.class
+			TemplateMergeApiTest.class,
+			DocLoadSiteTest.class,
+			GetHtmlToMarkdownTest.class,
+			PutHtmlToMarkdownTest.class,
+			PutConvertMarkdownTest.class,
+			GetConvToMHTMLTest.class
 		})
 public class TestSuite {
 

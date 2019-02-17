@@ -87,7 +87,6 @@ public class TranslationApi {
             .replaceAll("\\{" + "resLang" + "\\}", apiClient.escapeString(resLang.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (storage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
         if (folder != null)
@@ -122,7 +121,7 @@ public class TranslationApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     private com.squareup.okhttp.Call GetTranslateDocumentValidateBeforeCall(String name, String srcLang, String resLang, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
@@ -239,7 +238,6 @@ public class TranslationApi {
             .replaceAll("\\{" + "resLang" + "\\}", apiClient.escapeString(resLang.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (sourceUrl != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("sourceUrl", sourceUrl));
 
@@ -272,7 +270,7 @@ public class TranslationApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     private com.squareup.okhttp.Call GetTranslateDocumentByUrlValidateBeforeCall(String sourceUrl, String srcLang, String resLang, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {

@@ -31,8 +31,12 @@ package com.aspose.html.client;
 import java.util.Map;
 import java.util.List;
 
-public class ApiException extends Exception {
-    private int code = 0;
+public final class ApiException extends Exception {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 742565250015236677L;
+	private int code = 0;
     private Map<String, List<String>> responseHeaders = null;
     private String responseBody = null;
 

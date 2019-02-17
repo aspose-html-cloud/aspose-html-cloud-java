@@ -40,7 +40,6 @@ import com.aspose.storage.model.FileExistResponse;
 import com.aspose.storage.model.MoveFileResponse;
 import com.aspose.storage.model.RemoveFileResponse;
 import org.junit.Test;
-import org.junit.Ignore;
 
 /**
  * API tests for FileApi
