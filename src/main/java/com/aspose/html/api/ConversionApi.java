@@ -68,8 +68,8 @@ public class ConversionApi {
 
     /**
      * Build call for GetConvertDocumentToImage
-     * @param name Document name. (required)
-     * @param outFormat Resulting image format. (required)
+     * @param name Document name (html, epub, svg). (required)
+     * @param outFormat Resulting image format (jpeg, bmp, png, tiff). (required)
      * @param width Resulting image width.  (optional)
      * @param height Resulting image height.  (optional)
      * @param leftMargin Left resulting image margin. (optional)
@@ -168,8 +168,8 @@ public class ConversionApi {
     /**
      * Convert the HTML document from the storage by its name to the specified image format.
      * 
-     * @param name Document name. (required)
-     * @param outFormat Resulting image format. (required)
+     * @param name Document name (html, epub, svg). (required)
+     * @param outFormat Resulting image format (jpeg, bmp, png, tiff). (required)
      * @param width Resulting image width.  (optional)
      * @param height Resulting image height.  (optional)
      * @param leftMargin Left resulting image margin. (optional)
@@ -191,8 +191,8 @@ public class ConversionApi {
     /**
      * Convert the HTML document from the storage by its name to the specified image format.
      * 
-     * @param name Document name. (required)
-     * @param outFormat Resulting image format. (required)
+     * @param name Document name (html, epub, svg). (required)
+     * @param outFormat Resulting image format (jpeg, bmp, png, tiff). (required)
      * @param width Resulting image width.  (optional)
      * @param height Resulting image height.  (optional)
      * @param leftMargin Left resulting image margin. (optional)
@@ -215,8 +215,8 @@ public class ConversionApi {
     /**
      * Convert the HTML document from the storage by its name to the specified image format. (asynchronously)
      * 
-     * @param name Document name. (required)
-     * @param outFormat Resulting image format. (required)
+     * @param name Document name (html, epub, svg). (required)
+     * @param outFormat Resulting image format (jpeg, bmp, png, tiff). (required)
      * @param width Resulting image width.  (optional)
      * @param height Resulting image height.  (optional)
      * @param leftMargin Left resulting image margin. (optional)
@@ -260,7 +260,7 @@ public class ConversionApi {
     /**
      * Build call for GetConvertDocumentToImageByUrl
      * @param sourceUrl Source page URL. (required)
-     * @param outFormat Resulting image format. (required)
+     * @param outFormat Resulting image format (jpeg, bmp, png, tiff). (required)
      * @param width Resulting image width.  (optional)
      * @param height Resulting image height.  (optional)
      * @param leftMargin Left resulting image margin. (optional)
@@ -361,7 +361,7 @@ public class ConversionApi {
      * Convert the HTML page from the web by its URL to the specified image format.
      * 
      * @param sourceUrl Source page URL. (required)
-     * @param outFormat Resulting image format. (required)
+     * @param outFormat Resulting image format (jpeg, bmp, png, tiff). (required)
      * @param width Resulting image width.  (optional)
      * @param height Resulting image height.  (optional)
      * @param leftMargin Left resulting image margin. (optional)
@@ -384,7 +384,7 @@ public class ConversionApi {
      * Convert the HTML page from the web by its URL to the specified image format.
      * 
      * @param sourceUrl Source page URL. (required)
-     * @param outFormat Resulting image format. (required)
+     * @param outFormat Resulting image format (jpeg, bmp, png, tiff). (required)
      * @param width Resulting image width.  (optional)
      * @param height Resulting image height.  (optional)
      * @param leftMargin Left resulting image margin. (optional)
@@ -408,7 +408,7 @@ public class ConversionApi {
      * Convert the HTML page from the web by its URL to the specified image format. (asynchronously)
      * 
      * @param sourceUrl Source page URL. (required)
-     * @param outFormat Resulting image format. (required)
+     * @param outFormat Resulting image format (jpeg, bmp, png, tiff). (required)
      * @param width Resulting image width.  (optional)
      * @param height Resulting image height.  (optional)
      * @param leftMargin Left resulting image margin. (optional)
@@ -451,7 +451,7 @@ public class ConversionApi {
     }
     /**
      * Build call for GetConvertDocumentToPdf
-     * @param name Document name. (required)
+     * @param name Document name (html, epub, svg). (required)
      * @param width Resulting image width.  (optional)
      * @param height Resulting image height.  (optional)
      * @param leftMargin Left resulting image margin. (optional)
@@ -538,7 +538,7 @@ public class ConversionApi {
     /**
      * Convert the HTML document from the storage by its name to PDF.
      * 
-     * @param name Document name. (required)
+     * @param name Document name (html, epub, svg). (required)
      * @param width Resulting image width.  (optional)
      * @param height Resulting image height.  (optional)
      * @param leftMargin Left resulting image margin. (optional)
@@ -558,7 +558,7 @@ public class ConversionApi {
     /**
      * Convert the HTML document from the storage by its name to PDF.
      * 
-     * @param name Document name. (required)
+     * @param name Document name (html, epub, svg). (required)
      * @param width Resulting image width.  (optional)
      * @param height Resulting image height.  (optional)
      * @param leftMargin Left resulting image margin. (optional)
@@ -579,7 +579,7 @@ public class ConversionApi {
     /**
      * Convert the HTML document from the storage by its name to PDF. (asynchronously)
      * 
-     * @param name Document name. (required)
+     * @param name Document name (html, epub, svg). (required)
      * @param width Resulting image width.  (optional)
      * @param height Resulting image height.  (optional)
      * @param leftMargin Left resulting image margin. (optional)
@@ -790,7 +790,7 @@ public class ConversionApi {
     }
     /**
      * Build call for GetConvertDocumentToXps
-     * @param name Document name. (required)
+     * @param name Document name (html, epub, svg). (required)
      * @param width Resulting image width.  (optional)
      * @param height Resulting image height.  (optional)
      * @param leftMargin Left resulting image margin. (optional)
@@ -877,7 +877,7 @@ public class ConversionApi {
     /**
      * Convert the HTML document from the storage by its name to XPS.
      * 
-     * @param name Document name. (required)
+     * @param name Document name (html, epub, svg). (required)
      * @param width Resulting image width.  (optional)
      * @param height Resulting image height.  (optional)
      * @param leftMargin Left resulting image margin. (optional)
@@ -897,7 +897,7 @@ public class ConversionApi {
     /**
      * Convert the HTML document from the storage by its name to XPS.
      * 
-     * @param name Document name. (required)
+     * @param name Document name (html, epub, svg). (required)
      * @param width Resulting image width.  (optional)
      * @param height Resulting image height.  (optional)
      * @param leftMargin Left resulting image margin. (optional)
@@ -918,7 +918,7 @@ public class ConversionApi {
     /**
      * Convert the HTML document from the storage by its name to XPS. (asynchronously)
      * 
-     * @param name Document name. (required)
+     * @param name Document name (html, epub, svg). (required)
      * @param width Resulting image width.  (optional)
      * @param height Resulting image height.  (optional)
      * @param leftMargin Left resulting image margin. (optional)
@@ -1131,8 +1131,8 @@ public class ConversionApi {
     /**
      * Build call for PutConvertDocumentInRequestToImage
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.jpg) (required)
-     * @param outFormat  (required)
-     * @param file A file to be converted. (required)
+     * @param outFormat jpeg, bmp, png, tiff (required)
+     * @param file A file to be converted (html, epub, svg). (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
      * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
@@ -1242,8 +1242,8 @@ public class ConversionApi {
      * Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.jpg) (required)
-     * @param outFormat  (required)
-     * @param file A file to be converted. (required)
+     * @param outFormat jpeg, png, bmp, tiff (required)
+     * @param file A file to be converted (html, epub, svg). (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
      * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
@@ -1263,8 +1263,8 @@ public class ConversionApi {
      * Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.jpg) (required)
-     * @param outFormat  (required)
-     * @param file A file to be converted. (required)
+     * @param outFormat jpeg, png, bmp, tiff (required)
+     * @param file A file to be converted (html, epub, svg). (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
      * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
@@ -1285,8 +1285,8 @@ public class ConversionApi {
      * Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage. (asynchronously)
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.jpg) (required)
-     * @param outFormat  (required)
-     * @param file A file to be converted. (required)
+     * @param outFormat jpeg, png, bmp, tiff (required)
+     * @param file A file to be converted (html, epub, svg). (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
      * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
@@ -1327,7 +1327,7 @@ public class ConversionApi {
     /**
      * Build call for PutConvertDocumentInRequestToPdf
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
-     * @param file A file to be converted. (required)
+     * @param file A file to be converted (html, epub, svg). (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
      * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
@@ -1427,7 +1427,7 @@ public class ConversionApi {
      * Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
-     * @param file A file to be converted. (required)
+     * @param file A file to be converted (html, epub, svg). (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
      * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
@@ -1446,7 +1446,7 @@ public class ConversionApi {
      * Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
-     * @param file A file to be converted. (required)
+     * @param file A file to be converted (html, epub, svg). (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
      * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
@@ -1466,7 +1466,7 @@ public class ConversionApi {
      * Converts the HTML document (in request content) to PDF and uploads resulting file to storage. (asynchronously)
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
-     * @param file A file to be converted. (required)
+     * @param file A file to be converted (html, epub, svg). (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
      * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
@@ -1506,7 +1506,7 @@ public class ConversionApi {
     /**
      * Build call for PutConvertDocumentInRequestToXps
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xps) (required)
-     * @param file A file to be converted. (required)
+     * @param file A file to be converted (html, epub, svg). (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
      * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
@@ -1606,7 +1606,7 @@ public class ConversionApi {
      * Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xps) (required)
-     * @param file A file to be converted. (required)
+     * @param file A file to be converted (html, epub, svg). (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
      * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
@@ -1625,7 +1625,7 @@ public class ConversionApi {
      * Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xps) (required)
-     * @param file A file to be converted. (required)
+     * @param file A file to be converted (html, epub, svg). (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
      * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
@@ -1645,7 +1645,7 @@ public class ConversionApi {
      * Converts the HTML document (in request content) to XPS and uploads resulting file to storage. (asynchronously)
      * 
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xps) (required)
-     * @param file A file to be converted. (required)
+     * @param file A file to be converted (html, epub, svg). (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
      * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
@@ -1684,9 +1684,9 @@ public class ConversionApi {
     }
     /**
      * Build call for PutConvertDocumentToImage
-     * @param name Document name. (required)
+     * @param name Document name (html, epub, svg). (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.jpg) (required)
-     * @param outFormat  (required)
+     * @param outFormat jpeg, png, bmp, tiff (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
      * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
@@ -1789,9 +1789,9 @@ public class ConversionApi {
     /**
      * Converts the HTML document (located on storage) to the specified image format and uploads resulting file to storage.
      * 
-     * @param name Document name. (required)
+     * @param name Document name (html, epub, svg). (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.jpg) (required)
-     * @param outFormat  (required)
+     * @param outFormat jpeg, png, bmp, tiff (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
      * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
@@ -1812,9 +1812,9 @@ public class ConversionApi {
     /**
      * Converts the HTML document (located on storage) to the specified image format and uploads resulting file to storage.
      * 
-     * @param name Document name. (required)
+     * @param name Document name (html, epub, svg). (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.jpg) (required)
-     * @param outFormat  (required)
+     * @param outFormat jpeg, png, bmp, tiff (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
      * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
@@ -1836,9 +1836,9 @@ public class ConversionApi {
     /**
      * Converts the HTML document (located on storage) to the specified image format and uploads resulting file to storage. (asynchronously)
      * 
-     * @param name Document name. (required)
+     * @param name Document name (html, epub, svg). (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.jpg) (required)
-     * @param outFormat  (required)
+     * @param outFormat jpeg, png, bmp, tiff (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
      * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
@@ -1880,7 +1880,7 @@ public class ConversionApi {
     }
     /**
      * Build call for PutConvertDocumentToPdf
-     * @param name Document name. (required)
+     * @param name Document name (html, epub, svg). (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
@@ -1975,7 +1975,7 @@ public class ConversionApi {
     /**
      * Converts the HTML document (located on storage) to PDF and uploads resulting file to storage.
      * 
-     * @param name Document name. (required)
+     * @param name Document name (html, epub, svg). (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
@@ -1996,7 +1996,7 @@ public class ConversionApi {
     /**
      * Converts the HTML document (located on storage) to PDF and uploads resulting file to storage.
      * 
-     * @param name Document name. (required)
+     * @param name Document name (html, epub, svg). (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
@@ -2018,7 +2018,7 @@ public class ConversionApi {
     /**
      * Converts the HTML document (located on storage) to PDF and uploads resulting file to storage. (asynchronously)
      * 
-     * @param name Document name. (required)
+     * @param name Document name (html, epub, svg). (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
@@ -2062,7 +2062,7 @@ public class ConversionApi {
     
     /**
      * Build call for PutConvertDocumentToXps
-     * @param name Document name. (required)
+     * @param name Document name (html, epub, svg). (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xps) (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
@@ -2157,7 +2157,7 @@ public class ConversionApi {
     /**
      * Converts the HTML document (located on storage) to XPS and uploads resulting file to storage.
      * 
-     * @param name Document name. (required)
+     * @param name Document name (html, epub, svg). (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xps) (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
@@ -2178,7 +2178,7 @@ public class ConversionApi {
     /**
      * Converts the HTML document (located on storage) to XPS and uploads resulting file to storage.
      * 
-     * @param name Document name. (required)
+     * @param name Document name (html, epub, svg). (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xps) (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)
@@ -2200,7 +2200,7 @@ public class ConversionApi {
     /**
      * Converts the HTML document (located on storage) to XPS and uploads resulting file to storage. (asynchronously)
      * 
-     * @param name Document name. (required)
+     * @param name Document name (html, epub, svg). (required)
      * @param outPath Full resulting filename (ex. /folder1/folder2/result.xps) (required)
      * @param width Resulting document page width in points (1/96 inch). (optional)
      * @param height Resulting document page height in points (1/96 inch). (optional)

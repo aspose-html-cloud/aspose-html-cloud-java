@@ -121,6 +121,8 @@ All URIs are relative to *https://api.aspose.cloud/v1.1*
 
 
 ## ConversionApi
+- Input format (html, epub, svg)
+- Output format for images (jpeg, png, bmp, tiff)
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

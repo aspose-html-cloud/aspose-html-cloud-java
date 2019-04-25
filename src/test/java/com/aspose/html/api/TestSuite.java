@@ -63,7 +63,13 @@ import com.aspose.storage.api.*;
 			GetHtmlToMarkdownTest.class,
 			PutHtmlToMarkdownTest.class,
 			PutConvertMarkdownTest.class,
-			GetConvToMHTMLTest.class
+			GetConvToMHTMLTest.class,
+			EpubToImageTest.class,
+			EpubToPdfTest.class,
+			EpubToXpsTest.class,
+			SvgToImageTest.class,
+			SvgToPdfTest.class,
+			SvgToXpsTest.class
 		})
 public class TestSuite {
 
