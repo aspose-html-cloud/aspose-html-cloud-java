@@ -1,0 +1,11 @@
+{
+    "basePath":"https://api.aspose.cloud/v1.1",
+    "authPath":"https://api.aspose.cloud/oauth2/token",
+    "apiKey":"b125f13bf6b76ed81ee990142d841195",
+    "appSID":"78946fb4-3bd4-4d3e-b309-f9e2ff9ac6f9",
+    "storage":"\\data\\",
+    "testdata":"\\testdata\\",
+    "defaultUserAgent":"Webkit",
+    "debug": true,
+    "ISO_OFFSET_DATE_TIME" : "0"
+}
