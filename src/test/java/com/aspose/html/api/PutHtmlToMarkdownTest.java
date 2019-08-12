@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PutHtmlToMarkdownTest.java">
-*   Copyright (c) 2018 Aspose.HTML for Cloud
+*   Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,29 +27,25 @@
 
 package com.aspose.html.api;
 
-import static java.lang.System.out;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
-import java.io.File;
-import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Collection;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
+import com.aspose.html.ApiClient;
 import com.aspose.html.api.ConversionApi;
-import com.aspose.html.client.Configuration;
 import com.aspose.storage.api.StorageApi;
-import com.aspose.storage.model.FileExistResponse;
-import com.aspose.storage.model.RemoveFileResponse;
+import com.aspose.storage.model.ObjectExist;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Response;
+
 
 @RunWith(Parameterized.class)
-public class PutHtmlToMarkdownTest {
+public class PutHtmlToMarkdownTest extends BaseTest{
     private String  name;
     private Boolean useGit;
     private String folder;
@@ -58,9 +54,7 @@ public class PutHtmlToMarkdownTest {
     private ConversionApi api;
     private StorageApi storageApi;
     
-	private static String localFolder = Configuration.getStorage();
 
-    
    //Constructor that takes test data.
     public PutHtmlToMarkdownTest(Boolean useGit)
     {
@@ -82,8 +76,8 @@ public class PutHtmlToMarkdownTest {
     
     @Before
 	public void initialize() {
-    	api = new ConversionApi();
-    	storageApi = new StorageApi();
+        api = new ApiClient().createService(ConversionApi.class);
+        storageApi = new ApiClient().createService(StorageApi.class);
     }
     
     @Parameterized.Parameters
@@ -94,40 +88,31 @@ public class PutHtmlToMarkdownTest {
     
     @Test
     public void test() {
-   	
-       	File f = new File(Configuration.getTestDataDir(), name);
-    	if(!f.exists())
-    		out.println("Local file not found");
-    	
-    	try {
-        	// Put document to storage
-        	storageApi.PutCreate(folder + "/" + name, f, null, null);
-        	
-        	FileExistResponse res  = storageApi.GetIsExist(folder + "/" + name,	null, null);
-        	assertEquals(res.getCode(), 200);
+
+        try {
+            TestHelper.uploadFile(name, folder);
+
+            Call<ObjectExist> call = storageApi.objectExists(folder + "/" + name,	null, null);
+
+            Response<ObjectExist> res = call.execute();
+            assertTrue(res.isSuccessful());
 
         	//Result file in the storage
         	String outPath = folder + "/" + resultName;
-    		
-        	File answer = api.PutConvertDocumentToMarkdown( name, outPath, useGit, folder, storage);
- 
-    		//Clear html in the storage
-            RemoveFileResponse del = storageApi.DeleteFile(folder + "/" + name, null, null);
-            assertEquals(del.getCode(), 200);
-            assertEquals(del.getStatus(), "OK");
-            
+
+            api.PutConvertDocumentToMarkdown( name, outPath, useGit, folder, storage).execute();
+
             //Download result from storage
-            File response = storageApi.GetDownload(outPath, null, null);
-            assertTrue(response.exists());
+            Call<ResponseBody> call_res = storageApi.downloadFile(outPath, null, null);
 
             //Save to test directory
-    		File copyFile = new File(localFolder + resultName);
-    		response.renameTo(copyFile);
-    		
-    		//Clear result in the storage
-            del = storageApi.DeleteFile(outPath, null, null);
-            assertEquals(del.getCode(), 200);
-            assertEquals(del.getStatus(), "OK");
+            TestHelper.checkAndSave(call_res, resultName);
+
+            //Clear in the storage
+            Call<Void> call_response = storageApi.deleteFile(folder + "/" + name, null, null);
+
+            Response<Void> res2 = call_response.execute();
+            assertTrue(res2.isSuccessful());
      		
         }catch(Exception e) {
         	e.printStackTrace();

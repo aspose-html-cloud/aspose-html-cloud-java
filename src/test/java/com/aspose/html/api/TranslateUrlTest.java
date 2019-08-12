@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TranslateUrlTest.java">
-*   Copyright (c) 2018 Aspose.HTML for Cloud
+*   Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,47 +25,46 @@
 * --------------------------------------------------------------------------------------------------------------------
 */
 
+
 package com.aspose.html.api;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
 
+import com.aspose.html.ApiClient;
+import com.aspose.html.api.TranslationApi;
+import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import retrofit2.Call;
 
-import com.aspose.html.api.TranslationApi;
-import com.aspose.html.client.Configuration;
 
 @RunWith(Parameterized.class)
-public class TranslateUrlTest {
+public class TranslateUrlTest extends BaseTest {
     String sourceUrl;
     String srcLang;
     String resLang;
-    String localStorage;
+    String localName;
     TranslationApi api;
-    
-	private static String localFolder = Configuration.getStorage();
     
     public TranslateUrlTest(
     		String sourceUrl, 
     		String srcLang, 
     		String resLang) 
     {
-    	this.sourceUrl = sourceUrl;
+        super();
+        this.sourceUrl = sourceUrl;
     	this.srcLang = srcLang;
     	this.resLang = resLang;
-		this.localStorage = "TranslateUrl_" + srcLang +"_" + resLang + ".zip"; 
+		this.localName = "TranslateUrl_" + srcLang +"_" + resLang + ".zip";
     }
     
     @Before
 	public void initialize() {
-        api = new TranslationApi();
+        api = new ApiClient().createService(TranslationApi.class);
     }
 
     
@@ -81,21 +80,15 @@ public class TranslateUrlTest {
     
     @Test   
     public void test() {
-    	
-    	try {
-            File answer = 
-            		api.GetTranslateDocumentByUrl(
-            				sourceUrl, srcLang, resLang);
 
-            assertTrue(answer.exists());
-            
-    		//Save to test directory
-    		File copyFile = new File(localFolder + localStorage);
-    		answer.renameTo(copyFile);
- 
+    	try {
+            Call<ResponseBody> call = api.GetTranslateDocumentByUrl( srcLang, resLang, sourceUrl );
+
+            TestHelper.checkAndSave(call, localName);
+
         }catch(Exception e) {
         	e.printStackTrace();
-        	fail();
+            assertTrue(false);
         }
     }
 }

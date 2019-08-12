@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="EpubToXpsTest.java">
-*   Copyright (c) 2018 Aspose.HTML for Cloud
+*   Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,27 +27,19 @@
 
 package com.aspose.html.api;
 
-import static java.lang.System.out;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
-import java.io.File;
-import java.nio.file.Files;
-import java.util.Arrays;
-import java.util.Collection;
-
+import com.aspose.html.ApiClient;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-import com.aspose.html.api.ConversionApi;
-import com.aspose.html.client.Configuration;
-import com.aspose.storage.api.StorageApi;
-import com.aspose.storage.model.FileExistResponse;
+import java.util.Arrays;
+import java.util.Collection;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import static org.junit.Assert.fail;
 
 @RunWith(Parameterized.class)
-public class EpubToXpsTest {
+public class EpubToXpsTest extends BaseTest {
     private String name;
     private Integer width;
     private Integer height;
@@ -57,146 +49,120 @@ public class EpubToXpsTest {
     private Integer bottomMargin;
     private String folder;
     private String storage;
-    private String localStorage;
+
+    private String localName;
     private ConversionApi api;
-    private StorageApi storageApi;
+
     
-	private static String localFolder = Configuration.getStorage();  
-    
-   //Constructor that takes test data.
+    //Constructor that takes test data.
     public EpubToXpsTest(
-        Integer width,
-        Integer height,
-        Integer leftMargin,
-        Integer rightMargin,
-        Integer topMargin,
-        Integer bottomMargin
-    )
-    {
-		this.name			=	"georgia.epub";			         
-		this.width			=	width;       		  
-		this.height         =	height;              
-		this.leftMargin     =	leftMargin;          
-		this.rightMargin    =	rightMargin;         
-		this.topMargin      =	topMargin;           
-		this.bottomMargin   =	bottomMargin;        
-		this.folder         =	"HtmlTestDoc";
-		this.storage		=   null;
+            Integer width,
+            Integer height,
+            Integer leftMargin,
+            Integer rightMargin,
+            Integer topMargin,
+            Integer bottomMargin
+    ) {
+        super();
+        this.name = "georgia.epub";
+        this.width = width;
+        this.height = height;
+        this.leftMargin = leftMargin;
+        this.rightMargin = rightMargin;
+        this.topMargin = topMargin;
+        this.bottomMargin = bottomMargin;
+        this.folder = "HtmlTestDoc";
+        this.storage = null;
 
-		String storage = "EpubToXps_"; 
-		
-		if(width != null && height != null) {
-			storage += width + "x" + height +"_";
-		}else {
-			storage += "-------" + "_";
-		}
-		
-		if(leftMargin != null) {
-			storage += "L"+ leftMargin + "_";
-		}else {
-			storage += "L---" + "_";
-		}
-		
-		if(rightMargin != null) {
-			storage += "R"+ rightMargin + "_";
-		}else {
-			storage += "R---" + "_";
-		}
-		
-		if(topMargin != null) {
-			storage += "T"+ topMargin + "_";
-		}else {
-			storage += "T---" + "_";
-		}
+        String savedName = "EpubToXps_";
 
-		if(bottomMargin != null) {
-			storage += "B"+ bottomMargin;
-		}else {
-			storage += "B---";
-		}
-		
-		this.localStorage = storage + ".xps"; 
+        if (width != null && height != null) {
+            savedName += width + "x" + height + "_";
+        } else {
+            savedName += "-------" + "_";
+        }
+
+        if (leftMargin != null) {
+            savedName += "L" + leftMargin + "_";
+        } else {
+            savedName += "L---" + "_";
+        }
+
+        if (rightMargin != null) {
+            savedName += "R" + rightMargin + "_";
+        } else {
+            savedName += "R---" + "_";
+        }
+
+        if (topMargin != null) {
+            savedName += "T" + topMargin + "_";
+        } else {
+            savedName += "T---" + "_";
+        }
+
+        if (bottomMargin != null) {
+            savedName += "B" + bottomMargin;
+        } else {
+            savedName += "B---";
+        }
+
+        this.localName = savedName + ".xps";
     }
-    
+
     @Before
-	public void initialize() {
-    	api = new ConversionApi();
-    	storageApi = new StorageApi();
+    public void initialize() {
+        api = new ApiClient().createService(ConversionApi.class);
     }
-    
+
     @Parameterized.Parameters
     public static Collection testData() {
-    	return Arrays.asList(new Object[][] 
-    	{
-    		// Test width, height
-    		{null, null, null, null, null, null},
-    		{200,  500,  null, null, null, null},
-    		{300,  600,  null, null, null, null},
-    		{400,  700,  null, null, null, null},
-    		{500,  800,  null, null, null, null},
-    		{600,  900,  null, null, null, null},
-    		{700,  1000, null, null, null, null},
-    		{800,  1100, null, null, null, null},
+        return Arrays.asList(new Object[][]
+                {
+                        // Test width, height
+                        {null, null, null, null, null, null},
+                        {200, 500, null, null, null, null},
+                        {300, 600, null, null, null, null},
+                        {400, 700, null, null, null, null},
+                        {500, 800, null, null, null, null},
+                        {600, 900, null, null, null, null},
+                        {700, 1000, null, null, null, null},
+                        {800, 1100, null, null, null, null},
 
-      		{null, null, 0, 0, 0, 0},
+                        {null, null, 0, 0, 0, 0},
 
-      		// Test margin left, right
-    		{null, null, 40,  0,   0, 0},
-    		{null, null, 80,  0,   0, 0},
-    		{null, null, 120, 0,   0, 0},
-    		{null, null, 160, 0,   0, 0},
-    		{null, null, 0,   40,  0, 0},
-    		{null, null, 0,   80,  0, 0},
-    		{null, null, 0,   120, 0, 0},
-    		{null, null, 0,   160, 0, 0},
+                        // Test margin left, right
+                        {null, null, 40, 0, 0, 0},
+                        {null, null, 80, 0, 0, 0},
+                        {null, null, 120, 0, 0, 0},
+                        {null, null, 160, 0, 0, 0},
+                        {null, null, 0, 40, 0, 0},
+                        {null, null, 0, 80, 0, 0},
+                        {null, null, 0, 120, 0, 0},
+                        {null, null, 0, 160, 0, 0},
 
-    		// Test margin top, bottom
-      		{null, null, 0, 0, 40,  0  },
-    		{null, null, 0, 0, 80,  0  },
-    		{null, null, 0, 0, 120, 0  },
-    		{null, null, 0, 0, 160, 0  },
-    		{null, null, 0, 0, 0,   40 },
-    		{null, null, 0, 0, 0,   80 },
-    		{null, null, 0, 0, 0,   120},
-    		{null, null, 0, 0, 0,   160}
-    	});
+                        // Test margin top, bottom
+                        {null, null, 0, 0, 40, 0},
+                        {null, null, 0, 0, 80, 0},
+                        {null, null, 0, 0, 120, 0},
+                        {null, null, 0, 0, 160, 0},
+                        {null, null, 0, 0, 0, 40},
+                        {null, null, 0, 0, 0, 80},
+                        {null, null, 0, 0, 0, 120},
+                        {null, null, 0, 0, 0, 160}
+                });
     }
-    
+
     @Test
     public void test() {
-  
-      	File f = new File(Configuration.getTestDataDir(), name);
-    	if(!f.exists())
-    		out.println("Local file not found");
-    	
-    	// Put document to storage
-    	
-    	try {
-        	storageApi.PutCreate(folder + "/" + name, f, null, null);
-        	
-        	FileExistResponse res  = storageApi.GetIsExist(folder + "/" + name, null, null);
-        	assertEquals(res.getCode(), 200);
 
-    		File answer = api.GetConvertDocumentToXps(
-					name, 
-					width, 
-					height, 
-					leftMargin,   
-					rightMargin,  
-					topMargin,    
-					bottomMargin, 
-					folder,       
-					storage);
-     		
-    		//Save to test directory
-    		File copyFile = new File(localFolder + localStorage);
-    		answer.renameTo(copyFile);
- 
-    		//Assert contentType
-    		assertEquals("application/vnd.ms-xpsdocument", Files.probeContentType(copyFile.toPath()));
-    		
-        }catch(Exception e) {
-        	e.printStackTrace();
+        try {
+
+            TestHelper.uploadFile(name,folder);
+            Call<ResponseBody> call = api.GetConvertDocumentToXps(name, width, height, leftMargin, rightMargin,
+                    topMargin, bottomMargin, folder, storage);
+            TestHelper.checkAndSave(call, localName);
+        } catch (Exception e) {
+            e.printStackTrace();
             fail();
         }
     }

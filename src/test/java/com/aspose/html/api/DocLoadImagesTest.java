@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocLoadImagesTest.java">
-*   Copyright (c) 2018 Aspose.HTML for Cloud
+*   Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,89 +25,64 @@
 * --------------------------------------------------------------------------------------------------------------------
 */
 
+
 package com.aspose.html.api;
 
-import static java.lang.System.out;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
-import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
-
+import com.aspose.html.ApiClient;
+import com.aspose.html.api.DocumentApi;
+import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-import com.aspose.html.api.DocumentApi;
-import com.aspose.html.client.Configuration;
-import com.aspose.storage.api.StorageApi;
-import com.aspose.storage.model.FileExistResponse;
+import retrofit2.Call;
 
 @RunWith(Parameterized.class)
-public class DocLoadImagesTest {
-	private String name;
-	private String storage;
+public class DocLoadImagesTest extends BaseTest {
+    private String name;
+    private String storage;
     private String folder;
-    private String localStorage;
+
+    private String localName;
     private DocumentApi api;
-    private StorageApi storageApi;
 
-    private static String localFolder = Configuration.getStorage();
+    public DocLoadImagesTest(String name) {
+        super();
+        this.name = name;
+        this.folder = "HtmlTestDoc";
+        this.storage = null;
+        this.localName = "DocLoadImages_" + name;
+    }
 
-	public DocLoadImagesTest(String name) {
-		this.name = name;
-		this.localStorage = "DocLoadImages_" + name;
-		this.folder = "HtmlTestDoc";
-		this.storage = null;
-	}
-	
     @Before
-	public void initialize() {
-        api = new DocumentApi();
-    	storageApi = new StorageApi();
+    public void initialize() {
+        api = new ApiClient().createService(DocumentApi.class);
     }
 
     @Parameterized.Parameters
     public static Collection testData() {
-    	return Arrays.asList(new Object[] 
-    	{
-    		"test1.html.zip", 
-    		"test2.html.zip",
-    		"test3.html.zip",
-    		"test4.html.zip"
-    	});
+        return Arrays.asList("test1.html.zip",
+                "test2.html.zip",
+                "test3.html.zip",
+                "test4.html.zip");
     }
-    
-    @Test   
+
+    @Test
     public void test() {
 
-    	File f = new File(Configuration.getTestDataDir(), name);
-    	if(!f.exists())
-    		out.println("Local file not found");
-    	
-    	try {
-        	// Put document to storage
-        	storageApi.PutCreate(folder + "/" + name, f, null, null);
-        	
-        	FileExistResponse res  = storageApi.GetIsExist(folder + "/" + name, null, null);
-        	
-        	assertTrue(res.getFileExist().getIsExist());
+        try {
 
-    		File answer = api.GetDocumentImages(name, folder, storage);
-            
-            assertTrue(answer.exists());
-            assertTrue(answer.length() > 0);
-            
-    		//Save to test directory
-    		File copyFile = new File(localFolder + localStorage);
-    		answer.renameTo(copyFile);
+            TestHelper.uploadFile(name, folder);
 
-        	assertTrue(copyFile.exists());
+            Call<ResponseBody> call = api.GetDocumentImages(name, folder, storage);
 
-        }catch(Exception e) {
-        	e.printStackTrace();
+            TestHelper.checkAndSave(call, localName);
+
+        } catch (Exception e) {
+            e.printStackTrace();
             fail();
         }
     }

@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="StorageExistResponse.java">
-*   Copyright (c) 2018 Aspose.HTML for Cloud
+*   Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -30,7 +30,7 @@ package com.aspose.storage.model;
 
 public class StorageExistResponse {
   private Boolean IsExist = null;
-  private Integer Code = null;
+  private String Code = null;
   private String Status = null;
   /**
 	 * getIsExist
@@ -52,19 +52,19 @@ public class StorageExistResponse {
 
   /**
 	 * getCode
-	 * Gets int (Unboxing)
+	 * Gets String
 	 * @return Code
 	 */
-  public int getCode() {
+  public String getCode() {
     return Code;
   }
 
 	/**
 	 * setCode
-	 * Sets Integer
-	 * @param Code Integer
+	 * Sets String
+	 * @param Code String
 	 */
-  public void setCode(Integer Code) {
+  public void setCode(String Code) {
     this.Code = Code;
   }
 

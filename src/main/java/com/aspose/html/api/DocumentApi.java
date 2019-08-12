@@ -1,1036 +1,156 @@
-/**
- * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose" file="DocumentApi.java">
- *  Copyright (c) 2018 Aspose.HTML for Cloud
- * </copyright>
- * <summary>
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
- * 
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
- * 
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
- * </summary>
- * --------------------------------------------------------------------------------------------------------------------
- */
-
+/*
+* --------------------------------------------------------------------------------------------------------------------
+* <copyright company="Aspose" file="DocumentApi.java">
+*   Copyright (c) 2019 Aspose.HTML for Cloud
+* </copyright>
+* <summary>
+*   Permission is hereby granted, free of charge, to any person obtaining a copy
+*  of this software and associated documentation files (the "Software"), to deal
+*  in the Software without restriction, including without limitation the rights
+*  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+*  copies of the Software, and to permit persons to whom the Software is
+*  furnished to do so, subject to the following conditions:
+*
+*  The above copyright notice and this permission notice shall be included in all
+*  copies or substantial portions of the Software.
+*
+*  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+*  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+*  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+*  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+*  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+*  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+*  SOFTWARE.
+* </summary>
+* --------------------------------------------------------------------------------------------------------------------
+*/
 
 package com.aspose.html.api;
 
-import com.aspose.html.client.ApiCallback;
-import com.aspose.html.client.ApiClient;
-import com.aspose.html.client.ApiException;
-import com.aspose.html.client.ApiResponse;
-import com.aspose.html.client.Configuration;
-import com.aspose.html.client.Pair;
-import com.aspose.html.client.ProgressRequestBody;
-import com.aspose.html.client.ProgressResponseBody;
-import com.google.gson.reflect.TypeToken;
-import java.io.IOException;
-import java.io.File;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import retrofit2.Call;
+import retrofit2.http.*;
+import okhttp3.ResponseBody;
 
-public class DocumentApi {
-    private ApiClient apiClient;
-
-    public DocumentApi() {
-        this(Configuration.getDefaultApiClient());
-    }
-
-    public DocumentApi(ApiClient apiClient) {
-        this.apiClient = apiClient;
-    }
-
-    public ApiClient getApiClient() {
-        return apiClient;
-    }
-
-    public void setApiClient(ApiClient apiClient) {
-        this.apiClient = apiClient;
-    }
-
-    /** Build call for GetDocumentByUrl 
-     * @param sourceUrl Source page URL. (required)
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    private com.squareup.okhttp.Call GetDocumentByUrlCall(String sourceUrl, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-        
-        // verify the required parameter 'sourceUrl' is set
-        if (sourceUrl == null) {
-            throw new ApiException("Missing the required parameter 'sourceUrl' when calling GetDocumentByUrl(Async)");
-        }
-        
-
-        // create path and map variables
-        String localVarPath = "/html/download";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        if (sourceUrl != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("sourceUrl", sourceUrl));
-        
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/zip"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/zip"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-   }
+public interface DocumentApi {
 
     /**
      * Return all HTML page with linked resources packaged as a ZIP archive by the source page URL.
-     * 
+     *
      * @param sourceUrl Source page URL. (required)
-     * @return File
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @return Call&lt;ResponseBody&gt;
      */
-    public File GetDocumentByUrl(String sourceUrl) throws ApiException {
-        ApiResponse<File> resp = GetDocumentByUrlWithHttpInfo(sourceUrl);
-        return resp.getData();
-    }
+    @Headers({"Content-Type:application/json"})
+    @GET("html/download")
+    Call<ResponseBody> GetDocumentByUrl(
+            @Query("sourceUrl") String sourceUrl
+    );
 
     /**
-     * Return all HTML page with linked resources packaged as a ZIP archive by the source page URL.
-     * 
-     * @param sourceUrl Source page URL. (required)
-     * @return ApiResponse&lt;File&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * Return list of HTML fragments matching the specified XPath query.
+     *
+     * @param name      The document name (required). Presented as zip archive with one html file in the root or html file.
+     * @param outFormat Output format. Possible values: 'plain' and 'json'. (required)
+     * @param xPath     XPath query string. (required)
+     * @param storage   The document storage. (optional)
+     * @param folder    The document folder. (optional)
+     * @return Call&lt;ResponseBody&gt;
      */
-    public ApiResponse<File> GetDocumentByUrlWithHttpInfo(String sourceUrl) throws ApiException {
-        com.squareup.okhttp.Call call = GetDocumentByUrlCall(sourceUrl, null, null);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Return all HTML page with linked resources packaged as a ZIP archive by the source page URL. (asynchronously)
-     * 
-     * @param sourceUrl Source page URL. (required)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call GetDocumentByUrlAsync(String sourceUrl, final ApiCallback<File> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = GetDocumentByUrlCall(sourceUrl, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    
-    /**
-     * Build call for GetDocumentFragmentByXPath
-     * @param name The document name (required). Presented as zip archive with one html file in the root or html file.
-     * @param xPath XPath query string. (required)
-     * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
-     * @param storage The document storage. (optional)
-     * @param folder The document folder. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    private com.squareup.okhttp.Call GetDocumentFragmentByXPathCall(String name, String xPath, String outFormat, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/html/{name}/fragments/{outFormat}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
-            .replaceAll("\\{" + "outFormat" + "\\}", apiClient.escapeString(outFormat.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        if (xPath != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("xPath", xPath));
-        if (storage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
-        if (folder != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "multipart/form-data"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    private com.squareup.okhttp.Call GetDocumentFragmentByXPathValidateBeforeCall(String name, String xPath, String outFormat, String storage, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling GetDocumentFragmentByXPath(Async)");
-        }
-        
-        // verify the required parameter 'xPath' is set
-        if (xPath == null) {
-            throw new ApiException("Missing the required parameter 'xPath' when calling GetDocumentFragmentByXPath(Async)");
-        }
-        
-        // verify the required parameter 'outFormat' is set
-        if (outFormat == null) {
-            throw new ApiException("Missing the required parameter 'outFormat' when calling GetDocumentFragmentByXPath(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = GetDocumentFragmentByXPathCall(name, xPath, outFormat, storage, folder, progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * Return list of HTML fragments matching the specified XPath query. 
-     * 
-     * @param name The document name (required). Presented as zip archive with one html file in the root or html file.
-     * @param xPath XPath query string. (required)
-     * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
-     * @param storage The document storage. (optional)
-     * @param folder The document folder. (optional)
-     * @return File
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public File GetDocumentFragmentByXPath(String name, String xPath, String outFormat, String storage, String folder) throws ApiException {
-        ApiResponse<File> resp = GetDocumentFragmentByXPathWithHttpInfo(name, xPath, outFormat, storage, folder);
-        return resp.getData();
-    }
-
-    /**
-     * Return list of HTML fragments matching the specified XPath query. 
-     * 
-     * @param name The document name (required). Presented as zip archive with one html file in the root or html file.
-     * @param xPath XPath query string. (required)
-     * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
-     * @param storage The document storage. (optional)
-     * @param folder The document folder. (optional)
-     * @return ApiResponse&lt;File&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    private ApiResponse<File> GetDocumentFragmentByXPathWithHttpInfo(String name, String xPath, String outFormat, String storage, String folder) throws ApiException {
-        com.squareup.okhttp.Call call = GetDocumentFragmentByXPathValidateBeforeCall(name, xPath, outFormat, storage, folder, null, null);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Return list of HTML fragments matching the specified XPath query.  (asynchronously)
-     * 
-     * @param name The document name (required). Presented as zip archive with one html file in the root or html file.
-     * @param xPath XPath query string. (required)
-     * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
-     * @param storage The document storage. (optional)
-     * @param folder The document folder. (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call GetDocumentFragmentByXPathAsync(String name, String xPath, String outFormat, String storage, String folder, final ApiCallback<File> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = GetDocumentFragmentByXPathValidateBeforeCall(name, xPath, outFormat, storage, folder, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for GetDocumentFragmentByXPathByUrl
-     * @param sourceUrl Source page URL. (required)
-     * @param xPath XPath query string. (required)
-     * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    private com.squareup.okhttp.Call GetDocumentFragmentByXPathByUrlCall(String sourceUrl, String xPath, String outFormat, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/html/fragments/{outFormat}"
-            .replaceAll("\\{" + "outFormat" + "\\}", apiClient.escapeString(outFormat.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        if (sourceUrl != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("sourceUrl", sourceUrl));
-        if (xPath != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("xPath", xPath));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/zip"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    private com.squareup.okhttp.Call GetDocumentFragmentByXPathByUrlValidateBeforeCall(String sourceUrl, String xPath, String outFormat, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'sourceUrl' is set
-        if (sourceUrl == null) {
-            throw new ApiException("Missing the required parameter 'sourceUrl' when calling GetDocumentFragmentByXPathByUrl(Async)");
-        }
-        
-        // verify the required parameter 'xPath' is set
-        if (xPath == null) {
-            throw new ApiException("Missing the required parameter 'xPath' when calling GetDocumentFragmentByXPathByUrl(Async)");
-        }
-        
-        // verify the required parameter 'outFormat' is set
-        if (outFormat == null) {
-            throw new ApiException("Missing the required parameter 'outFormat' when calling GetDocumentFragmentByXPathByUrl(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = GetDocumentFragmentByXPathByUrlCall(sourceUrl, xPath, outFormat, progressListener, progressRequestListener);
-        return call;
-
-    }
+    @Headers({
+            "Content-Type:application/json"
+    })
+    @GET("html/{name}/fragments/{outFormat}")
+    Call<ResponseBody> GetDocumentFragmentByXPath(
+            @Path("name") String name,
+            @Path("outFormat") String outFormat,
+            @Query("xPath") String xPath,
+            @Query("storage") String storage,
+            @Query("folder") String folder
+    );
 
     /**
      * Return list of HTML fragments matching the specified XPath query by the source page URL.
-     * 
+     *
+     * @param outFormat Output format. Possible values: 'plain' and 'json'. (required)
      * @param sourceUrl Source page URL. (required)
      * @param xPath XPath query string. (required)
-     * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
-     * @return File
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @return Call&lt;ResponseBody&gt;
      */
-    public File GetDocumentFragmentByXPathByUrl(String sourceUrl, String xPath, String outFormat) throws ApiException {
-        ApiResponse<File> resp = GetDocumentFragmentByXPathByUrlWithHttpInfo(sourceUrl, xPath, outFormat);
-        return resp.getData();
-    }
-
-    /**
-     * Return list of HTML fragments matching the specified XPath query by the source page URL.
-     * 
-     * @param sourceUrl Source page URL. (required)
-     * @param xPath XPath query string. (required)
-     * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
-     * @return ApiResponse&lt;File&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    private ApiResponse<File> GetDocumentFragmentByXPathByUrlWithHttpInfo(String sourceUrl, String xPath, String outFormat) throws ApiException {
-        com.squareup.okhttp.Call call = GetDocumentFragmentByXPathByUrlValidateBeforeCall(sourceUrl, xPath, outFormat, null, null);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Return list of HTML fragments matching the specified XPath query by the source page URL. (asynchronously)
-     * 
-     * @param sourceUrl Source page URL. (required)
-     * @param xPath XPath query string. (required)
-     * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call GetDocumentFragmentByXPathByUrlAsync(String sourceUrl, String xPath, String outFormat, final ApiCallback<File> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = GetDocumentFragmentByXPathByUrlValidateBeforeCall(sourceUrl, xPath, outFormat, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    
-    /**
-     * Build call for GetDocumentFragmentsByCSSSelector
-     * @param name The document name (required). Presented as zip archive with one html file in the root or html file.
-     * @param selector CSS selector string. (required)
-     * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
-     * @param folder The document folder. (optional)
-     * @param storage The document storage. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    private com.squareup.okhttp.Call GetDocumentFragmentsByCSSSelectorCall(String name, String selector, String outFormat, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/html/{name}/fragments/css/{outFormat}"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()))
-            .replaceAll("\\{" + "outFormat" + "\\}", apiClient.escapeString(outFormat.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        if (selector != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("selector", selector));
-        if (folder != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
-        if (storage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "multipart/form-data"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-
-    private com.squareup.okhttp.Call GetDocumentFragmentsByCSSSelectorValidateBeforeCall(String name, String selector, String outFormat, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling GetDocumentFragmentsByCSSSelector(Async)");
-        }
-        
-        // verify the required parameter 'selector' is set
-        if (selector == null) {
-            throw new ApiException("Missing the required parameter 'selector' when calling GetDocumentFragmentsByCSSSelector(Async)");
-        }
-        
-        // verify the required parameter 'outFormat' is set
-        if (outFormat == null) {
-            throw new ApiException("Missing the required parameter 'outFormat' when calling GetDocumentFragmentsByCSSSelector(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = GetDocumentFragmentsByCSSSelectorCall(name, selector, outFormat, folder, storage, progressListener, progressRequestListener);
-        return call;
-
-    }
+    @Headers({
+            "Content-Type:application/json"
+    })
+    @GET("html/fragments/{outFormat}")
+    Call<ResponseBody> GetDocumentFragmentByXPathByUrl(
+            @Path("outFormat") String outFormat,
+            @Query("sourceUrl") String sourceUrl,
+            @Query("xPath") String xPath
+    );
 
     /**
      * Return list of HTML fragments matching the specified CSS selector.
-     * 
-     * @param name The document name (required). Presented as zip archive with one html file in the root or html file.
+     *
+     * @param name The document name(required). Presented as zip archive with one html file in the root or html file.
+     * @param outFormat Output format. Possible values: 'plain' and 'json'. (required)
      * @param selector CSS selector string. (required)
-     * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
-     * @return File
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @return Call&lt;ResponseBody&gt;
      */
-    public File GetDocumentFragmentsByCSSSelector(String name, String selector, String outFormat, String folder, String storage) throws ApiException {
-        ApiResponse<File> resp = GetDocumentFragmentsByCSSSelectorWithHttpInfo(name, selector, outFormat, folder, storage);
-        return resp.getData();
-    }
-
-    /**
-     * Return list of HTML fragments matching the specified CSS selector.
-     * 
-     * @param name The document name (required). Presented as zip archive with one html file in the root or html file.
-     * @param selector CSS selector string. (required)
-     * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
-     * @param folder The document folder. (optional)
-     * @param storage The document storage. (optional)
-     * @return ApiResponse&lt;File&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    private ApiResponse<File> GetDocumentFragmentsByCSSSelectorWithHttpInfo(String name, String selector, String outFormat, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = GetDocumentFragmentsByCSSSelectorValidateBeforeCall(name, selector, outFormat, folder, storage, null, null);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Return list of HTML fragments matching the specified CSS selector. (asynchronously)
-     * 
-     * @param name The document name (required). Presented as zip archive with one html file in the root or html file.
-     * @param selector CSS selector string. (required)
-     * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
-     * @param folder The document folder. (optional)
-     * @param storage The document storage. (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call GetDocumentFragmentsByCSSSelectorAsync(String name, String selector, String outFormat, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = GetDocumentFragmentsByCSSSelectorValidateBeforeCall(name, selector, outFormat, folder, storage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for GetDocumentFragmentsByCSSSelectorByUrl
-     * @param sourceUrl Source page URL. (required)
-     * @param selector CSS selector string. (required)
-     * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    private com.squareup.okhttp.Call GetDocumentFragmentsByCSSSelectorByUrlCall(String sourceUrl, String selector, String outFormat, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/html/fragments/css/{outFormat}"
-            .replaceAll("\\{" + "outFormat" + "\\}", apiClient.escapeString(outFormat.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        if (sourceUrl != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("sourceUrl", sourceUrl));
-        if (selector != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("selector", selector));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "multipart/form-data"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    private com.squareup.okhttp.Call GetDocumentFragmentsByCSSSelectorByUrlValidateBeforeCall(String sourceUrl, String selector, String outFormat, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'sourceUrl' is set
-        if (sourceUrl == null) {
-            throw new ApiException("Missing the required parameter 'sourceUrl' when calling GetDocumentFragmentsByCSSSelectorByUrl(Async)");
-        }
-        
-        // verify the required parameter 'selector' is set
-        if (selector == null) {
-            throw new ApiException("Missing the required parameter 'selector' when calling GetDocumentFragmentsByCSSSelectorByUrl(Async)");
-        }
-        
-        // verify the required parameter 'outFormat' is set
-        if (outFormat == null) {
-            throw new ApiException("Missing the required parameter 'outFormat' when calling GetDocumentFragmentsByCSSSelectorByUrl(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = GetDocumentFragmentsByCSSSelectorByUrlCall(sourceUrl, selector, outFormat, progressListener, progressRequestListener);
-        return call;
-
-    }
+    @Headers({"Content-Type:application/json"})
+    @GET("html/{name}/fragments/css/{outFormat}")
+    Call<ResponseBody> GetDocumentFragmentsByCSSSelector(
+            @retrofit2.http.Path("name") String name,
+            @retrofit2.http.Path("outFormat") String outFormat,
+            @retrofit2.http.Query("selector") String selector,
+            @retrofit2.http.Query("folder") String folder,
+            @retrofit2.http.Query("storage") String storage
+    );
 
     /**
      * Return list of HTML fragments matching the specified CSS selector by the source page URL.
-     * 
+     *
+     * @param outFormat Output format. Possible values: 'plain' and 'json'. (required)
      * @param sourceUrl Source page URL. (required)
      * @param selector CSS selector string. (required)
-     * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
-     * @return File
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @return Call&lt;ResponseBody&gt;
      */
-    public File GetDocumentFragmentsByCSSSelectorByUrl(String sourceUrl, String selector, String outFormat) throws ApiException {
-        ApiResponse<File> resp = GetDocumentFragmentsByCSSSelectorByUrlWithHttpInfo(sourceUrl, selector, outFormat);
-        return resp.getData();
-    }
-
-    /**
-     * Return list of HTML fragments matching the specified CSS selector by the source page URL.
-     * 
-     * @param sourceUrl Source page URL. (required)
-     * @param selector CSS selector string. (required)
-     * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
-     * @return ApiResponse&lt;File&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    private ApiResponse<File> GetDocumentFragmentsByCSSSelectorByUrlWithHttpInfo(String sourceUrl, String selector, String outFormat) throws ApiException {
-        com.squareup.okhttp.Call call = GetDocumentFragmentsByCSSSelectorByUrlValidateBeforeCall(sourceUrl, selector, outFormat, null, null);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Return list of HTML fragments matching the specified CSS selector by the source page URL. (asynchronously)
-     * 
-     * @param sourceUrl Source page URL. (required)
-     * @param selector CSS selector string. (required)
-     * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call GetDocumentFragmentsByCSSSelectorByUrlAsync(String sourceUrl, String selector, String outFormat, final ApiCallback<File> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = GetDocumentFragmentsByCSSSelectorByUrlValidateBeforeCall(sourceUrl, selector, outFormat, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    
-    
-    
-    /**
-     * Build call for GetDocumentImages
-     * @param name The document name (required). Presented as zip archive with one html file in the root.
-     * @param folder The document folder. (optional)
-     * @param storage The document storage. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    private com.squareup.okhttp.Call GetDocumentImagesCall(String name, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/html/{name}/images/all"
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        if (folder != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("folder", folder));
-        if (storage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("storage", storage));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/zip"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    private com.squareup.okhttp.Call GetDocumentImagesValidateBeforeCall(String name, String folder, String storage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling GetDocumentImages(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = GetDocumentImagesCall(name, folder, storage, progressListener, progressRequestListener);
-        return call;
-
-    }
+    @Headers({"Content-Type:application/json"})
+    @GET("html/fragments/css/{outFormat}")
+    Call<ResponseBody> GetDocumentFragmentsByCSSSelectorByUrl(
+            @retrofit2.http.Path("outFormat") String outFormat,
+            @retrofit2.http.Query("sourceUrl") String sourceUrl,
+            @retrofit2.http.Query("selector") String selector
+    );
 
     /**
      * Return all HTML document images packaged as a ZIP archive.
-     * 
-     * @param name The document name (required). Presented as zip archive with one html file in the root.
-     * @param folder The document folder. (optional)
+     *
+     * @param name    The document name (required). Presented as zip archive with one html file in the root.
+     * @param folder  The document folder. (optional)
      * @param storage The document storage. (optional)
-     * @return File
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @return Call&lt;ResponseBody&gt;
      */
-    public File GetDocumentImages(String name, String folder, String storage) throws ApiException {
-        ApiResponse<File> resp = GetDocumentImagesWithHttpInfo(name, folder, storage);
-        return resp.getData();
-    }
-
-    /**
-     * Return all HTML document images packaged as a ZIP archive.
-     * 
-     * @param name The document name (required). Presented as zip archive with one html file in the root.
-     * @param folder The document folder. (optional)
-     * @param storage The document storage. (optional)
-     * @return ApiResponse&lt;File&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    private ApiResponse<File> GetDocumentImagesWithHttpInfo(String name, String folder, String storage) throws ApiException {
-        com.squareup.okhttp.Call call = GetDocumentImagesValidateBeforeCall(name, folder, storage, null, null);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Return all HTML document images packaged as a ZIP archive. (asynchronously)
-     * 
-     * @param name The document name (required). Presented as zip archive with one html file in the root.
-     * @param folder The document folder. (optional)
-     * @param storage The document storage. (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call GetDocumentImagesAsync(String name, String folder, String storage, final ApiCallback<File> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = GetDocumentImagesValidateBeforeCall(name, folder, storage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    
-    /**
-     * Build call for GetDocumentImagesByUrl
-     * @param sourceUrl Source page URL. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    private com.squareup.okhttp.Call GetDocumentImagesByUrlCall(String sourceUrl, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/html/images/all";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        if (sourceUrl != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("sourceUrl", sourceUrl));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/zip"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    private com.squareup.okhttp.Call GetDocumentImagesByUrlValidateBeforeCall(String sourceUrl, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'sourceUrl' is set
-        if (sourceUrl == null) {
-            throw new ApiException("Missing the required parameter 'sourceUrl' when calling GetDocumentImagesByUrl(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = GetDocumentImagesByUrlCall(sourceUrl, progressListener, progressRequestListener);
-        return call;
-
-    }
+    @Headers({
+            "Content-Type:application/json"
+    })
+    @GET("html/{name}/images/all")
+    Call<ResponseBody> GetDocumentImages(
+            @Path("name") String name,
+            @Query("folder") String folder,
+            @Query("storage") String storage
+    );
 
     /**
      * Return all HTML page images packaged as a ZIP archive by the source page URL.
-     * 
+     *
      * @param sourceUrl Source page URL. (required)
-     * @return File
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @return Call&lt;ResponseBody&gt;
      */
-    public File GetDocumentImagesByUrl(String sourceUrl) throws ApiException {
-        ApiResponse<File> resp = GetDocumentImagesByUrlWithHttpInfo(sourceUrl);
-        return resp.getData();
-    }
+    @Headers({
+            "Content-Type:application/json"
+    })
+    @GET("html/images/all")
+    Call<ResponseBody> GetDocumentImagesByUrl(
+            @Query("sourceUrl") String sourceUrl
+    );
 
-    /**
-     * Return all HTML page images packaged as a ZIP archive by the source page URL.
-     * 
-     * @param sourceUrl Source page URL. (required)
-     * @return ApiResponse&lt;File&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    private ApiResponse<File> GetDocumentImagesByUrlWithHttpInfo(String sourceUrl) throws ApiException {
-        com.squareup.okhttp.Call call = GetDocumentImagesByUrlValidateBeforeCall(sourceUrl, null, null);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Return all HTML page images packaged as a ZIP archive by the source page URL. (asynchronously)
-     * 
-     * @param sourceUrl Source page URL. (required)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call GetDocumentImagesByUrlAsync(String sourceUrl, final ApiCallback<File> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = GetDocumentImagesByUrlValidateBeforeCall(sourceUrl, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
 }

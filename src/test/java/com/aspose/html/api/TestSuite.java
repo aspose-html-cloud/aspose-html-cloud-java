@@ -31,7 +31,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import com.aspose.storage.api.*;
+import com.aspose.storage.api.StorageUnitTest;
 
 @RunWith(Suite.class)
 @SuiteClasses(
@@ -48,28 +48,30 @@ import com.aspose.storage.api.*;
 			UrlToPdfTest.class,  
 			UrlToImagelTest.class,
 			SummarizationApiTest.class,
-			FileApiTest.class,
-			FolderApiTest.class,
-			StorageApiTest.class,
-			PutConvertImgTest.class,
-			PutConvertPdfTest.class,
-			PutConvertXpsTest.class,
+			StorageUnitTest.class,
+			PostConvertImgTest.class,
+			PostConvertPdfTest.class,
+			PostConvertXpsTest.class,
 			PutConvertDocImgTest.class,
 			PutConvertDocPdfTest.class,
-			DocLoadCSSTest.class,
-			DocLoadCSSUrlTest.class,
+			DocLoadFragmentCSSTest.class,
+			DocLoadFragmentCSSByUrlTest.class,
 			TemplateMergeApiTest.class,
-			DocLoadSiteTest.class,
+			DocLoadByUrlTest.class,
 			GetHtmlToMarkdownTest.class,
 			PutHtmlToMarkdownTest.class,
-			PutConvertMarkdownTest.class,
-			GetConvToMHTMLTest.class,
+			PostConvertMarkdownTest.class,
+			GetConvToMHTMLByUrlTest.class,
 			EpubToImageTest.class,
 			EpubToPdfTest.class,
 			EpubToXpsTest.class,
 			SvgToImageTest.class,
 			SvgToPdfTest.class,
-			SvgToXpsTest.class
+			SvgToXpsTest.class,
+			GetMarkdownToHtmlTest.class,
+			PostMarkdownToHtmlTest.class,
+			PutMarkdownToHtmlTest.class
+			
 		})
 public class TestSuite {
 

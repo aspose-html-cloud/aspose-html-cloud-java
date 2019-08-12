@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TranslateDocTest.java">
-*   Copyright (c) 2018 Aspose.HTML for Cloud
+*   Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,92 +27,69 @@
 
 package com.aspose.html.api;
 
-import static java.lang.System.out;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-
-import java.io.File;
-import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Collection;
-
+import com.aspose.html.ApiClient;
+import com.aspose.html.api.TranslationApi;
+import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-import com.aspose.html.api.TranslationApi;
-import com.aspose.html.client.Configuration;
-import com.aspose.storage.api.StorageApi;
-import com.aspose.storage.model.FileExistResponse;
+import retrofit2.Call;
 
 @RunWith(Parameterized.class)
-public class TranslateDocTest {
-	    private String name;
-	    private String srcLang;
-	    private String resLang;
-	    private String storage;
-	    private String folder;
-	    private String localStorage;
-	    TranslationApi api;
-	    private StorageApi storageApi;
-	    
-		private static String localFolder = Configuration.getStorage();
-	    
-	    public TranslateDocTest(
-	    		String name,
-	    		String srcLang, 
-	    		String resLang) 
-	    {
-	    	this.name = name;;
-	    	this.srcLang = srcLang;
-	    	this.resLang = resLang;
-			this.localStorage = "TranslateDoc_" + srcLang +"_" + resLang + ".html"; 
-			this.folder = "HtmlTestDoc";
-			this.storage = null;
-	    }
-	    
-	    @Before
-		public void initialize() {
-	        api = new TranslationApi();
-	    	storageApi = new StorageApi();
-	    }
+public class TranslateDocTest extends BaseTest {
+    private String name;
+    private String srcLang;
+    private String resLang;
+    private String storage;
+    private String folder;
 
-	    
-	    @Parameterized.Parameters
-	    public static Collection testData() {
-	    	return Arrays.asList(new Object[][] 
-	    	{
-	    		{"test_en.html","en","fr"},
-	    		{"test_en.html","en","de"}
-	    	});
-	    }
-	    
-	    @Test   
-	    public void test() {
-	
-	    	File f = new File(Configuration.getTestDataDir(), name);
-	    	if(!f.exists())
-	    		out.println("Local file not found");
-	    	
-	    	try {
-	        	// Put document to storage
-		    	storageApi.PutCreate(folder + "/" + name, f, null, null);
-		    	
-		    	FileExistResponse res  = storageApi.GetIsExist(folder + "/" + name, null, null);
-	        	assertEquals(res.getCode(), 200);
+    private String localName;
+    TranslationApi api;
 
-	            File answer = api.GetTranslateDocument( name, srcLang, resLang, storage, folder);
+    public TranslateDocTest(
+            String name,
+            String srcLang,
+            String resLang)
+    {
+        super();
+        this.name = name;
+        this.srcLang = srcLang;
+        this.resLang = resLang;
+        this.folder = "HtmlTestDoc";
+        this.storage = null;
+        this.localName = "TranslateDoc_" + srcLang + "_" + resLang + ".html";
+    }
 
-	    		//Save to test directory
-	    		File copyFile = new File(localFolder + localStorage);
-	    		answer.renameTo(copyFile);
-	 
-	    		//Assert contentType
-	    		assertEquals("text/html", Files.probeContentType(copyFile.toPath()));
-	        }catch(Exception e) {
-	        	e.printStackTrace();
-	        	fail();
-	        }
-	    }
+    @Before
+    public void initialize() {
+        api = new ApiClient().createService(TranslationApi.class);
+    }
+
+
+    @Parameterized.Parameters
+    public static Collection testData() {
+        return Arrays.asList(new Object[][]
+                {
+                        {"test_en.html", "en", "fr"},
+                        {"test_en.html", "en", "de"},
+                        {"test_en.html", "en", "ru"},
+                });
+    }
+
+    @Test
+    public void test() {
+
+        try {
+            TestHelper.uploadFile(name,folder);
+            Call<ResponseBody> call = api.GetTranslateDocument(name, srcLang, resLang, storage, folder);
+            TestHelper.checkAndSave(call, localName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail();
+        }
+    }
 }

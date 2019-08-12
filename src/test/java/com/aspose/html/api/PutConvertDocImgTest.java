@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PutConvertDocImgTest.java">
-*   Copyright (c) 2018 Aspose.HTML for Cloud
+*   Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,24 +27,22 @@
 
 package com.aspose.html.api;
 
-import static java.lang.System.out;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
-
+import static org.junit.Assert.*;
+import com.aspose.html.api.ConversionApi;
+import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-import com.aspose.html.client.Configuration;
+import com.aspose.html.ApiClient;
 import com.aspose.storage.api.StorageApi;
+import retrofit2.Call;
+import retrofit2.Response;
 
 @RunWith(Parameterized.class)
-public class PutConvertDocImgTest {
+public class PutConvertDocImgTest extends BaseTest {
 
     private String name;
     private String outFormat;
@@ -62,9 +60,7 @@ public class PutConvertDocImgTest {
     private ConversionApi api;
     private StorageApi storageApi;
 
-	private static String localFolder = Configuration.getStorage();
-
-	   //Constructor that takes test data.
+   //Constructor that takes test data.
     public PutConvertDocImgTest(
         String outFormat,
         Integer width,
@@ -76,7 +72,8 @@ public class PutConvertDocImgTest {
         Integer resolution
     )
     {
-		this.name			=	"test1.html";			         
+		super();
+		this.name			=	"test1.html";
 		this.outFormat		=	outFormat;   		   
 		this.width			=	width;       		  
 		this.height         =	height;              
@@ -132,8 +129,8 @@ public class PutConvertDocImgTest {
 
     @Before
 	public void initialize() {
-    	api = new ConversionApi();
-    	storageApi = new StorageApi();
+		api = new ApiClient().createService(ConversionApi.class);
+		storageApi = new ApiClient().createService(StorageApi.class);
     }
 
     @Parameterized.Parameters
@@ -142,44 +139,43 @@ public class PutConvertDocImgTest {
     	{
     		{"jpeg", null, null, null, null, null, null, null},
     		{"jpeg", 500, 500, null, null, null, null, null},
-    		{"jpeg", 600, 600, null, null, null, null, null},
     		{"jpeg", 700, 700, 0, 0, 0, 0, 100},
     		{"jpeg", 800, 800, 100, 100, 100, 100, 150},
     		{"jpeg", 800, 1000, 150, 150, 150, 150, 200},
-    		{"jpeg", 800, 1200, 100, 100, 150, 150, 50},
-    		{"jpeg", 800, 1400, 100, 150, 200, 0, 50},
-    		{"jpeg", 800, 1600, 0, 0, 0, 0, 50},
+    		{"jpeg", 800, 1200, 100, 100, 150, 150, 100},
+    		{"jpeg", 800, 1400, 100, 150, 200, 0, 100},
 
     		{"png", null, null, null, null, null, null, null},
     		{"png", 500, 500, null, null, null, null, null},
-    		{"png", 600, 600, null, null, null, null, null},
     		{"png", 700, 700, 100, 100, 100, 100, 100},
     		{"png", 800, 800, 150, 150, 150, 150, 150},
     		{"png", 800, 1000, 50, 100, 150, 200, 200},
-    		{"png", 800, 1200, 200, 150, 100, 50, 50},
-    		{"png", 800, 1400, 50, 50, 50, 50, 50},
-    		{"png", 800, 1600, 100, 100, 100, 100, 50},
+    		{"png", 800, 1200, 200, 150, 100, 50, 100},
+    		{"png", 800, 1400, 50, 50, 50, 50, 100},
     		
     		{"bmp", null, null, null, null, null, null, null},
     		{"bmp", 500, 500, null, null, null, null, null},
-    		{"bmp", 600, 600, null, null, null, null, null},
     		{"bmp", 700, 700, 50, 100, 150, 200, 100},
     		{"bmp", 800, 800, 200, 150, 100, 50, 150},
     		{"bmp", 800, 1000, 50, 50, 50, 50, 200},
-    		{"bmp", 800, 1200, 100, 100, 100, 100, 50},
-    		{"bmp", 800, 1400, 150, 100, 50, 0, 50},
-    		{"bmp", 800, 1600, 0, 0, 0, 0, 50},
-
+    		{"bmp", 800, 1200, 100, 100, 100, 100, 100},
+    		{"bmp", 800, 1400, 150, 100, 50, 0, 100},
+   
     		{"tiff", null, null, null, null, null, null, null},
     		{"tiff", 500, 500, null, null, null, null, null},
-    		{"tiff", 600, 600, null, null, null, null, null},
     		{"tiff", 700, 700, 50, 100, 150, 200, 100},
     		{"tiff", 800, 800, 200, 150, 100, 50, 150},
     		{"tiff", 800, 1000, 50, 50, 50, 50, 200},
-    		{"tiff", 800, 1200, 100, 100, 100, 100, 50},
-    		{"tiff", 800, 1400, 150, 150, 150, 150, 50},
-    		{"tiff", 800, 1600, 0, 0, 0, 0, 50}
-
+    		{"tiff", 800, 1200, 100, 100, 100, 100, 100},
+    		{"tiff", 800, 1400, 150, 150, 150, 150, 100},
+    		   
+    		{"gif", null, null, null, null, null, null, null},
+    		{"gif", 500, 500, null, null, null, null, null},
+    		{"gif", 700, 700, 50, 100, 150, 200, 100},
+    		{"gif", 800, 800, 200, 150, 100, 50, 150},
+    		{"gif", 800, 1000, 50, 50, 50, 50, 200},
+    		{"gif", 800, 1200, 100, 100, 100, 100, 100},
+    		{"gif", 800, 1400, 150, 150, 150, 150, 100}
     	});
     }
 
@@ -187,28 +183,22 @@ public class PutConvertDocImgTest {
     @Test
     public void test() {
     
-    	File file = new File(Configuration.getTestDataDir(), name);
-    	if(!file.exists())
-    		out.println("file not found");
-    	
     	try {
     		// name = test1.html already in storage
-    		api.PutConvertDocumentToImage(name, this.folder +"/" + localName, outFormat, width, height, 
+			Call<ResponseBody> call =api.PutConvertDocumentToImage(name,  outFormat,this.folder +"/" + localName, width, height,
     				leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage);
-    		
-    		//Download result from storage
-    		File result = storageApi.GetDownload(this.folder +"/" + localName, versionId, storage);
+			Response<ResponseBody> res = call.execute();
+			assertTrue(res.isSuccessful());
+
+			//Download result from storage
+            call = storageApi.downloadFile(this.folder +"/" + localName, versionId, storage);
     		
     		//Save to test directory
-    		File copyFile = new File(localFolder + localName);
-    		result.renameTo(copyFile);
- 
-    		//Assert - not exception
-    		assertTrue(true);
+            TestHelper.checkAndSave(call, localName);
     		
         }catch(Exception e) {
         	e.printStackTrace();
-            fail();
+        	fail();
         }
     }
     

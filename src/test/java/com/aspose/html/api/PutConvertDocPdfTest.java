@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PutConvertDocPdfTest.java">
-*   Copyright (c) 2018 Aspose.HTML for Cloud
+*   Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,45 +24,42 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
 package com.aspose.html.api;
 
-import static java.lang.System.out;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.io.File;
+import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.Collection;
-
+import com.aspose.html.ApiClient;
+import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-import com.aspose.html.api.ConversionApi;
-import com.aspose.html.client.Configuration;
 import com.aspose.storage.api.StorageApi;
+import retrofit2.Call;
+import retrofit2.Response;
 
 @RunWith(Parameterized.class)
-public class PutConvertDocPdfTest {
-    private String  name;
+public class PutConvertDocPdfTest extends BaseTest {
+
+    private static String  name = "test1.html";
+    private static String folder = "HtmlTestDoc";
+    private static String storage = null;
+
     private Integer width;
     private Integer height;
     private Integer leftMargin;
     private Integer rightMargin;
     private Integer topMargin;
     private Integer bottomMargin;
-    private String folder;
-    private String storage;
     private String localName;
-    private String versionId;
-    private ConversionApi api;
-    private StorageApi storageApi;
-    
-	private static String localFolder = Configuration.getStorage();
+    private String versionId = null;
+    private static ConversionApi api;
+    private static StorageApi storageApi;
 
-    
+    private static boolean alreadyInit = false;
+
+
    //Constructor that takes test data.
     public PutConvertDocPdfTest(
         Integer width,
@@ -73,17 +70,13 @@ public class PutConvertDocPdfTest {
         Integer bottomMargin
     )
     {
-		this.name		    =	"test1.html";			         
-		this.width			=	width;       		  
+		super();
+		this.width			=	width;
 		this.height         =	height;              
 		this.leftMargin     =	leftMargin;          
 		this.rightMargin    =	rightMargin;         
 		this.topMargin      =	topMargin;           
 		this.bottomMargin   =	bottomMargin;
-		this.folder         =	"HtmlTestDoc";
-		this.storage		=   null;
-		this.versionId      =   null;
-		
 
 		String fileName = "putConvertDocToPdf_"; 
 		
@@ -122,8 +115,19 @@ public class PutConvertDocPdfTest {
     
     @Before
 	public void initialize() {
-    	api = new ConversionApi();
-    	storageApi = new StorageApi();
+
+    	if (alreadyInit) return;
+
+		api = new ApiClient().createService(ConversionApi.class);
+		storageApi = new ApiClient().createService(StorageApi.class);
+        try {
+            TestHelper.uploadFile(name, folder);
+        }catch(Exception e) {
+            e.printStackTrace();
+            fail();
+            alreadyInit = false;
+        }
+        alreadyInit = true;
     }
     
     @Parameterized.Parameters
@@ -166,29 +170,24 @@ public class PutConvertDocPdfTest {
     
     @Test
     public void test() {
-    	
-       	File f = new File(Configuration.getTestDataDir(), name);
-    	if(!f.exists())
-    		out.println("Local file not found");
-    	
+
     	try {
-
-    		api.PutConvertDocumentToPdf(name, this.folder +"/" + localName, width, height, 
+			Call<ResponseBody> call = api.PutConvertDocumentToPdf(name, folder +"/" + localName, width, height,
     				leftMargin, rightMargin, topMargin, bottomMargin, folder, storage);
-    		
-    		//Download result from storage
-    		File result = storageApi.GetDownload(folder +"/" + localName, versionId, storage);
-    		
-    		//Save to test directory
-    		File copyFile = new File(localFolder + localName);
-    		result.renameTo(copyFile);
- 
-    		//Assert - not exception
-    		assertTrue(true);
+			Response<ResponseBody> res = call.execute();
+			assertTrue(res.isSuccessful());
 
+			//Download result from storage
+			call = storageApi.downloadFile(folder +"/" + localName, versionId, storage);
+            res = call.execute();
+            assertTrue(res.isSuccessful());
+
+            //Save to test directory
+            ResponseBody res_download = res.body();
+            assertTrue(TestHelper.saveToDisc(res_download,"TestDownloadResult.jpg"));
     	}catch(Exception e) {
         	e.printStackTrace();
-            fail();
+        	fail();
         }
     }
 }

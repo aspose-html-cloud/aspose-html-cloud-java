@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PutConvertDocXpsTest.java">
-*   Copyright (c) 2018 Aspose.HTML for Cloud
+*   Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,25 +27,22 @@
 
 package com.aspose.html.api;
 
-import static java.lang.System.out;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.io.File;
+import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.Collection;
-
+import com.aspose.html.ApiClient;
+import com.aspose.html.api.ConversionApi;
+import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-import com.aspose.html.api.ConversionApi;
-import com.aspose.html.client.Configuration;
 import com.aspose.storage.api.StorageApi;
+import retrofit2.Call;
+import retrofit2.Response;
 
 @RunWith(Parameterized.class)
-public class PutConvertDocXpsTest {
+public class PutConvertDocXpsTest extends BaseTest {
     private String name;
     private Integer width;
     private Integer height;
@@ -60,8 +57,6 @@ public class PutConvertDocXpsTest {
     private ConversionApi api;
     private StorageApi storageApi;
     
-	private static String localFolder = Configuration.getStorage();  
-    
    //Constructor that takes test data.
     public PutConvertDocXpsTest(
         Integer width,
@@ -72,7 +67,8 @@ public class PutConvertDocXpsTest {
         Integer bottomMargin
     )
     {
-		this.name			=	"test1.html";			         
+		super();
+		this.name			=	"test1.html";
 		this.width			=	width;       		  
 		this.height         =	height;              
 		this.leftMargin     =	leftMargin;          
@@ -120,8 +116,8 @@ public class PutConvertDocXpsTest {
     
     @Before
 	public void initialize() {
-    	api = new ConversionApi();
-    	storageApi = new StorageApi();
+		api = new ApiClient().createService(ConversionApi.class);
+		storageApi = new ApiClient().createService(StorageApi.class);
     }
     
     @Parameterized.Parameters
@@ -164,28 +160,22 @@ public class PutConvertDocXpsTest {
     
     @Test
     public void test() {
-  
-       	File f = new File(Configuration.getTestDataDir(), name);
-    	if(!f.exists())
-    		out.println("Local file not found");
-    	
-    	try {
 
-    		api.PutConvertDocumentToXps(name, this.folder +"/" + localName, width, height, leftMargin, rightMargin, topMargin, bottomMargin, folder, storage);
-    		
-    		//Download result from storage
-    		File result = storageApi.GetDownload(folder +"/" + localName, versionId, storage);
-    		
-    		//Save to test directory
-    		File copyFile = new File(localFolder + localName);
-    		result.renameTo(copyFile);
- 
-    		//Assert - not exception
-    		assertTrue(true);
+		try {
+
+            Call<ResponseBody> call = api.PutConvertDocumentToXps(name, this.folder +"/" + localName, width, height, leftMargin, rightMargin, topMargin, bottomMargin, folder, storage);
+            Response<ResponseBody> res = call.execute();
+            assertTrue(res.isSuccessful());
+
+            //Download result from storage
+			call = storageApi.downloadFile(folder +"/" + localName, versionId, storage);
+
+			//Save to test directory
+			TestHelper.checkAndSave(call, localName);
 
     	}catch(Exception e) {
         	e.printStackTrace();
-            fail();
+        	fail();
         }
     }
 }

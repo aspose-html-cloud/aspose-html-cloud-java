@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocLoadFragmentTest.java">
-*   Copyright (c) 2018 Aspose.HTML for Cloud
+*   Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,101 +25,72 @@
 * --------------------------------------------------------------------------------------------------------------------
 */
 
+
 package com.aspose.html.api;
 
-import static java.lang.System.out;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
-import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
-
+import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
+import com.aspose.html.ApiClient;
 import com.aspose.html.api.DocumentApi;
-import com.aspose.html.client.Configuration;
-import com.aspose.storage.api.StorageApi;
-import com.aspose.storage.model.FileExistResponse;
+import retrofit2.Call;
 
 @RunWith(Parameterized.class)
-public class DocLoadFragmentTest {
+public class DocLoadFragmentTest  extends BaseTest{
     private String name;
     private String xPath;
     private String outFormat;
-    private String storage;
     private String folder;
-    private String localStorage;
+    private String storage;
+    private String localName;
     private DocumentApi api;
-    private StorageApi storageApi;
-
-    private static String localFolder = Configuration.getStorage();
 
     public DocLoadFragmentTest(String name, String xPath, String outFormat) {
+        super();
         this.name = name;
         this.xPath = xPath;
         this.outFormat = outFormat;
         this.folder = "HtmlTestDoc";
         this.storage = null;
-
         String ext = outFormat.equals("json") ? ".json" : ".html";
-        this.localStorage = "DocXpathLoad_" + name + ext;
+        this.localName = "DocXpathLoad_" + name + ext;
 
     }
-    
+
     @Before
     public void initialize() {
-        api = new DocumentApi();
-        storageApi = new StorageApi();
+        api = new ApiClient().createService(DocumentApi.class);
     }
 
     @Parameterized.Parameters
     public static Collection testData() {
-        return Arrays.asList(new Object[][] 
-        {
-            {"test1.html.zip",".//p", "plain"}, 
-            {"test2.html.zip",".//p", "plain"},
-            {"test3.html.zip",".//p", "plain"},
-            {"test4.html.zip",".//p", "plain"},
-            {"test2.html",".//ol/li", "json"}
-        });
+        return Arrays.asList(new Object[][]
+                {
+                        {"test1.html.zip", ".//p", "plain"},
+                        {"test2.html.zip", ".//p", "plain"},
+                        {"test3.html.zip", ".//p", "plain"},
+                        {"test4.html.zip", ".//p", "plain"},
+                        {"test2.html", ".//ol/li", "json"}
+                });
     }
-    
-    @Test   
+
+    @Test
     public void test() {
 
-        File f = new File(Configuration.getTestDataDir(), name);
-        if(!f.exists())
-            out.println("Local file not found");
-
         try {
-            // Put document to storage
-            storageApi.PutCreate(folder + "/" + name, f, null, null);
-            
-            FileExistResponse res  = storageApi.GetIsExist(folder + "/" + name, null, null);
-            
-            assertTrue(res.getFileExist().getIsExist());
 
-        	File answer = api.GetDocumentFragmentByXPath(name, xPath, outFormat, storage, folder);
+            TestHelper.uploadFile(name, folder);
 
-            assertTrue(answer.exists());
-            assertTrue(answer.length()>0);
-            String ext = "";
-            if(outFormat == "plain") {
-                ext = ".html";
-            }else if(outFormat == "json") {
-                ext = ".json";
-            }
-            //Save to test directory
-            File copyFile = new File(localFolder + localStorage + ext);
-            answer.renameTo(copyFile);
+            Call<ResponseBody> call = api.GetDocumentFragmentByXPath(name, outFormat, xPath, storage, folder);
 
-            assertTrue(copyFile.exists());
+            TestHelper.checkAndSave(call, localName);
 
-        }catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             fail();
         }

@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="OcrTranslateTest.java">
-*   Copyright (c) 2018 Aspose.HTML for Cloud
+*   Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,95 +27,62 @@
 
 package com.aspose.html.api;
 
-import static java.lang.System.out;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-
-import java.io.File;
-import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Collection;
-
+import com.aspose.html.api.OcrApi;
+import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-import com.aspose.html.api.OcrApi;
-import com.aspose.html.client.Configuration;
-import com.aspose.storage.api.StorageApi;
-import com.aspose.storage.model.FileExistResponse;
+import com.aspose.html.ApiClient;
+import retrofit2.Call;
 
 @RunWith(Parameterized.class)
-public class OcrTranslateTest {
-	private String name;
-	private String srcLang;
-	private String resLang;
-	private String folder;
-	private String storage;
-    private String localStorage;
+public class OcrTranslateTest extends BaseTest {
+    private String name;
+    private String srcLang;
+    private String resLang;
+    private String folder;
+    private String storage;
     private OcrApi api;
-    private StorageApi storageApi;
+    private String localName;
 
-    private static String localFolder = Configuration.getStorage();
-    
-	public OcrTranslateTest(String name, String srcLang, String resLang) 
-	{
-		this.name = name;
-		this.srcLang = srcLang;
-		this.resLang = resLang;
-		this.folder = "HtmlTestDoc";
-		this.storage = null;
-		this.localStorage 
-		    = "OcrDoc_" + name +"_" + srcLang +"_" +resLang +".html"; 
-	}
-	
-    @Before
-	public void initialize() {
-        api = new OcrApi();
-    	storageApi = new StorageApi();
+    public OcrTranslateTest(String name, String srcLang, String resLang) {
+        super();
+        this.name = name;
+        this.srcLang = srcLang;
+        this.resLang = resLang;
+        this.folder = "HtmlTestDoc";
+        this.storage = null;
+        this.localName = "OcrDoc_" + name + "_" + srcLang + "_" + resLang + ".html";
     }
-    
+
+    @Before
+    public void initialize() {
+        api = new ApiClient().createService(OcrApi.class);
+    }
+
     @Parameterized.Parameters
     public static Collection testData() {
-    	return Arrays.asList(new Object[][] 
-    	{
-    		{"test_ocr.png","en","fr"},
-    		{"test_ocr.jpg","en","de"}
-    	});
+        return Arrays.asList(new Object[][]
+                {
+                        {"test_ocr.png", "en", "fr"},
+                        {"test_ocr.jpg", "en", "de"}
+                });
     }
-    
-    @Test   
+
+    @Test
     public void test() {
- 
-    	File f = new File(Configuration.getTestDataDir(), name);
-    	if(!f.exists())
-    		out.println("Local file not found");
-    	
-    	try {
-        	// Put document to storage
-        	storageApi.PutCreate(folder + "/" + name, f, null, null);
-        	
-        	FileExistResponse res  = storageApi.GetIsExist(folder + "/" + name, null, null);
-        	assertEquals(res.getCode(), 200);
 
-            File answer =
-            		api.GetRecognizeAndTranslateToHtml(
-            				name, 
-            				srcLang, 
-            				resLang, 
-            				folder, 
-            				storage);
-
-    		//Save to test directory
-    		File copyFile = new File(localFolder + localStorage);
-    		answer.renameTo(copyFile);
- 
-    		//Assert contentType
-    		assertEquals("text/html", Files.probeContentType(copyFile.toPath()));
-        }catch(Exception e) {
-        	e.printStackTrace();
-        	fail();
+        try {
+            TestHelper.uploadFile(name, folder);
+            Call<ResponseBody> call = api.GetRecognizeAndTranslateToHtml(name, srcLang, resLang, folder, storage);
+            TestHelper.checkAndSave(call, localName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail();
         }
     }
 }

@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SummarizationApiTest.java">
-*   Copyright (c) 2018 Aspose.HTML for Cloud
+*   Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,94 +25,64 @@
 * --------------------------------------------------------------------------------------------------------------------
 */
 
-
 package com.aspose.html.api;
 
+import com.aspose.html.ApiClient;
 import com.aspose.html.api.SummarizationApi;
-import com.aspose.html.client.ApiException;
-import com.aspose.html.client.Configuration;
-import com.aspose.storage.api.StorageApi;
-import com.aspose.storage.model.FileExistResponse;
-
-import static java.lang.System.out;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.io.File;
-
+import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.fail;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
 
 /**
  * API tests for SummarizationApi
  */
-//@Ignore
-public class SummarizationApiTest {
+public class SummarizationApiTest extends BaseTest {
 
-    private final SummarizationApi api = new SummarizationApi();
-	private static String localFolder = Configuration.getStorage();
-	private static StorageApi storageApi = new StorageApi();
-    
+    private SummarizationApi api;
+
+    @Before
+    public void setup() {
+        api = new ApiClient().createService(SummarizationApi.class);
+    }
+    BaseTest cfg = new BaseTest();
     /**
      * Get the HTML document keywords using the keyword detection service.
      *
      * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
      */
     @Test
-    public void GetDetectHtmlKeywordsTest() throws ApiException {
+    public void GetDetectHtmlKeywordsTest() {
         String name = "test_en.html";
         String folder = "HtmlTestDoc";
         String storage = null;
+        String localName = "KeywordDoc.json";
 
-    	File f = new File(Configuration.getTestDataDir(), name);
-    	if(!f.exists())
-    		out.println("Local file not found");
-    	
-    	// Put document to storage
-    	storageApi.PutCreate(folder + "/" + name, f, null, null);
-    	
-    	FileExistResponse res  = storageApi.GetIsExist(folder + "/" + name, null, null);
-    	assertEquals(res.getCode(), 200);
-
-    	try {
-            File answer = api.GetDetectHtmlKeywords(name, folder, storage);
-
-    		//Save to test directory
-    		File copyFile = new File(localFolder + "KeywordUrl.json");
-    		answer.renameTo(copyFile);
-        }catch(Exception e) {
-        	e.printStackTrace();
-        	fail();
+        try {
+            TestHelper.uploadFile(name, folder);
+            Call<ResponseBody> call = api.GetDetectHtmlKeywords( name, folder, storage);
+            TestHelper.checkAndSave(call, localName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail();
         }
     }
-    
     /**
      * Get the keywords from HTML document from Web specified by its URL using the keyword detection service
      *
      * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
      */
     @Test
-    public void GetDetectHtmlKeywordsByUrlTest() throws ApiException {
+    public void GetDetectHtmlKeywordsByUrlTest() {
         String sourceUrl = "https://www.le.ac.uk/oerresources/bdra/html/page_01.htm";
-    
+        String localName = "KeywordUrl.json";
         try {
-	        File answer = api.GetDetectHtmlKeywordsByUrl(sourceUrl);
-	
-	        assertTrue(answer.exists());
-	        
-			//Save to test directory
-			File copyFile = new File(localFolder + "KeywordUrl.json");
-			answer.renameTo(copyFile);
-        } catch(Exception e) {
-        	e.printStackTrace();
-        	fail();
+            Call<ResponseBody> call = api.GetDetectHtmlKeywordsByUrl(sourceUrl );
+            TestHelper.checkAndSave(call, localName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail();
         }
     }
-    
 }

@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TemplateMergeApiTest.java">
-*   Copyright (c) 2018 Aspose.HTML for Cloud
+*   Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,33 +27,56 @@
 
 package com.aspose.html.api;
 
+import com.aspose.html.ApiClient;
+import com.aspose.html.Configuration;
 import com.aspose.html.api.TemplateMergeApi;
-import com.aspose.html.client.Configuration;
 import com.aspose.storage.api.StorageApi;
-import com.aspose.storage.model.FileExistResponse;
-
+import org.junit.Before;
+import org.junit.Test;
+import java.io.File;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Response;
 import static java.lang.System.out;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.io.File;
+public class TemplateMergeApiTest extends BaseTest {
 
-import org.junit.Test;
+    private TemplateMergeApi api;
+    private StorageApi storageApi;
+    private String templateName;
+    private String templateData;
+    private String options;
+    private String versionId;
+    private String folder;
+    private String storage;
 
-public class TemplateMergeApiTest {
+    @Before
+    public void setup() {
+        api = new ApiClient().createService(TemplateMergeApi.class);
+        storageApi = new ApiClient().createService(StorageApi.class);
+        folder = "HtmlTestDoc";
+        storage = null;
+        templateName = "HtmlTemplate.html";
+        templateData = "XmlSourceData.xml";
+        options = "";
+        versionId = null;
 
-    private final TemplateMergeApi api = new TemplateMergeApi();
-	private static String localFolder = Configuration.getStorage();
-	private static StorageApi storageApi = new StorageApi();
+        try {
+            //Upload data to storage
+            TestHelper.uploadFile(templateData, folder);
+            // Upload template to storage
+            TestHelper.uploadFile(templateName, folder);
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail();
+        }
 
-    private String folder = "HtmlTestDoc";
-    private String storage = null;
-    private String templateName = "HtmlTemplate.html";
-    private String templateData = "XmlSourceData.xml";
-    private String options = "";
-    private String versionId = null;
-
+    }
     /**
      * Populate HTML document template with data located as a file in the storage.
      *
@@ -61,35 +84,9 @@ public class TemplateMergeApiTest {
     @Test
     public void GetMergeHtmlTemplateTest() {
 
-
-    	File templateNameFile = new File(Configuration.getTestDataDir(), templateName);
-    	if(!templateNameFile.exists())
-    		out.println("Template file not found");
-
-    	File templateDataFile = new File(Configuration.getTestDataDir(), templateData);
-    	if(!templateDataFile.exists())
-    		out.println("Data file not found");
-
-    	
         try {
-        	
-        	// Put template document to storage
-        	storageApi.PutCreate(folder + "/" + templateName, templateNameFile, null, null);
-        	
-        	FileExistResponse res  = storageApi.GetIsExist(folder + "/" + templateName, null, null);
-        	assertEquals(res.getCode(), 200);
-        	
-        	//Put data file to storage
-        	storageApi.PutCreate(folder + "/" + templateData, templateDataFile, null, null);
-        	
-        	res  = storageApi.GetIsExist(folder + "/" + templateData, null, null);
-        	assertEquals(res.getCode(), 200);
-        	
-        	File answer = api.GetMergeHtmlTemplate(templateName, folder + "/" + templateData, options,folder,storage);
-        
-    		File copyFile = new File(localFolder + "GetMergeHtmlTemplate.html");
-    		answer.renameTo(copyFile);
-        
+            Call<ResponseBody> call = api.GetMergeHtmlTemplate(templateName, folder + "/" + templateData,options,folder,storage);
+            TestHelper.checkAndSave(call, "GetMergeHtmlTemplate.html");
         } catch (Exception e) {
             e.printStackTrace();
             fail();
@@ -100,34 +97,33 @@ public class TemplateMergeApiTest {
      *
      */
     @Test
-    public void PutMergeHtmlTemplateTest() {
+    public void PostMergeHtmlTemplateTest() {
 
-    	String resultName = "PutMergeHtmlTemplate.html";
-    	
+        String result = "PostMergeHtmlTemplate.html";
+
         // Open xml file with data for template
-        File f = new File(Configuration.getTestDataDir(), templateData);
-
-        if(!f.exists())
+        File f = new File(Configuration.getTestSrcDir(), templateData);
+        if(!f.exists()){
             out.println("file not found");
+            fail();
+        }
+        RequestBody requestBody = RequestBody.create( MediaType.parse("multipart/form-data"), f);
+        MultipartBody.Part file = MultipartBody.Part.createFormData("file", f.getName(), requestBody);
 
         // Path to save result in the storage
-        String outPath = folder +  "/" + resultName;
+        String outPath = folder +  "/" + result;
 
         try {
-        	// TemplateName and templateData already in the storage
-        	
-            api.PutMergeHtmlTemplate(templateName, outPath, f, options, folder, storage);
-    		//Download result from storage
+
+            Call<ResponseBody> call = api.PostMergeHtmlTemplate(templateName, outPath, file, options, folder, storage);
+            Response<ResponseBody> res = call.execute();
+            assertTrue(res.isSuccessful());
 
             //Download result from storage
-            File result = storageApi.GetDownload(outPath, versionId, storage);
-    		
-    		//Save to test directory
-    		File copyFile = new File(localFolder + resultName);
-    		result.renameTo(copyFile);
- 
-    		//Assert - not exception
-    		assertTrue(true);
+            call = storageApi.downloadFile(outPath, versionId, storage);
+
+            //Save result to test directory
+            TestHelper.checkAndSave(call, result);
 
         } catch (Exception e) {
             e.printStackTrace();

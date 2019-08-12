@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UrlToPdfTest.java">
-*   Copyright (c) 2018 Aspose.HTML for Cloud
+*   Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,23 +27,20 @@
 
 package com.aspose.html.api;
 
-import java.io.File;
-import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Collection;
+import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runners.Parameterized;
 import org.junit.runner.RunWith;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
+import static org.junit.Assert.assertTrue;
+import com.aspose.html.ApiClient;
 import com.aspose.html.api.ConversionApi;
-import com.aspose.html.client.Configuration;
-
+import org.junit.runners.Parameterized;
+import retrofit2.Call;
 
 @RunWith(Parameterized.class)
-public class UrlToPdfTest {
+public class UrlToPdfTest extends BaseTest {
     private String sourceUrl;
     private Integer width;
     private Integer height;
@@ -53,129 +50,127 @@ public class UrlToPdfTest {
     private Integer bottomMargin;
     private String folder;
     private String storage;
+    private String localName;
     private ConversionApi api;
-    
-   //Constructor that takes test data.
-    public UrlToPdfTest(
-        Integer width,
-        Integer height,
-        Integer leftMargin,
-        Integer rightMargin,
-        Integer topMargin,
-        Integer bottomMargin
-    )
-    {
-		this.sourceUrl		=	"https://stallman.org/articles/anonymous-payments-thru-phones.html";			         
-		this.width			=	width;       		  
-		this.height         =	height;              
-		this.leftMargin     =	leftMargin;          
-		this.rightMargin    =	rightMargin;         
-		this.topMargin      =	topMargin;           
-		this.bottomMargin   =	bottomMargin;        
-		this.folder         =	Configuration.getStorage();
-		
-		String storage = "UrlToPdf_"; 
-		
-		if(width != null && height != null) {
-			storage += width + "x" + height +"_";
-		}else {
-			storage += "-------" + "_";
-		}
-		
-		if(leftMargin != null) {
-			storage += "L"+ leftMargin + "_";
-		}else {
-			storage += "L---" + "_";
-		}
-		
-		if(rightMargin != null) {
-			storage += "R"+ rightMargin + "_";
-		}else {
-			storage += "R---" + "_";
-		}
-		
-		if(topMargin != null) {
-			storage += "T"+ topMargin + "_";
-		}else {
-			storage += "T---" + "_";
-		}
 
-		if(bottomMargin != null) {
-			storage += "B"+ bottomMargin;
-		}else {
-			storage += "B---";
-		}
-		
-		this.storage = storage + ".pdf"; 
+    //Constructor that takes test data.
+    public UrlToPdfTest(
+            Integer width,
+            Integer height,
+            Integer leftMargin,
+            Integer rightMargin,
+            Integer topMargin,
+            Integer bottomMargin
+    ) {
+        super();
+        this.sourceUrl = "https://stallman.org/articles/anonymous-payments-thru-phones.html";
+        this.width = width;
+        this.height = height;
+        this.leftMargin = leftMargin;
+        this.rightMargin = rightMargin;
+        this.topMargin = topMargin;
+        this.bottomMargin = bottomMargin;
+        this.folder = "";
+
+
+        String savesName = "UrlToPdf_";
+
+        if (width != null && height != null) {
+            savesName += width + "x" + height + "_";
+        } else {
+            savesName += "-------" + "_";
+        }
+
+        if (leftMargin != null) {
+            savesName += "L" + leftMargin + "_";
+        } else {
+            savesName += "L---" + "_";
+        }
+
+        if (rightMargin != null) {
+            savesName += "R" + rightMargin + "_";
+        } else {
+            savesName += "R---" + "_";
+        }
+
+        if (topMargin != null) {
+            savesName += "T" + topMargin + "_";
+        } else {
+            savesName += "T---" + "_";
+        }
+
+        if (bottomMargin != null) {
+            savesName += "B" + bottomMargin;
+        } else {
+            savesName += "B---";
+        }
+
+        this.localName = savesName + ".pdf";
     }
-    
+
     @Before
-	public void initialize() {
-    	api = new ConversionApi();
+    public void initialize() {
+        api = new ApiClient().createService(ConversionApi.class);
     }
-    
+
     @Parameterized.Parameters
     public static Collection testData() {
-    	return Arrays.asList(new Object[][] 
-    	{
-    		// Test width, height
-    		{null, null, null, null, null, null},
-    		{200,  500,  null, null, null, null},
-    		{300,  600,  null, null, null, null},
-    		{400,  700,  null, null, null, null},
-    		{500,  800,  null, null, null, null},
-    		{600,  900,  null, null, null, null},
-    		{700,  1000, null, null, null, null},
-    		{800,  1100, null, null, null, null},
+        return Arrays.asList(new Object[][]
+                {
+                        // Test width, height
+                        {null, null, null, null, null, null},
+                        {200, 500, null, null, null, null},
+                        {300, 600, null, null, null, null},
+                        {400, 700, null, null, null, null},
+                        {500, 800, null, null, null, null},
+                        {600, 900, null, null, null, null},
+                        {700, 1000, null, null, null, null},
+                        {800, 1100, null, null, null, null},
 
-      		{null, null, 0, 0, 0, 0},
+                        {null, null, 0, 0, 0, 0},
 
-      		// Test margin left, right
-    		{null, null, 40,  0,   0, 0},
-    		{null, null, 80,  0,   0, 0},
-    		{null, null, 120, 0,   0, 0},
-    		{null, null, 160, 0,   0, 0},
-    		{null, null, 0,   40,  0, 0},
-    		{null, null, 0,   80,  0, 0},
-    		{null, null, 0,   120, 0, 0},
-    		{null, null, 0,   160, 0, 0},
+                        // Test margin left, right
+                        {null, null, 40, 0, 0, 0},
+                        {null, null, 80, 0, 0, 0},
+                        {null, null, 120, 0, 0, 0},
+                        {null, null, 160, 0, 0, 0},
+                        {null, null, 0, 40, 0, 0},
+                        {null, null, 0, 80, 0, 0},
+                        {null, null, 0, 120, 0, 0},
+                        {null, null, 0, 160, 0, 0},
 
-    		// Test margin top, bottom
-      		{null, null, 0, 0, 40,  0  },
-    		{null, null, 0, 0, 80,  0  },
-    		{null, null, 0, 0, 120, 0  },
-    		{null, null, 0, 0, 160, 0  },
-    		{null, null, 0, 0, 0,   40 },
-    		{null, null, 0, 0, 0,   80 },
-    		{null, null, 0, 0, 0,   120},
-    		{null, null, 0, 0, 0,   160}
-    	});
+                        // Test margin top, bottom
+                        {null, null, 0, 0, 40, 0},
+                        {null, null, 0, 0, 80, 0},
+                        {null, null, 0, 0, 120, 0},
+                        {null, null, 0, 0, 160, 0},
+                        {null, null, 0, 0, 0, 40},
+                        {null, null, 0, 0, 0, 80},
+                        {null, null, 0, 0, 0, 120},
+                        {null, null, 0, 0, 0, 160}
+                });
     }
-    
+
     @Test
     public void test() {
-    	
-    	try {
-    		File answer = api.GetConvertDocumentToPdfByUrl(
-					sourceUrl, 
-					width, 
-					height, 
-					leftMargin,   
-					rightMargin,  
-					topMargin,    
-					bottomMargin, 
-					folder,       
-					storage);
-     		
-    		//Save to test directory
-    		File copyFile = new File(folder + storage);
-    		answer.renameTo(copyFile);
- 
-    		//Assert contentType
-    		assertEquals("application/pdf", Files.probeContentType(copyFile.toPath()));
-        }catch(Exception e) {
-        	e.printStackTrace();
-        	fail();
+
+        try {
+            Call<ResponseBody> call = api.GetConvertDocumentToPdfByUrl(
+                    sourceUrl,
+                    width,
+                    height,
+                    leftMargin,
+                    rightMargin,
+                    topMargin,
+                    bottomMargin,
+                    folder,
+                    storage);
+
+            TestHelper.checkAndSave(call, localName);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            assertTrue(false);
         }
     }
 }
