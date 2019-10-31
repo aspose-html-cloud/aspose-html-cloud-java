@@ -15,4 +15,4 @@ hs_err_pid*
 **/target
 target
 build
-testresult/
+testresult

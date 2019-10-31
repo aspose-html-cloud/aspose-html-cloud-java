@@ -91,14 +91,8 @@ public class ApiClient {
                         .addHeader("Authorization", accessToken)
                         .addHeader("User-Agent", userAgent);
 
-                    //ToDo: for local testing
-                    HttpUrl httpUrl = original.url()
-                        .newBuilder()
-                        .addQueryParameter("AppSid", "html.cloud")
-                        .build();
-
                     //ToDo: Kestrel decode %2F to '/' bug
-                    String orignUrl = httpUrl.toString();
+                    String orignUrl = original.url().toString();
                     String changeUrl = orignUrl.replace("%2F", "/");
 
                     Request newRequest = requestBuilder

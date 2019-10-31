@@ -37,17 +37,12 @@ import com.aspose.storage.api.StorageUnitTest;
 @SuiteClasses(
 		{
 			DocLoadFragmentTest.class,
-			OcrTranslateTest.class,
-			OcrTest.class,
-			TranslateDocTest.class,
-			TranslateUrlTest.class,
 			HtmlToXpsTest.class,
 			HtmlToPdfTest.class,
 			HtmlToImageTest.class,
 			UrlToXpsTest.class,
 			UrlToPdfTest.class,  
 			UrlToImagelTest.class,
-			SummarizationApiTest.class,
 			StorageUnitTest.class,
 			PostConvertImgTest.class,
 			PostConvertPdfTest.class,

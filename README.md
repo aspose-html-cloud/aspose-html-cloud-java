@@ -1,5 +1,4 @@
 # Aspose HTML Cloud SDK 
-
 This repository contains Aspose.HTML Cloud SDK source code. This SDK allows you to work with Aspose.HTML Cloud REST APIs in your applications quickly and easily.
 
 See [API Reference](https://apireference.aspose.cloud/html/) for full API specification.
@@ -7,18 +6,13 @@ See [API Reference](https://apireference.aspose.cloud/html/) for full API specif
 ## How to use the SDK?
 The complete source code is available in this repository folder, you can either directly use it in your project.
 
-
 ## Requirements
-
 Building the API client library requires [Maven](https://maven.apache.org/) to be installed.
 
 ### Prerequisites
-
 To use Aspose HTML for Cloud SDK you need to register an account with [Aspose Cloud](https://www.aspose.cloud/) and lookup/create App Key and SID at [Cloud Dashboard](https://dashboard.aspose.cloud/#/apps). There is free quota available. For more details, see [Aspose Cloud Pricing](https://purchase.aspose.cloud/pricing).
 
-
 ## Installation
-
 To install the API client library to your local Maven repository, simply execute:
 
 ```shell
@@ -34,14 +28,13 @@ mvn deploy
 Refer to the [official documentation](https://maven.apache.org/plugins/maven-deploy-plugin/usage.html) for more information.
 
 ### Maven users
-
 Add this dependency to your project's POM:
 
 ```xml
 <dependency>
     <groupId>com.aspose</groupId>
     <artifactId>aspose-html-cloud</artifactId>
-    <version>1.1.0</version>
+    <version>19.5.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -58,7 +51,6 @@ Then manually install the following JARs:
 * target/lib/*.jar
 
 ### Sample usage
-
 ```java
 import com.aspose.html.client.invoker.*;
 import com.aspose.html.client.invoker.auth.*;
@@ -106,7 +98,6 @@ public class ConversionApiExample {
 ```
 
 # Documentation for API Endpoints
-
 All URIs are relative to *https://api.aspose.cloud/v3.0*
 
 
@@ -134,16 +125,13 @@ Method | HTTP request | Description
 **PutConvertDocumentToMarkdown** | **PUT** /html/{name}/convert/md | Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
 
 ## ImportApi
-
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 **GetConvertMarkdownToHtml** | **GET** /html/{name}/import/md | Converts the Markdown document (located on storage) to HTML and returns resulting file in response content.
 **PostConvertMarkdownInRequestToHtml** | **POST** /html/{name}/import/md | Converts the Markdown document (in request content) to HTML and uploads resulting file to storage by specified path.
 **PutConvertMarkdownToHtml** | **PUT** /html/import/md | Converts the Markdown document (located on storage) to HTML and uploads resulting file to storage by specified path.
 
-
 ## DocumentApi
-
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 **GetDocumentByUrl** | **GET** html/download | Return all HTML page with linked resources packaged as a ZIP archive by the source page URL.
@@ -154,29 +142,7 @@ Method | HTTP request | Description
 **GetDocumentImages** | **GET** html/{name}/images/all | Return all HTML document images packaged as a ZIP archive.
 **GetDocumentImagesByUrl** | **GET** html/images/all | Return all HTML page images packaged as a ZIP archive by the source page URL.
 
-## OcrApi
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-**GetRecognizeAndImportToHtml** | **GET** html/{name}/ocr/import | Recognize text from the image file in the storage and import it to HTML format.
-**GetRecognizeAndTranslateToHtml** | **GET** html/{name}/ocr/translate/{srcLang}/{resLang} | Recognize text from the image file in the storage, import it to HTML format and translate to specified language.
-
-## TranslationApi
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-**GetTranslateDocument** | **GET** html/{name}/translate/{srcLang}/{resLang} | Translate the HTML document specified by the name from default or specified storage. 
-**GetTranslateDocumentByUrl** | **GET** html/translate/{srcLang}/{resLang} | Translate the HTML document from Web specified by its URL.
-
-## SummarizationApi
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-**GetDetectHtmlKeywords** | **GET** html/{name}/summ/keywords | Get the HTML document keywords using the keyword detection service.
-**GetDetectHtmlKeywordsByUrl** | **GET** html/summ/keywords | Get the keywords from HTML document from Web specified by its URL using the keyword detection service
-
 ## TemplateMergeApi    
-
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 **GetMergeHtmlTemplate** | **GET** /html/{templateName}/merge | Populate HTML document template with data located as a file in the storage.
@@ -184,13 +150,9 @@ Method | HTTP request | Description
 
 
 ## Recommendation
-
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
 
 ### Examples
-
 [Tests](./src/test/java/com/aspose/html/client/api) contain various examples of using the Aspose.HTML SDK.
 
 [Docs](./doc/) Full javadoc for Aspose.HTML Api SDK
-
-
