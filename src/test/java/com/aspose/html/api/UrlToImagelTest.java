@@ -94,7 +94,7 @@ public class UrlToImagelTest extends BaseTest {
             savedName += "---_";
         }
 
-        this.localName = savedName + "." + outFormat;
+        this.localName = savedName + "." + outFormat + ".zip";
     }
 
     @Before

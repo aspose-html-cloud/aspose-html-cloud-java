@@ -41,7 +41,7 @@ import org.junit.runners.Parameterized;
 import retrofit2.Call;
 
 @RunWith(Parameterized.class)
-public class HtmlToImageTest extends BaseTest {
+public class HtmlToImageBatchTest extends BaseTest {
 
     private String name;
     private String outFormat;
@@ -59,7 +59,7 @@ public class HtmlToImageTest extends BaseTest {
     private ConversionApi api;
 
     //Constructor that takes test data.
-    public HtmlToImageTest(
+    public HtmlToImageBatchTest(
             String outFormat,
             Integer width,
             Integer height,
@@ -70,7 +70,7 @@ public class HtmlToImageTest extends BaseTest {
             Integer resolution
     ) {
         super();
-        this.name = "test1.html";
+        this.name = "test_batch_html.zip";
         this.outFormat = outFormat;
         this.width = width;
         this.height = height;
@@ -82,7 +82,7 @@ public class HtmlToImageTest extends BaseTest {
         this.folder = "HtmlTestDoc";
         this.storage = null;
 
-        String savedName = "HtmlToImg_";
+        String savedName = "HtmlToImgBatch_";
 
         if (width != null && height != null) {
             savedName += width + "x" + height + "_";

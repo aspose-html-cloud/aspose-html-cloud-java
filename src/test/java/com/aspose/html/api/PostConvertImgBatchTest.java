@@ -48,7 +48,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 @RunWith(Parameterized.class)
-public class PostConvertImgTest extends BaseTest {
+public class PostConvertImgBatchTest extends BaseTest {
 
     private String name;
     private String outFormat;
@@ -67,7 +67,7 @@ public class PostConvertImgTest extends BaseTest {
     private StorageApi storageApi;
 
 	   //Constructor that takes test data.
-    public PostConvertImgTest(
+    public PostConvertImgBatchTest(
         String outFormat,
         Integer width,
         Integer height,
@@ -79,7 +79,7 @@ public class PostConvertImgTest extends BaseTest {
     )
     {
 		super();
-		this.name			=	"test1.html";
+		this.name			=	"test_batch_html.zip";
 		this.outFormat		=	outFormat;   		   
 		this.width			=	width;       		  
 		this.height         =	height;              
@@ -92,7 +92,7 @@ public class PostConvertImgTest extends BaseTest {
 		this.storage		=   null;
 		this.versionId 		=   null;
 		
-		String fileName = "postConvertToImg_";
+		String fileName = "postConvertToImgBatch_";
 
 		if(width != null && height != null) {
 			fileName += width + "x" + height +"_";

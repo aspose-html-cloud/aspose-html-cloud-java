@@ -55,8 +55,8 @@ public class StorageUnitTest {
     public StorageApi storageApi;
     
     public StorageUnitTest(){
-        Configuration.setAPI_KEY("60487a72d6325241191177e37ae52146");
-        Configuration.setAPP_SID("80e32ca5-a828-46a4-9d54-7199dfd3764a");
+        Configuration.setAPI_KEY("html.cloud");
+        Configuration.setAPP_SID("html.cloud");
         Configuration.setBasePath("https://api-qa.aspose.cloud/v3.0");
         Configuration.setAuthPath("https://api-qa.aspose.cloud/connect/token");
         Configuration.setUserAgent("WebKit");
@@ -426,7 +426,18 @@ public class StorageUnitTest {
         String notExistFolder = "FakeFolder";
 
         try {
-            // Exist file
+        	//Upload test file
+        	String fileName = "test.txt";
+        	File f = new File(Configuration.getTestSrcDir(), fileName);
+            RequestBody requestBody = RequestBody.create( MediaType.parse("multipart/form-data"), f);
+            MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData("file", f.getName(), requestBody);
+
+            Call<FilesUploadResult> call_create = storageApi.uploadFile("HtmlTestDoc/" + fileName, fileToUpload, null);
+            Response<FilesUploadResult> res_create = call_create.execute();
+            assertTrue(res_create.isSuccessful());
+
+        	
+        	// Exist file
             Call<ObjectExist> call = storageApi.objectExists(existFile, null, null);
 
             Response<ObjectExist> res = call.execute();

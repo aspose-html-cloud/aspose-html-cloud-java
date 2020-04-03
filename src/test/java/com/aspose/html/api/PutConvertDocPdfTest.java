@@ -184,7 +184,7 @@ public class PutConvertDocPdfTest extends BaseTest {
 
             //Save to test directory
             ResponseBody res_download = res.body();
-            assertTrue(TestHelper.saveToDisc(res_download,"TestDownloadResult.jpg"));
+            assertTrue(TestHelper.saveToDisc(res_download, localName));
     	}catch(Exception e) {
         	e.printStackTrace();
         	fail();

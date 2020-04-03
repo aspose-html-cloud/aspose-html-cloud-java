@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="HtmlToImageTest.java">
+* <copyright company="Aspose" file="HtmlToPdfTest.java">
 *   Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
@@ -25,7 +25,6 @@
 * --------------------------------------------------------------------------------------------------------------------
 */
 
-
 package com.aspose.html.api;
 
 import static org.junit.Assert.fail;
@@ -41,59 +40,45 @@ import org.junit.runners.Parameterized;
 import retrofit2.Call;
 
 @RunWith(Parameterized.class)
-public class HtmlToImageTest extends BaseTest {
-
+public class HtmlToPdfBatchTest extends BaseTest {
     private String name;
-    private String outFormat;
     private Integer width;
     private Integer height;
     private Integer leftMargin;
     private Integer rightMargin;
     private Integer topMargin;
     private Integer bottomMargin;
-    private Integer resolution;
     private String folder;
     private String storage;
-
     private String localName;
     private ConversionApi api;
 
     //Constructor that takes test data.
-    public HtmlToImageTest(
-            String outFormat,
+    public HtmlToPdfBatchTest(
             Integer width,
             Integer height,
             Integer leftMargin,
             Integer rightMargin,
             Integer topMargin,
-            Integer bottomMargin,
-            Integer resolution
+            Integer bottomMargin
     ) {
         super();
-        this.name = "test1.html";
-        this.outFormat = outFormat;
+        this.name = "test_batch_html.zip";
         this.width = width;
         this.height = height;
         this.leftMargin = leftMargin;
         this.rightMargin = rightMargin;
         this.topMargin = topMargin;
         this.bottomMargin = bottomMargin;
-        this.resolution = resolution;
         this.folder = "HtmlTestDoc";
         this.storage = null;
 
-        String savedName = "HtmlToImg_";
+        String savedName = "HtmlToPdfBatch_";
 
         if (width != null && height != null) {
             savedName += width + "x" + height + "_";
         } else {
             savedName += "-------" + "_";
-        }
-
-        if (resolution != null) {
-            savedName += resolution + "_";
-        } else {
-            savedName += "---_";
         }
 
         if (leftMargin != null) {
@@ -120,7 +105,7 @@ public class HtmlToImageTest extends BaseTest {
             savedName += "B---";
         }
 
-        this.localName = savedName + "." + outFormat + ".zip";
+        this.localName = savedName + ".pdf.zip";
     }
 
     @Before
@@ -131,47 +116,39 @@ public class HtmlToImageTest extends BaseTest {
     @Parameterized.Parameters
     public static Collection testData() {
         return Arrays.asList(new Object[][]
-            {
-                {"jpeg", null, null, null, null, null, null, null},
-                {"jpeg", 500, 500, null, null, null, null, null},
-                {"jpeg", 700, 700, 0, 0, 0, 0, 100},
-                {"jpeg", 800, 800, 100, 100, 100, 100, 150},
-                {"jpeg", 800, 1000, 150, 150, 150, 150, 200},
-                {"jpeg", 800, 1200, 100, 100, 150, 150, 100},
-                {"jpeg", 800, 1400, 100, 150, 200, 0, 100},
-  
-                {"png", null, null, null, null, null, null, null},
-                {"png", 500, 500, null, null, null, null, null},
-                {"png", 700, 700, 100, 100, 100, 100, 100},
-                {"png", 800, 800, 150, 150, 150, 150, 150},
-                {"png", 800, 1000, 50, 100, 150, 200, 200},
-                {"png", 800, 1200, 200, 150, 100, 50, 100},
-                {"png", 800, 1400, 50, 50, 50, 50, 100},
-            
-                {"bmp", null, null, null, null, null, null, null},
-                {"bmp", 500, 500, null, null, null, null, null},
-                {"bmp", 700, 700, 50, 100, 150, 200, 100},
-                {"bmp", 800, 800, 200, 150, 100, 50, 150},
-                {"bmp", 800, 1000, 50, 50, 50, 50, 200},
-                {"bmp", 800, 1200, 100, 100, 100, 100, 100},
-                {"bmp", 800, 1400, 150, 100, 50, 0, 100},
-  
-                {"tiff", null, null, null, null, null, null, null},
-                {"tiff", 500, 500, null, null, null, null, null},
-                {"tiff", 700, 700, 50, 100, 150, 200, 100},
-                {"tiff", 800, 800, 200, 150, 100, 50, 150},
-                {"tiff", 800, 1000, 50, 50, 50, 50, 200},
-                {"tiff", 800, 1200, 100, 100, 100, 100, 100},
-                {"tiff", 800, 1400, 150, 150, 150, 150, 100},
-                
-                {"gif", null, null, null, null, null, null, null},
-                {"gif", 500, 500, null, null, null, null, null},
-                {"gif", 700, 700, 50, 100, 150, 200, 100},
-                {"gif", 800, 800, 200, 150, 100, 50, 150},
-                {"gif", 800, 1000, 50, 50, 50, 50, 200},
-                {"gif", 800, 1200, 100, 100, 100, 100, 100},
-                {"gif", 800, 1400, 150, 150, 150, 150, 100}
-            });
+                {
+                        // Test width, height
+                        {null, null, null, null, null, null},
+                        {200, 500, null, null, null, null},
+                        {300, 600, null, null, null, null},
+                        {400, 700, null, null, null, null},
+                        {500, 800, null, null, null, null},
+                        {600, 900, null, null, null, null},
+                        {700, 1000, null, null, null, null},
+                        {800, 1100, null, null, null, null},
+
+                        {null, null, 0, 0, 0, 0},
+
+                        // Test margin left, right
+                        {null, null, 40, 0, 0, 0},
+                        {null, null, 80, 0, 0, 0},
+                        {null, null, 120, 0, 0, 0},
+                        {null, null, 160, 0, 0, 0},
+                        {null, null, 0, 40, 0, 0},
+                        {null, null, 0, 80, 0, 0},
+                        {null, null, 0, 120, 0, 0},
+                        {null, null, 0, 160, 0, 0},
+
+                        // Test margin top, bottom
+                        {null, null, 0, 0, 40, 0},
+                        {null, null, 0, 0, 80, 0},
+                        {null, null, 0, 0, 120, 0},
+                        {null, null, 0, 0, 160, 0},
+                        {null, null, 0, 0, 0, 40},
+                        {null, null, 0, 0, 0, 80},
+                        {null, null, 0, 0, 0, 120},
+                        {null, null, 0, 0, 0, 160}
+                });
     }
 
     @Test
@@ -179,10 +156,10 @@ public class HtmlToImageTest extends BaseTest {
 
         try {
 
-            TestHelper.uploadFile(name, folder);
+            TestHelper.uploadFile(name,folder);
 
-            Call<ResponseBody> call = api.GetConvertDocumentToImage( name, outFormat, width, height, leftMargin,
-                    rightMargin, topMargin, bottomMargin, resolution, folder, storage);
+            Call<ResponseBody> call = api.GetConvertDocumentToPdf( name, width, height, leftMargin, rightMargin,
+                    topMargin, bottomMargin, folder, storage);
 
             TestHelper.checkAndSave(call, localName);
 

@@ -71,7 +71,7 @@ public class DocLoadFragmentByUrlTest extends BaseTest{
         return Arrays.asList(new Object[][]
                 {
                         {1, "https://stallman.org/articles/anonymous-payments-thru-phones.html",".//p", "plain"},
-                        {2, "https://stallman.org/articles/anonymous-payments-thru-phones.html",".//p", "json"}
+                        {2, "https://google.com","//body", "json"}
                 });
     }
 

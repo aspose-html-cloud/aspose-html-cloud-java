@@ -72,7 +72,7 @@ public class ConversionApiExample {
 
         ConversionApi api = new ApiClient().createService(ConversionApi.class);
       
-        String name = "name_example"; // String | Document name.
+        String name = "name_example.html"; // String | Document name.
         String outFormat = "jpg"; // String | Resulting image format.
         Integer width = 800; // Integer | Resulting image width. 
         Integer height = 1000; // Integer | Resulting image height. 
@@ -87,7 +87,7 @@ public class ConversionApiExample {
             File result = apiInstance.GetConvertDocumentToImage(name, outFormat, width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage);
 
     		//Save to test directory
-    		File copyFile = new File("~/testdir/test.jpg");
+    		File copyFile = new File("~/testdir/test.zip");
     		result.renameTo(copyFile);
         } catch (ApiException e) {
             System.err.println("Exception when calling ConversionApi#GetConvertDocumentToImage");

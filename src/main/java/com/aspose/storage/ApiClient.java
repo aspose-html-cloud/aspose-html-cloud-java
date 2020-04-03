@@ -70,12 +70,6 @@ public class ApiClient {
         if (!baseUrl.endsWith("/"))
             baseUrl = baseUrl + "/";
 
-        //Debug
-        if (Configuration.getDebug()){
-            HttpLoggingInterceptor logging = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
-            okBuilder.addInterceptor(logging);
-        }
-
         //Auth token
         okBuilder.addInterceptor(new Interceptor() {
             @Override
@@ -104,6 +98,12 @@ public class ApiClient {
             }
         });
 
+        //Debug
+        if (Configuration.getDebug()){
+            HttpLoggingInterceptor logging = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
+            okBuilder.addInterceptor(logging);
+        }
+        
         adapterBuilder = new Retrofit
                 .Builder()
                 .baseUrl(baseUrl)

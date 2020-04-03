@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="PostConvertImgTest.java">
+* <copyright company="Aspose" file="PutConvertDocImgTest.java">
 *   Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
@@ -27,28 +27,22 @@
 
 package com.aspose.html.api;
 
-import static java.lang.System.out;
-import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.Collection;
-import java.io.File;
-import com.aspose.html.ApiClient;
-import com.aspose.html.Configuration;
+import static org.junit.Assert.*;
 import com.aspose.html.api.ConversionApi;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import com.aspose.html.ApiClient;
 import com.aspose.storage.api.StorageApi;
 import retrofit2.Call;
 import retrofit2.Response;
 
 @RunWith(Parameterized.class)
-public class PostConvertImgTest extends BaseTest {
+public class PutConvertDocImgBatchTest extends BaseTest {
 
     private String name;
     private String outFormat;
@@ -66,8 +60,8 @@ public class PostConvertImgTest extends BaseTest {
     private ConversionApi api;
     private StorageApi storageApi;
 
-	   //Constructor that takes test data.
-    public PostConvertImgTest(
+   //Constructor that takes test data.
+    public PutConvertDocImgBatchTest(
         String outFormat,
         Integer width,
         Integer height,
@@ -79,7 +73,7 @@ public class PostConvertImgTest extends BaseTest {
     )
     {
 		super();
-		this.name			=	"test1.html";
+		this.name			=	"test_batch_html.zip";
 		this.outFormat		=	outFormat;   		   
 		this.width			=	width;       		  
 		this.height         =	height;              
@@ -92,7 +86,7 @@ public class PostConvertImgTest extends BaseTest {
 		this.storage		=   null;
 		this.versionId 		=   null;
 		
-		String fileName = "postConvertToImg_";
+		String fileName = "putConvertDocToImgBatch_";
 
 		if(width != null && height != null) {
 			fileName += width + "x" + height +"_";
@@ -166,7 +160,7 @@ public class PostConvertImgTest extends BaseTest {
     		{"bmp", 800, 1000, 50, 50, 50, 50, 200},
     		{"bmp", 800, 1200, 100, 100, 100, 100, 100},
     		{"bmp", 800, 1400, 150, 100, 50, 0, 100},
-  
+   
     		{"tiff", null, null, null, null, null, null, null},
     		{"tiff", 500, 500, null, null, null, null, null},
     		{"tiff", 700, 700, 50, 100, 150, 200, 100},
@@ -174,7 +168,7 @@ public class PostConvertImgTest extends BaseTest {
     		{"tiff", 800, 1000, 50, 50, 50, 50, 200},
     		{"tiff", 800, 1200, 100, 100, 100, 100, 100},
     		{"tiff", 800, 1400, 150, 150, 150, 150, 100},
-    		  
+    		   
     		{"gif", null, null, null, null, null, null, null},
     		{"gif", 500, 500, null, null, null, null, null},
     		{"gif", 700, 700, 50, 100, 150, 200, 100},
@@ -188,27 +182,19 @@ public class PostConvertImgTest extends BaseTest {
     
     @Test
     public void test() {
-		File f = new File(Configuration.getTestSrcDir(), name);
-		if(!f.exists()){
-			out.println("file not found");
-			fail();
-		}
-		RequestBody requestBody = RequestBody.create( MediaType.parse("multipart/form-data"), f);
-		MultipartBody.Part file = MultipartBody.Part.createFormData("file", f.getName(), requestBody);
-
-		try {
-
-			Call<ResponseBody> call = api.PostConvertDocumentInRequestToImage(outFormat,file,this.folder +"/" + localName,
-    				  width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution);
-
+    
+    	try {
+    		// name = test1.html already in storage
+			Call<ResponseBody> call =api.PutConvertDocumentToImage(name,  outFormat,this.folder +"/" + localName, width, height,
+    				leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage);
 			Response<ResponseBody> res = call.execute();
 			assertTrue(res.isSuccessful());
 
-    		//Download result from storage
-			call = storageApi.downloadFile(this.folder +"/" + localName, versionId, storage);
-
-			//Save to test directory
-			TestHelper.checkAndSave(call, localName);
+			//Download result from storage
+            call = storageApi.downloadFile(this.folder +"/" + localName, versionId, storage);
+    		
+    		//Save to test directory
+            TestHelper.checkAndSave(call, localName);
     		
         }catch(Exception e) {
         	e.printStackTrace();

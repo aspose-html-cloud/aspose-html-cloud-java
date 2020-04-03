@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="PutConvertDocImgTest.java">
+* <copyright company="Aspose" file="PutConvertDocPdfTest.java">
 *   Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
@@ -24,80 +24,66 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
 package com.aspose.html.api;
 
+import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.Collection;
-import static org.junit.Assert.*;
-import com.aspose.html.api.ConversionApi;
+import com.aspose.html.ApiClient;
 import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import com.aspose.html.ApiClient;
 import com.aspose.storage.api.StorageApi;
 import retrofit2.Call;
 import retrofit2.Response;
 
 @RunWith(Parameterized.class)
-public class PutConvertDocImgTest extends BaseTest {
+public class PutConvertDocPdfBatchTest extends BaseTest {
 
-    private String name;
-    private String outFormat;
+    private static String  name = "test_batch_html.zip";
+    private static String folder = "HtmlTestDoc";
+    private static String storage = null;
+
     private Integer width;
     private Integer height;
     private Integer leftMargin;
     private Integer rightMargin;
     private Integer topMargin;
     private Integer bottomMargin;
-    private Integer resolution;
-    private String folder;
-    private String storage;
-    private String versionId;
     private String localName;
-    private ConversionApi api;
-    private StorageApi storageApi;
+    private String versionId = null;
+    private static ConversionApi api;
+    private static StorageApi storageApi;
+
+    private static boolean alreadyInit = false;
+
 
    //Constructor that takes test data.
-    public PutConvertDocImgTest(
-        String outFormat,
+    public PutConvertDocPdfBatchTest(
         Integer width,
         Integer height,
         Integer leftMargin,
         Integer rightMargin,
         Integer topMargin,
-        Integer bottomMargin,
-        Integer resolution
+        Integer bottomMargin
     )
     {
 		super();
-		this.name			=	"test1.html";
-		this.outFormat		=	outFormat;   		   
-		this.width			=	width;       		  
+		this.width			=	width;
 		this.height         =	height;              
 		this.leftMargin     =	leftMargin;          
 		this.rightMargin    =	rightMargin;         
 		this.topMargin      =	topMargin;           
-		this.bottomMargin   =	bottomMargin;        
-		this.resolution     =	resolution;         
-		this.folder         =	"HtmlTestDoc";
-		this.storage		=   null;
-		this.versionId 		=   null;
-		
-		String fileName = "putConvertDocToImg_";
+		this.bottomMargin   =	bottomMargin;
 
+		String fileName = "putConvertDocToPdfBatch_"; 
+		
 		if(width != null && height != null) {
 			fileName += width + "x" + height +"_";
 		}else {
-			fileName += "--" + "_";
-		}
-
-		if(resolution != null){
-			fileName += resolution + "x_";
-		}else {
-			fileName += "--_";
+			fileName += "---" + "_";
 		}
 		
 		if(leftMargin != null) {
@@ -124,82 +110,84 @@ public class PutConvertDocImgTest extends BaseTest {
 			fileName += "B--";
 		}
 		
-		this.localName = fileName + "." + outFormat + ".zip";
+		this.localName = fileName + ".pdf.zip"; 
     }
-
+    
     @Before
 	public void initialize() {
+
+    	if (alreadyInit) return;
+
 		api = new ApiClient().createService(ConversionApi.class);
 		storageApi = new ApiClient().createService(StorageApi.class);
+        try {
+            TestHelper.uploadFile(name, folder);
+        }catch(Exception e) {
+            e.printStackTrace();
+            fail();
+            alreadyInit = false;
+        }
+        alreadyInit = true;
     }
-
+    
     @Parameterized.Parameters
     public static Collection testData() {
     	return Arrays.asList(new Object[][] 
     	{
-    		{"jpeg", null, null, null, null, null, null, null},
-    		{"jpeg", 500, 500, null, null, null, null, null},
-    		{"jpeg", 700, 700, 0, 0, 0, 0, 100},
-    		{"jpeg", 800, 800, 100, 100, 100, 100, 150},
-    		{"jpeg", 800, 1000, 150, 150, 150, 150, 200},
-    		{"jpeg", 800, 1200, 100, 100, 150, 150, 100},
-    		{"jpeg", 800, 1400, 100, 150, 200, 0, 100},
+    		// Test width, height
+    		{null, null, null, null, null, null},
+    		{200,  500,  null, null, null, null},
+    		{300,  600,  null, null, null, null},
+    		{400,  700,  null, null, null, null},
+    		{500,  800,  null, null, null, null},
+    		{600,  900,  null, null, null, null},
+    		{700,  1000, null, null, null, null},
+    		{800,  1100, null, null, null, null},
 
-    		{"png", null, null, null, null, null, null, null},
-    		{"png", 500, 500, null, null, null, null, null},
-    		{"png", 700, 700, 100, 100, 100, 100, 100},
-    		{"png", 800, 800, 150, 150, 150, 150, 150},
-    		{"png", 800, 1000, 50, 100, 150, 200, 200},
-    		{"png", 800, 1200, 200, 150, 100, 50, 100},
-    		{"png", 800, 1400, 50, 50, 50, 50, 100},
-    		
-    		{"bmp", null, null, null, null, null, null, null},
-    		{"bmp", 500, 500, null, null, null, null, null},
-    		{"bmp", 700, 700, 50, 100, 150, 200, 100},
-    		{"bmp", 800, 800, 200, 150, 100, 50, 150},
-    		{"bmp", 800, 1000, 50, 50, 50, 50, 200},
-    		{"bmp", 800, 1200, 100, 100, 100, 100, 100},
-    		{"bmp", 800, 1400, 150, 100, 50, 0, 100},
-   
-    		{"tiff", null, null, null, null, null, null, null},
-    		{"tiff", 500, 500, null, null, null, null, null},
-    		{"tiff", 700, 700, 50, 100, 150, 200, 100},
-    		{"tiff", 800, 800, 200, 150, 100, 50, 150},
-    		{"tiff", 800, 1000, 50, 50, 50, 50, 200},
-    		{"tiff", 800, 1200, 100, 100, 100, 100, 100},
-    		{"tiff", 800, 1400, 150, 150, 150, 150, 100},
-    		   
-    		{"gif", null, null, null, null, null, null, null},
-    		{"gif", 500, 500, null, null, null, null, null},
-    		{"gif", 700, 700, 50, 100, 150, 200, 100},
-    		{"gif", 800, 800, 200, 150, 100, 50, 150},
-    		{"gif", 800, 1000, 50, 50, 50, 50, 200},
-    		{"gif", 800, 1200, 100, 100, 100, 100, 100},
-    		{"gif", 800, 1400, 150, 150, 150, 150, 100}
+      		{null, null, 0, 0, 0, 0},
+
+      		// Test margin left, right
+    		{null, null, 40,  0,   0, 0},
+    		{null, null, 80,  0,   0, 0},
+    		{null, null, 120, 0,   0, 0},
+    		{null, null, 160, 0,   0, 0},
+    		{null, null, 0,   40,  0, 0},
+    		{null, null, 0,   80,  0, 0},
+    		{null, null, 0,   120, 0, 0},
+    		{null, null, 0,   160, 0, 0},
+
+    		// Test margin top, bottom
+      		{null, null, 0, 0, 40,  0  },
+    		{null, null, 0, 0, 80,  0  },
+    		{null, null, 0, 0, 120, 0  },
+    		{null, null, 0, 0, 160, 0  },
+    		{null, null, 0, 0, 0,   40 },
+    		{null, null, 0, 0, 0,   80 },
+    		{null, null, 0, 0, 0,   120},
+    		{null, null, 0, 0, 0,   160}
     	});
     }
-
     
     @Test
     public void test() {
-    
+
     	try {
-    		// name = test1.html already in storage
-			Call<ResponseBody> call =api.PutConvertDocumentToImage(name,  outFormat,this.folder +"/" + localName, width, height,
-    				leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage);
+			Call<ResponseBody> call = api.PutConvertDocumentToPdf(name, folder +"/" + localName, width, height,
+    				leftMargin, rightMargin, topMargin, bottomMargin, folder, storage);
 			Response<ResponseBody> res = call.execute();
 			assertTrue(res.isSuccessful());
 
 			//Download result from storage
-            call = storageApi.downloadFile(this.folder +"/" + localName, versionId, storage);
-    		
-    		//Save to test directory
-            TestHelper.checkAndSave(call, localName);
-    		
-        }catch(Exception e) {
+			call = storageApi.downloadFile(folder +"/" + localName, versionId, storage);
+            res = call.execute();
+            assertTrue(res.isSuccessful());
+
+            //Save to test directory
+            ResponseBody res_download = res.body();
+            assertTrue(TestHelper.saveToDisc(res_download, localName));
+    	}catch(Exception e) {
         	e.printStackTrace();
         	fail();
         }
     }
-    
 }
