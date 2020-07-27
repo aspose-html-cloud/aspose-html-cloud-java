@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocumentApi.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,7 +24,6 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
 package com.aspose.html.api;
 
 import retrofit2.Call;
@@ -37,7 +36,7 @@ public interface DocumentApi {
      * Return all HTML page with linked resources packaged as a ZIP archive by the source page URL.
      *
      * @param sourceUrl Source page URL. (required)
-     * @return Call&lt;ResponseBody&gt;
+     * @return Call &lt;ResponseBody&gt;
      */
     @Headers({"Content-Type:application/json"})
     @GET("html/download")
@@ -53,11 +52,9 @@ public interface DocumentApi {
      * @param xPath     XPath query string. (required)
      * @param storage   The document storage. (optional)
      * @param folder    The document folder. (optional)
-     * @return Call&lt;ResponseBody&gt;
+     * @return Call &lt;ResponseBody&gt;
      */
-    @Headers({
-            "Content-Type:application/json"
-    })
+    @Headers({"Content-Type:application/json"})
     @GET("html/{name}/fragments/{outFormat}")
     Call<ResponseBody> GetDocumentFragmentByXPath(
             @Path("name") String name,
@@ -73,11 +70,9 @@ public interface DocumentApi {
      * @param outFormat Output format. Possible values: 'plain' and 'json'. (required)
      * @param sourceUrl Source page URL. (required)
      * @param xPath XPath query string. (required)
-     * @return Call&lt;ResponseBody&gt;
+     * @return Call &lt;ResponseBody&gt;
      */
-    @Headers({
-            "Content-Type:application/json"
-    })
+    @Headers({"Content-Type:application/json"})
     @GET("html/fragments/{outFormat}")
     Call<ResponseBody> GetDocumentFragmentByXPathByUrl(
             @Path("outFormat") String outFormat,
@@ -93,7 +88,7 @@ public interface DocumentApi {
      * @param selector CSS selector string. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
-     * @return Call&lt;ResponseBody&gt;
+     * @return Call &lt;ResponseBody&gt;
      */
     @Headers({"Content-Type:application/json"})
     @GET("html/{name}/fragments/css/{outFormat}")
@@ -111,7 +106,7 @@ public interface DocumentApi {
      * @param outFormat Output format. Possible values: 'plain' and 'json'. (required)
      * @param sourceUrl Source page URL. (required)
      * @param selector CSS selector string. (required)
-     * @return Call&lt;ResponseBody&gt;
+     * @return Call &lt;ResponseBody&gt;
      */
     @Headers({"Content-Type:application/json"})
     @GET("html/fragments/css/{outFormat}")
@@ -127,11 +122,9 @@ public interface DocumentApi {
      * @param name    The document name (required). Presented as zip archive with one html file in the root.
      * @param folder  The document folder. (optional)
      * @param storage The document storage. (optional)
-     * @return Call&lt;ResponseBody&gt;
+     * @return Call &lt;ResponseBody&gt;
      */
-    @Headers({
-            "Content-Type:application/json"
-    })
+    @Headers({"Content-Type:application/json"})
     @GET("html/{name}/images/all")
     Call<ResponseBody> GetDocumentImages(
             @Path("name") String name,
@@ -143,11 +136,9 @@ public interface DocumentApi {
      * Return all HTML page images packaged as a ZIP archive by the source page URL.
      *
      * @param sourceUrl Source page URL. (required)
-     * @return Call&lt;ResponseBody&gt;
+     * @return Call &lt;ResponseBody&gt;
      */
-    @Headers({
-            "Content-Type:application/json"
-    })
+    @Headers({"Content-Type:application/json"})
     @GET("html/images/all")
     Call<ResponseBody> GetDocumentImagesByUrl(
             @Query("sourceUrl") String sourceUrl

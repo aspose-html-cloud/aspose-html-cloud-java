@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ApiClient.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,7 +24,6 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
 package com.aspose.html;
 
 import com.google.gson.Gson;
@@ -36,7 +35,6 @@ import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
-
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
@@ -47,14 +45,19 @@ public class ApiClient {
 
     private OkHttpClient.Builder okBuilder;
     private Retrofit.Builder adapterBuilder;
-    private static JSON json = new JSON();
+    private static final JSON json = new JSON();
 
-    private String accessToken;
-    private String userAgent;
+    private static String accessToken;
+    private static String userAgent;
+    private static final String clientHeaderName = "x-aspose-client";
+    private static final String clientVersionHeaderName = "x-aspose-client-version";
+    private static final String clientHeaderValue = "aspose.html-cloud java sdk";
+    private static final String clientVersionHeaderValue = "20.7.0";
 
-    public ApiClient() {
-    	accessToken = ApiClient.getAccessToken();
-    	userAgent = Configuration.getUserAgent();
+    public ApiClient()
+    {
+        userAgent = Configuration.getUserAgent();
+        accessToken = ApiClient.getAccessToken();
         createDefaultAdapter();
     }
 
@@ -79,7 +82,9 @@ public class ApiClient {
                     // Request customization: add request headers
                     Request.Builder requestBuilder = original.newBuilder()
                             .addHeader("Authorization", accessToken)
-                            .addHeader("User-Agent", userAgent);
+							.addHeader("User-Agent", userAgent)
+							.addHeader(clientHeaderName, clientHeaderValue)
+							.addHeader(clientVersionHeaderName, clientVersionHeaderValue);
 
                     //ToDo: Kestrel decode %2F('/') and %5C ('\') to '/' bug
                     String orignUrl = original.url().toString();

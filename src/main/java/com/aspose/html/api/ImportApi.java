@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="ImportApi.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,13 +24,18 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
 package com.aspose.html.api;
 
 import okhttp3.MultipartBody;
-import retrofit2.Call;
-import retrofit2.http.*;
 import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Multipart;
+import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Part;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ImportApi {
     /**
@@ -39,7 +44,7 @@ public interface ImportApi {
      * @param name Document name. (required)
      * @param folder Source document folder. (optional)
      * @param storage Source document storage. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @GET("html/{name}/import/md")
     Call<ResponseBody> GetConvertMarkdownToHtml(
@@ -48,7 +53,6 @@ public interface ImportApi {
             @Query("storage") String storage
     );
 
-
     /**
      * Converts the Markdown document (located on storage) to HTML and uploads resulting file to storage by specified path.
      *
@@ -56,7 +60,7 @@ public interface ImportApi {
      * @param outPath Full resulting file path in the storage (ex. /folder1/folder2/result.html) (required)
      * @param folder The source document folder. (optional)
      * @param storage The source and resulting document storage. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @PUT("html/{name}/import/md")
     Call<ResponseBody> PutConvertMarkdownToHtml(
@@ -66,14 +70,13 @@ public interface ImportApi {
             @Query("storage") String storage
     );
 
-
     /**
      * Converts the Markdown document (in request content) to HTML and uploads resulting file to storage by specified path.
      *
      * @param file A file to be converted. (required)
      * @param outPath Full resulting file path in the storage (ex. /folder1/folder2/result.html) (required)
      * @param storage The source and resulting document storage. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @Multipart
     @POST("html/import/md")

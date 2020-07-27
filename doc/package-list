@@ -1,5 +1,3 @@
 com.aspose.html
 com.aspose.html.api
-com.aspose.storage
-com.aspose.storage.api
-com.aspose.storage.model
+com.aspose.html.model

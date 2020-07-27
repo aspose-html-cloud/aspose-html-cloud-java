@@ -13,55 +13,90 @@ Building the API client library requires [Maven](https://maven.apache.org/) to b
 To use Aspose HTML for Cloud SDK you need to register an account with [Aspose Cloud](https://www.aspose.cloud/) and lookup/create App Key and SID at [Cloud Dashboard](https://dashboard.aspose.cloud/#/apps). There is free quota available. For more details, see [Aspose Cloud Pricing](https://purchase.aspose.cloud/pricing).
 
 ## Installation
-To install the API client library to your local Maven repository, simply execute:
 
-```shell
-mvn install
-```
-
-To deploy it to a remote Maven repository instead, configure the settings of the repository and execute:
-
-```shell
-mvn deploy
-```
-
-Refer to the [official documentation](https://maven.apache.org/plugins/maven-deploy-plugin/usage.html) for more information.
-
+Get ready package or build from source.
 ### Maven users
 Add this dependency to your project's POM:
 
 ```xml
-<dependency>
-    <groupId>com.aspose</groupId>
-    <artifactId>aspose-html-cloud</artifactId>
-    <version>19.5.0</version>
-    <scope>compile</scope>
-</dependency>
+<repositories>
+    ...
+	<repository>
+		<id>AsposeJavaAPI</id>
+		<name>Aspose Java API</name>
+		<url>https://repository.aspose.cloud/repo/</url>
+	</repository>
+	...
+</repositories>
+
+<dependencies>
+     ...
+	<dependency>
+		<groupId>com.aspose</groupId>
+		<artifactId>aspose-html-cloud</artifactId>
+		<version>20.7.0</version>
+		<scope>compile</scope>
+	</dependency>
+	...
+</dependencies>
 ```
 
-### Others
-
-At first generate the JAR by executing:
-
-    mvn package -DskipTests
-
-Then manually install the following JARs:
-
-* target/aspose-html-cloud-19.5.0.jar
-* target/lib/*.jar
 
 ### Sample usage
 ```java
-import com.aspose.html.client.invoker.*;
-import com.aspose.html.client.invoker.auth.*;
-import com.aspose.html.client.api.ConversionApi;
+package com.aspose.test_package;
 
 import java.io.File;
-import java.util.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import com.aspose.html.ApiClient;
+import com.aspose.html.Configuration;
+import com.aspose.html.api.ConversionApi;
+import com.aspose.html.api.StorageApi;
+import com.aspose.html.model.FilesUploadResult;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Response;
 
-public class ConversionApiExample {
+public class App {
+    
+    // Helper method save the response body to the destination directory
+    public static long saveToDisc(ResponseBody body, String fileName) {
+
+        File savedFile = new File(Configuration.getTestDstDir() + File.separator + fileName);
+        long fileSizeDownloaded = 0;
+        
+        try (InputStream inputStream = body.byteStream();
+             OutputStream outputStream = new FileOutputStream(savedFile))
+        {
+            byte[] fileReader = new byte[4096];
+
+            while (true) {
+                int read = inputStream.read(fileReader);
+                if (read == -1) break;
+
+                outputStream.write(fileReader, 0, read);
+                fileSizeDownloaded += read;
+            }
+            outputStream.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return fileSizeDownloaded;
+    }
+
+ 
 
     public static void main(String[] args) {
+	
+// Get keys from aspose site.
+// There is free quota available. 
+// For more details, see https://purchase.aspose.cloud/pricing
 
         Configuration.setAPI_KEY("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         Configuration.setAPP_SID("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
@@ -69,31 +104,62 @@ public class ConversionApiExample {
         Configuration.setAuthPath("https://api.aspose.cloud/connect/token");
         Configuration.setUserAgent("WebKit");
         Configuration.setDebug(true);
+        Configuration.setTestSrcDir("testdata");
+        Configuration.setTestDstDir("testresult");
 
-        ConversionApi api = new ApiClient().createService(ConversionApi.class);
-      
-        String name = "name_example.html"; // String | Document name.
-        String outFormat = "jpg"; // String | Resulting image format.
-        Integer width = 800; // Integer | Resulting image width. 
-        Integer height = 1000; // Integer | Resulting image height. 
-        Integer leftMargin = 10; // Integer | Left resulting image margin.
-        Integer rightMargin = 10; // Integer | Right resulting image margin.
-        Integer topMargin = 10; // Integer | Top resulting image margin.
-        Integer bottomMargin = 10; // Integer | Bottom resulting image margin.
-        Integer resolution = 300; // Integer | Resolution of resulting image.
-        String folder = "folder_example"; // String | The document folder.
-        String storage = "storage_example"; // String | The document storage.
+        String name = "test.html";// Document name. Place the html document in the folder "testdata".
+        String outFormat = "jpg"; // Convert to jpg
+        Integer width = 800; // Resulting image width. 
+        Integer height = 1000; // Resulting image height. 
+        Integer leftMargin = 10; // Left resulting image margin.
+        Integer rightMargin = 10; // Right resulting image margin.
+        Integer topMargin = 10; // Top resulting image margin.
+        Integer bottomMargin = 10; // Bottom resulting image margin.
+        Integer resolution = 300; // Resolution of resulting image.
+        String folder = "/"; // The folder in the storage. Should exist.
+        String storage = null; // Name of the storage. null
+        
+        // Creating API for need operations
+        ConversionApi conversionApi = new ApiClient().createService(ConversionApi.class);
+        StorageApi storageApi = new ApiClient().createService(StorageApi.class);
+        
+
         try {
-            File result = apiInstance.GetConvertDocumentToImage(name, outFormat, width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage);
+            
+            // Upload file to storage
+            // Test file in the "/testdata" folder in the root of the project
+            File f = new File(Configuration.getTestSrcDir(), name);
 
-    		//Save to test directory
-    		File copyFile = new File("~/testdir/test.zip");
-    		result.renameTo(copyFile);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ConversionApi#GetConvertDocumentToImage");
-            e.printStackTrace();
-        }
-    }
+            if(!f.exists()) {
+                System.out.println("file not found");
+                throw new RuntimeException("Test file not found");
+            }
+            
+            RequestBody requestBody = RequestBody.create( MediaType.parse("multipart/form-data"), f);
+            MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData("file", f.getName(), requestBody);
+
+            // Upload document to storage
+            Call<FilesUploadResult> callUpload = storageApi.uploadFile(folder + File.separator + name, fileToUpload, null);
+            Response<FilesUploadResult> res = callUpload.execute();
+            System.out.println("Executed is successful = " + res.isSuccessful());  
+                        
+            // Prepare call execute
+            Call<ResponseBody> call = conversionApi.GetConvertDocumentToImage(name, outFormat, width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage);
+     
+            // Execute request
+            Response<ResponseBody> img = call.execute();
+             
+            // Get body from response
+            ResponseBody answer = img.body();
+            
+            // Save to test directory
+            long result = saveToDisc(answer, "test.zip");
+            System.out.println("Result size = " + result);
+                
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+     }
 }
 ```
 
@@ -124,12 +190,14 @@ Method | HTTP request | Description
 **PostConvertDocumentInRequestToMarkdown** | **POST** /html/convert/md | Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
 **PutConvertDocumentToMarkdown** | **PUT** /html/{name}/convert/md | Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
 
+
 ## ImportApi
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 **GetConvertMarkdownToHtml** | **GET** /html/{name}/import/md | Converts the Markdown document (located on storage) to HTML and returns resulting file in response content.
 **PostConvertMarkdownInRequestToHtml** | **POST** /html/{name}/import/md | Converts the Markdown document (in request content) to HTML and uploads resulting file to storage by specified path.
 **PutConvertMarkdownToHtml** | **PUT** /html/import/md | Converts the Markdown document (located on storage) to HTML and uploads resulting file to storage by specified path.
+
 
 ## DocumentApi
 Method | HTTP request | Description
@@ -142,6 +210,7 @@ Method | HTTP request | Description
 **GetDocumentImages** | **GET** html/{name}/images/all | Return all HTML document images packaged as a ZIP archive.
 **GetDocumentImagesByUrl** | **GET** html/images/all | Return all HTML page images packaged as a ZIP archive by the source page URL.
 
+
 ## TemplateMergeApi    
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -149,10 +218,61 @@ Method | HTTP request | Description
 **PostMergeHtmlTemplate** | **POST** /html/{templateName}/merge | Populate HTML document template with data from the request body. Result document will be saved to storage.
 
 
+## SeoApi    
+Method | HTTP request | Description
+------------- | ------------- | -------------
+**GetSeoWarning** | **GET** /html/seo | Page analysis and return of SEO warnings.
+**GetHtmlWarning** | **GET** /html/validator | Checks the markup validity of Web documents in HTML, XHTML, etc.
+
+
+## StorageApi
+Method | HTTP request | Description
+------------- | ------------- | -------------
+**downloadFile** | **GET** /html/storage/file/{path} | Download file from storage.
+**uploadFile** | **PUT** /html/storage/file/{path} | Upload file to storage.
+**moveFile** | **PUT** /html/storage/file/move/{srcPath} | Move file in storage.
+**deleteFile** | **DELETE** /html/storage/file/{path} | Delete file in the storage.
+**createFolder** | **PUT** /html/storage/folder/{path} | Create the folder in the storage.
+**moveFolder** | **PUT** /html/storage/folder/move/{srcPath} | Move folder in the storage.
+**deleteFolder** | **DELETE** /html/storage/folder/{path} | Delete folder in the storage.
+**getFilesList** | **GET** /html/storage/folder/{path} | Get all files and folders within a folder.
+**getDiscUsage** | **GET** /html/storage/disc | Get disc usage in the storage.
+**objectExists** | **GET** /html/storage/exist/{path} | Check if file or folder exists.
+**storageExists** | **GET** /html/storage/{storageName}/exist | Check if storage exists.
+**getFileVersions** | **GET** /html/storage/version/{path} | Get file versions in the storage.
+
+
+## Build from source
+To install the API client library to your local Maven repository, simply execute from root of the git folder:
+
+```shell
+mvn install -DskipTests
+```
+
+To deploy it to a remote Maven repository instead, configure the settings of the repository and execute:
+
+```shell
+mvn deploy
+```
+
+Refer to the [official documentation](https://maven.apache.org/plugins/maven-deploy-plugin/usage.html) for more information.
+
+### Others
+
+At first generate the JAR by executing:
+
+    mvn package -DskipTests
+
+Then manually install the following JARs:
+
+* target/aspose-html-cloud-20.7.0.jar
+* target/lib/*.jar
+
 ## Recommendation
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
+
 
 ### Examples
 [Tests](./src/test/java/com/aspose/html/client/api) contain various examples of using the Aspose.HTML SDK.
 
-[Docs](./doc/) Full javadoc for Aspose.HTML Api SDK
+[Docs](./doc/) Full javadoc for Aspose.HTML Api SDK in html format.

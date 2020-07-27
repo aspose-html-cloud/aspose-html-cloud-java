@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TemplateMergeApi.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,7 +24,6 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
 package com.aspose.html.api;
 
 import okhttp3.MultipartBody;
@@ -41,7 +40,7 @@ public interface TemplateMergeApi {
    * @param options Template merge options: reserved for further implementation. (optional)
    * @param folder The template document folder. (optional)
    * @param storage The template document and data source storage. (optional)
-   * @return Call&lt;ResponseBody&gt;
+   * @return Call &lt;ResponseBody&gt;
    */
   @Headers({
     "Content-Type:application/json"
@@ -64,7 +63,7 @@ public interface TemplateMergeApi {
    * @param options Template merge options: reserved for further implementation. (optional)
    * @param folder The template document folder. (optional)
    * @param storage The template document and data source storage. (optional)
-   * @return Call&lt;ResponseBody&gt;
+   * @return Call &lt;ResponseBody&gt;
    */
   @Multipart
   @POST("html/{templateName}/merge")
@@ -76,5 +75,4 @@ public interface TemplateMergeApi {
     @Query("folder") String folder,
     @Query("storage") String storage
   );
-
 }
