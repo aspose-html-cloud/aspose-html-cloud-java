@@ -70,127 +70,44 @@ Add this dependency to your project's POM:
 ```
 
 
-### Sample usage
+## HTML to JPG in Java
+
 ```java
-package com.aspose.test_package;
+	// Get your ClientId and ClientSecret from https://dashboard.aspose.cloud (free registration required).
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import com.aspose.html.ApiClient;
-import com.aspose.html.Configuration;
-import com.aspose.html.api.ConversionApi;
-import com.aspose.html.api.StorageApi;
-import com.aspose.html.model.FilesUploadResult;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Response;
+	Configuration.setAPP_SID("MY_CLIENT_ID");
+	Configuration.setAPI_KEY("MY_CLIENT_SECRET");
+	Configuration.setBasePath("https://api.aspose.cloud/v3.0");
+	Configuration.setAuthPath("https://api.aspose.cloud/connect/token");
+	Configuration.setUserAgent("WebKit");
+	Configuration.setDebug(true);
+	Configuration.setTestSrcDir("My_Source_Folder");
+	Configuration.setTestDstDir("My_Output_Folder");
 
-public class App {
+	ConversionApi conversionApi = new ApiClient().createService(ConversionApi.class);
+	
+	String name = "test.html";// Document name. Place the html document in the folder "testdata".
+	String outFormat = "jpg"; // Convert to jpg
+	
+	Integer width = 800; // Resulting image width.
+	Integer height = 1000; // Resulting image height.
+	Integer leftMargin = 10; // Left resulting image margin.
+	Integer rightMargin = 10; // Right resulting image margin.
+	Integer topMargin = 10; // Top resulting image margin.
+	Integer bottomMargin = 10; // Bottom resulting image margin.
+	Integer resolution = 300; // Resolution of resulting image.
+	String folder = "/"; // The folder in the storage. Should exist.
+	String storage = "My_Storage_Name"; // Name of the storage. null
+	
+	// Prepare call execute
+	Call<ResponseBody> call = conversionApi.GetConvertDocumentToImage(name, outFormat, width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage);
 
-    // Helper method save the response body to the destination directory
-    public static long saveToDisc(ResponseBody body, String fileName) {
+	// Execute request
+	Response<ResponseBody> img = call.execute();
 
-        File savedFile = new File(Configuration.getTestDstDir() + File.separator + fileName);
-        long fileSizeDownloaded = 0;
-
-        try (InputStream inputStream = body.byteStream();
-             OutputStream outputStream = new FileOutputStream(savedFile))
-        {
-            byte[] fileReader = new byte[4096];
-
-            while (true) {
-                int read = inputStream.read(fileReader);
-                if (read == -1) break;
-
-                outputStream.write(fileReader, 0, read);
-                fileSizeDownloaded += read;
-            }
-            outputStream.flush();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return fileSizeDownloaded;
-    }
-
-
-
-    public static void main(String[] args) {
-
-// Get keys from aspose site.
-// There is free quota available.
-// For more details, see https://purchase.aspose.cloud/pricing
-
-        Configuration.setAPI_KEY("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-        Configuration.setAPP_SID("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
-        Configuration.setBasePath("https://api.aspose.cloud/v3.0");
-        Configuration.setAuthPath("https://api.aspose.cloud/connect/token");
-        Configuration.setUserAgent("WebKit");
-        Configuration.setDebug(true);
-        Configuration.setTestSrcDir("testdata");
-        Configuration.setTestDstDir("testresult");
-
-        String name = "test.html";// Document name. Place the html document in the folder "testdata".
-        String outFormat = "jpg"; // Convert to jpg
-        Integer width = 800; // Resulting image width.
-        Integer height = 1000; // Resulting image height.
-        Integer leftMargin = 10; // Left resulting image margin.
-        Integer rightMargin = 10; // Right resulting image margin.
-        Integer topMargin = 10; // Top resulting image margin.
-        Integer bottomMargin = 10; // Bottom resulting image margin.
-        Integer resolution = 300; // Resolution of resulting image.
-        String folder = "/"; // The folder in the storage. Should exist.
-        String storage = null; // Name of the storage. null
-
-        // Creating API for need operations
-        ConversionApi conversionApi = new ApiClient().createService(ConversionApi.class);
-        StorageApi storageApi = new ApiClient().createService(StorageApi.class);
-
-
-        try {
-
-            // Upload file to storage
-            // Test file in the "/testdata" folder in the root of the project
-            File f = new File(Configuration.getTestSrcDir(), name);
-
-            if(!f.exists()) {
-                System.out.println("file not found");
-                throw new RuntimeException("Test file not found");
-            }
-
-            RequestBody requestBody = RequestBody.create( MediaType.parse("multipart/form-data"), f);
-            MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData("file", f.getName(), requestBody);
-
-            // Upload document to storage
-            Call<FilesUploadResult> callUpload = storageApi.uploadFile(folder + File.separator + name, fileToUpload, null);
-            Response<FilesUploadResult> res = callUpload.execute();
-            System.out.println("Executed is successful = " + res.isSuccessful());  
-
-            // Prepare call execute
-            Call<ResponseBody> call = conversionApi.GetConvertDocumentToImage(name, outFormat, width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage);
-
-            // Execute request
-            Response<ResponseBody> img = call.execute();
-
-            // Get body from response
-            ResponseBody answer = img.body();
-
-            // Save to test directory
-            long result = saveToDisc(answer, "test.zip");
-            System.out.println("Result size = " + result);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-     }
-}
+	// Get body from response
+	ResponseBody answer = img.body();
 ```
-
 # Documentation for API Endpoints
 All URIs are relative to *https://api.aspose.cloud/v3.0*
 
