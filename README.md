@@ -216,6 +216,13 @@ Then manually install the following JARs:
 ## Recommendation
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
 
+## Workflow
+
+In order to make changes in the repository, you need to:
+
+1. Create a branch with the proposed changes whose name matches the feature/* pattern.
+2. Create a pull request for this branch. It will be automatically assigned to a suitable reviewer.
+3. Once the request is approved, it can be merged.
 
 ## Aspose.HTML Cloud SDKs in Popular Languages
 
