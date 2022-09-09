@@ -187,5 +187,5 @@ It's recommended to create an instance of `ApiClient` per thread in a multithrea
 
 
 ### Examples
-[Tests](./src/test/java/com/aspose/html/client/api) contain various examples of using the Aspose.HTML SDK.
+[Tests](./src/test/java/com/aspose/html/tests/) contain various examples of using the Aspose.HTML SDK.
 
