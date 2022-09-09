@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="JSON.java">
-*   Copyright (c) 2020 Aspose.HTML for Cloud
+*   Copyright (c) 2022 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,14 +24,19 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
+
+
 package com.aspose.html;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.internal.bind.util.ISO8601Utils;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import com.google.gson.JsonElement;
 import io.gsonfire.GsonFireBuilder;
@@ -41,12 +46,14 @@ import org.threeten.bp.format.DateTimeFormatter;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.ParsePosition;
 import java.util.Date;
 import java.util.Map;
+import java.util.Optional;
 
 public class JSON {
     private Gson gson;
@@ -57,8 +64,7 @@ public class JSON {
     private final LocalDateTypeAdapter localDateTypeAdapter = new LocalDateTypeAdapter();
 
     public static GsonBuilder createGson() {
-        GsonFireBuilder fireBuilder = new GsonFireBuilder()
-        ;
+        GsonFireBuilder fireBuilder = new GsonFireBuilder();
         return fireBuilder.createGsonBuilder();
     }
 
@@ -80,6 +86,7 @@ public class JSON {
 
     public JSON() {
         gson = createGson()
+            .registerTypeAdapterFactory(OptionalTypeAdapter.FACTORY)
             .registerTypeAdapter(Date.class, dateTypeAdapter)
             .registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter)
             .registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter)
@@ -362,6 +369,50 @@ public class JSON {
     public JSON setSqlDateFormat(DateFormat dateFormat) {
         sqlDateTypeAdapter.setFormat(dateFormat);
         return this;
+    }
+
+    public static class OptionalTypeAdapter<E> extends TypeAdapter<Optional<E>> {
+
+        public static final TypeAdapterFactory FACTORY = new TypeAdapterFactory() {
+            @Override
+            public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+                Class<T> rawType = (Class<T>) type.getRawType();
+                if (rawType != Optional.class) {
+                    return null;
+                }
+                final ParameterizedType parameterizedType = (ParameterizedType) type.getType();
+                final Type actualType = parameterizedType.getActualTypeArguments()[0];
+                final TypeAdapter<?> adapter = gson.getAdapter(TypeToken.get(actualType));
+                return new OptionalTypeAdapter(adapter);
+            }
+        };
+        private final TypeAdapter<E> adapter;
+
+        public OptionalTypeAdapter(TypeAdapter<E> adapter) {
+
+            this.adapter = adapter;
+        }
+
+        @Override
+        public void write(JsonWriter out, Optional<E> value) throws IOException {
+            if(value.isPresent()){
+                adapter.write(out, value.get());
+            } else {
+                out.nullValue();
+            }
+        }
+
+        @Override
+        public Optional<E> read(JsonReader in) throws IOException {
+            final JsonToken peek = in.peek();
+            if(peek != JsonToken.NULL){
+                return Optional.ofNullable(adapter.read(in));
+            }
+
+            in.nextNull();
+            return Optional.empty();
+        }
+
     }
 
 }

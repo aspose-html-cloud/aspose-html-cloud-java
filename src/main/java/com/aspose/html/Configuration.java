@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="Configuration.java">
-*   Copyright (c) 2020 Aspose.HTML for Cloud
+*   Copyright (c) 2022 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -28,12 +28,11 @@ package com.aspose.html;
 
 public class Configuration {
 
-
-    static String basePath;
-    static String authPath;
+    static String basePath = "https://html-cloud-api.aspose.cloud";
+    static String authPath = "https://api.aspose.cloud/connect/token";
     static String apiKey;
     static String appSID;
-    static String defaultUserAgent;
+    static String defaultUserAgent = "WebKit";
     static String srcTest;
     static String dstTest;
     static boolean debug;

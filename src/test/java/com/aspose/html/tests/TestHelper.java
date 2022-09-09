@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TestHelper.java">
-*   Copyright (c) 2020 Aspose.HTML for Cloud
+*   Copyright (c) 2022 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -30,6 +30,10 @@ import com.aspose.html.ApiClient;
 import com.aspose.html.Configuration;
 import com.aspose.html.api.StorageApi;
 import com.aspose.html.model.FilesUploadResult;
+import com.aspose.html.model.ObjectExist;
+
+import org.junit.jupiter.api.Assertions;
+
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -40,8 +44,6 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static org.junit.Assert.assertTrue;
-
 public class TestHelper {
 
     private final static StorageApi storageApi = new ApiClient().createService(StorageApi.class);
@@ -49,13 +51,13 @@ public class TestHelper {
     public static void checkAndSave(Call<ResponseBody> call, String fileName) throws IOException {
 
         Response<ResponseBody> res = call.execute();
-        assertTrue(res.isSuccessful());
+        Assertions.assertTrue(res.isSuccessful());
 
         ResponseBody answer = res.body();
 
         //Save to test directory
         boolean result = TestHelper.saveToDisc(answer, fileName);
-        assertTrue(result);
+        Assertions.assertTrue(result);
     }
 
     public static boolean saveToDisc(String data, String fileName) {
@@ -76,14 +78,12 @@ public class TestHelper {
              OutputStream outputStream = new FileOutputStream(savedFile))
         {
             byte[] fileReader = new byte[4096];
-            long fileSizeDownloaded = 0;
 
             while (true) {
                 int read = inputStream.read(fileReader);
                 if (read == -1) break;
 
                 outputStream.write(fileReader, 0, read);
-                fileSizeDownloaded += read;
             }
             outputStream.flush();
             return true;
@@ -92,6 +92,47 @@ public class TestHelper {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public static boolean isExist(String path) {
+        return isExist(path, null, null);
+    }
+
+    public static boolean isExist(String path, String storageName) {
+        return isExist(path, storageName, null);
+    }
+
+    public static boolean isExist(String path, String storageName, String versionId) {
+        Call<ObjectExist> call = storageApi.objectExists(path,storageName, versionId);
+
+        Response<ObjectExist> res_exist = null;
+        try {
+            res_exist = call.execute();
+            return res_exist.body().isExists();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean deleteFile(String path) {
+        return deleteFile(path, null, null);
+    }
+
+    public static boolean deleteFile(String path, String storageName) {
+        return deleteFile(path, storageName, null);
+    }
+
+    public static boolean deleteFile(String path, String storageName, String versionId) {
+
+        try {
+            Call<ResponseBody> call = storageApi.deleteFile(path,storageName, versionId);
+            Response<ResponseBody> res_delete = call.execute();
+            return res_delete.isSuccessful();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public static boolean uploadFile(String fileName)  throws IOException {
@@ -111,9 +152,9 @@ public class TestHelper {
         MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData("file", f.getName(), requestBody);
 
         // Post document to storage
-        Call<FilesUploadResult> call = storageApi.uploadFile(uploadFolder + File.separator + fileName, fileToUpload, null);
+        Call<FilesUploadResult> call = storageApi.uploadFile(fileToUpload, uploadFolder + File.separator + fileName,  null);
         Response<FilesUploadResult> res = call.execute();
-        assertTrue(res.isSuccessful());
+        Assertions.assertTrue(res.isSuccessful());
         return res.isSuccessful();
     }
 }
