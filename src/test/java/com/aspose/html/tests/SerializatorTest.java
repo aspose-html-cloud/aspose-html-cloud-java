@@ -21,9 +21,8 @@ public class SerializatorTest {
                 .setLeftMargin(10)
                 .setRightMargin(10)
                 .setBottomMargin(10)
-                .setTopMargin(10)
-                .setResolution(300);
-        String expected = "{\"resolution\":300,\"width\":1000,\"height\":800,\"leftMargin\":10," +
+                .setTopMargin(10);
+        String expected = "{\"width\":1000,\"height\":800,\"leftMargin\":10," +
                 "\"rightMargin\":10,\"topMargin\":10,\"bottomMargin\":10}";
 
         String result = new JSON().getGson().toJson(source);
@@ -55,15 +54,15 @@ public class SerializatorTest {
     @Test
     public void OptionalPDFParamsAll(){
         ConversionOptions source = new PDFConversionOptions()
-                .setHeight(800)
-                .setWidth(1000)
-                .setLeftMargin(10)
-                .setRightMargin(10)
-                .setBottomMargin(10)
-                .setTopMargin(10)
+                .setWidth(5.8)
+                .setHeight(8.3)
+                .setTopMargin(0.5)
+                .setBottomMargin(0.5)
+                .setLeftMargin(0.5)
+                .setRightMargin(0.5)
                 .setQuality(95);
-        String expected = "{\"jpegQuality\":95,\"width\":1000,\"height\":800,\"leftMargin\":10," +
-                "\"rightMargin\":10,\"topMargin\":10,\"bottomMargin\":10}";
+        String expected = "{\"width\":5.8,\"height\":8.3,\"leftMargin\":0.5," +
+                "\"rightMargin\":0.5,\"topMargin\":0.5,\"bottomMargin\":0.5,\"jpegQuality\":95}";
 
         String result = new JSON().getGson().toJson(source);
         Assertions.assertEquals(expected,result);
@@ -93,14 +92,14 @@ public class SerializatorTest {
     @Test
     public void OptionalXPSParamsAll(){
         ConversionOptions source = new XPSConversionOptions()
-                .setHeight(800)
-                .setWidth(1000)
-                .setLeftMargin(10)
-                .setRightMargin(10)
-                .setBottomMargin(10)
-                .setTopMargin(10);
-        String expected = "{\"width\":1000,\"height\":800,\"leftMargin\":10," +
-                "\"rightMargin\":10,\"topMargin\":10,\"bottomMargin\":10}";
+                .setWidth(5.8)
+                .setHeight(8.3)
+                .setTopMargin(0.5)
+                .setBottomMargin(0.5)
+                .setLeftMargin(0.5)
+                .setRightMargin(0.5);
+        String expected = "{\"width\":5.8,\"height\":8.3,\"leftMargin\":0.5," +
+                "\"rightMargin\":0.5,\"topMargin\":0.5,\"bottomMargin\":0.5}";
 
         String result = new JSON().getGson().toJson(source);
         Assertions.assertEquals(expected,result);
@@ -112,7 +111,7 @@ public class SerializatorTest {
                 .setHeight(800)
                 .setWidth(1000);
 
-        String expected = "{\"width\":1000,\"height\":800}";
+        String expected = "{\"width\":1000.0,\"height\":800.0}";
 
         String result = new JSON().getGson().toJson(source);
         Assertions.assertEquals(expected,result);

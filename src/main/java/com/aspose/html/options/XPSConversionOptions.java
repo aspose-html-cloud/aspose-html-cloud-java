@@ -1,47 +1,51 @@
 package com.aspose.html.options;
 
-import com.aspose.html.model.OutputFormats;
-
 import java.util.Optional;
 
-public class XPSConversionOptions extends FixedLayoutConversionOptions{
+public class XPSConversionOptions implements ConversionOptions{
+    public Optional<Double> width = Optional.empty();
+    public Optional<Double> height = Optional.empty();
+    public Optional<Double> leftMargin = Optional.empty();
+    public Optional<Double> rightMargin = Optional.empty();
+    public Optional<Double> topMargin = Optional.empty();
+    public Optional<Double> bottomMargin = Optional.empty();
 
     public XPSConversionOptions()
     {
-        this.outputFormat = OutputFormats.XPS;
+
     }
 
-    public XPSConversionOptions setWidth(int width)
+    public XPSConversionOptions setWidth(double width)
     {
         this.width = Optional.of(width);
         return this;
     }
 
-    public XPSConversionOptions setHeight(int height)
+    public XPSConversionOptions setHeight(double height)
     {
         this.height = Optional.of(height);
         return this;
     }
 
-    public XPSConversionOptions setLeftMargin(int leftMargin)
+    public XPSConversionOptions setLeftMargin(double leftMargin)
     {
         this.leftMargin = Optional.of(leftMargin);
         return this;
     }
 
-    public XPSConversionOptions setRightMargin(int rightMargin)
+    public XPSConversionOptions setRightMargin(double rightMargin)
     {
         this.rightMargin = Optional.of(rightMargin);
         return this;
     }
 
-    public XPSConversionOptions setTopMargin(int topMargin)
+    public XPSConversionOptions setTopMargin(double topMargin)
     {
         this.topMargin = Optional.of(topMargin);
         return this;
     }
 
-    public XPSConversionOptions setBottomMargin(int bottomMargin)
+    public XPSConversionOptions setBottomMargin(double bottomMargin)
     {
         this.bottomMargin = Optional.of(bottomMargin);
         return this;

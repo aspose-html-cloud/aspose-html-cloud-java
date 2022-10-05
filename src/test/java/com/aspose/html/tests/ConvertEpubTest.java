@@ -26,9 +26,9 @@ public class ConvertEpubTest extends BaseTest{
 
     @ParameterizedTest(name = "{index} - epub -> {0} : local -> local")
     @ValueSource(strings = { "pdf", "xps", "docx", "jpeg", "bmp", "png", "tiff", "gif" })
-    public void convertEpubLocalToLocalTest(String ext) {
+    public void convertEpubLocalToLocal(String ext) {
 
-        String outputFile = Configuration.getTestDstDir() + File.separator + "test." + ext;
+        String outputFile = Configuration.getTestDstDir() + File.separator + "convertEpubLocalToLocal." + ext;
 
         File f = new File(outputFile);
         if(f.exists()) f.delete();
@@ -44,9 +44,9 @@ public class ConvertEpubTest extends BaseTest{
 
     @ParameterizedTest(name = "{index} - epub -> {0} : local -> storage")
     @ValueSource(strings = { "pdf", "xps", "docx", "jpeg", "bmp", "png", "tiff", "gif" })
-    public void convertEpubLocalToStorageTest(String ext) {
+    public void convertEpubLocalToStorage(String ext) {
 
-        String outputFile = "LocalToStorageTest" + File.separator + "test." + ext;
+        String outputFile = "LocalToStorageTest" + File.separator + "convertEpubLocalToStorage." + ext;
 
         File f = new File(outputFile);
         if(f.exists()) f.delete();
@@ -63,23 +63,23 @@ public class ConvertEpubTest extends BaseTest{
     @Test
     public void convertEpubToPdfWithOptions() {
 
-        String outputFile = Configuration.getTestDstDir() + File.separator + "testWithOpt.pdf";
+        String outputFile = Configuration.getTestDstDir() + File.separator + "convertEpubToPdfWithOptions.pdf";
 
         File f = new File(outputFile);
         if(f.exists()) f.delete();
 
-        PDFConversionOptions opt = new PDFConversionOptions()
-                .setWidth(600)
-                .setHeight(900)
-                .setTopMargin(20)
-                .setBottomMargin(20)
-                .setLeftMargin(20)
-                .setRightMargin(20)
+        PDFConversionOptions opt_A5 = new PDFConversionOptions()
+                .setWidth(5.8)
+                .setHeight(8.3)
+                .setTopMargin(0.5)
+                .setBottomMargin(0.5)
+                .setLeftMargin(0.5)
+                .setRightMargin(0.5)
                 .setQuality(95);
 
         ConverterBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
-                .useOptions(opt)
+                .useOptions(opt_A5)
                 .saveToLocal(outputFile);
 
         ConversionResult result = api.convert(builder);
@@ -92,22 +92,22 @@ public class ConvertEpubTest extends BaseTest{
     @Test
     public void convertEpubToXpsWithOptions() {
 
-        String outputFile = Configuration.getTestDstDir() + File.separator + "testWithOpt.xps";
+        String outputFile = Configuration.getTestDstDir() + File.separator + "convertEpubToXpsWithOptions.xps";
 
         File f = new File(outputFile);
         if(f.exists()) f.delete();
 
-        XPSConversionOptions opt = new XPSConversionOptions()
-                .setWidth(600)
-                .setHeight(900)
-                .setTopMargin(20)
-                .setBottomMargin(20)
-                .setLeftMargin(20)
-                .setRightMargin(20);
+        XPSConversionOptions opt_A5 = new XPSConversionOptions()
+                .setWidth(5.8)
+                .setHeight(8.3)
+                .setTopMargin(0.5)
+                .setBottomMargin(0.5)
+                .setLeftMargin(0.5)
+                .setRightMargin(0.5);
 
         ConverterBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
-                .useOptions(opt)
+                .useOptions(opt_A5)
                 .saveToLocal(outputFile);
 
         ConversionResult result = api.convert(builder);
@@ -122,7 +122,7 @@ public class ConvertEpubTest extends BaseTest{
     @ValueSource(strings = { "jpeg", "bmp", "png", "tiff", "gif" })
     public void convertEpubToImageWithOptions(String ext) {
 
-        String outputFile = Configuration.getTestDstDir() + File.separator + "testWithOpt." + ext;
+        String outputFile = Configuration.getTestDstDir() + File.separator + "convertEpubToImageWithOptions." + ext;
 
         File f = new File(outputFile);
         if(f.exists()) f.delete();
@@ -133,8 +133,7 @@ public class ConvertEpubTest extends BaseTest{
                 .setTopMargin(20)
                 .setBottomMargin(20)
                 .setLeftMargin(20)
-                .setRightMargin(20)
-                .setResolution(300);
+                .setRightMargin(20);
 
         ConverterBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)

@@ -73,19 +73,19 @@ public class App {
 
         File f = new File(outputFile);
         if(f.exists()) f.delete();
-		
-        PDFConversionOptions opt = new PDFConversionOptions()
-                .setWidth(600)
-                .setHeight(900)
-                .setTopMargin(20)
-                .setBottomMargin(20)
-                .setLeftMargin(20)
-                .setRightMargin(20)
+
+        PDFConversionOptions opt_A5 = new PDFConversionOptions()
+                .setWidth(5.8)
+                .setHeight(8.3)
+                .setTopMargin(0.5)
+                .setBottomMargin(0.5)
+                .setLeftMargin(0.5)
+                .setRightMargin(0.5)
                 .setQuality(95);
-				
+
         ConverterBuilder builder = new ConverterBuilder()
                 .fromUrl(inputUrl)
-				.useOptions(opt)
+                .useOptions(opt)
                 .saveToLocal(outputFile);
 
         ConversionResult result = api.convert(builder);
@@ -125,17 +125,13 @@ All URIs are relative to *https://api.aspose.cloud/
 
 Specifies the output format for conversion.
 
-| Options                                                                          | Description                                                               |
-|----------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| [GIFConversionOptions](docs/ConversionOptions.md#GIFConversionOptions)           | Converting source file or URL to single or several images in GIF format.  |  
-| [JPEGConversionOptions](docs/ConversionOptions.md#JPEGConversionOptions)         | Converting source file or URL to single or several images in JPEG format. | 
-| [PNGConversionOptions](docs/ConversionOptions.md#PNGConversionOptions)           | Converting source file or URL to single or several images in PNG format.  |
-| [TIFFConversionOptions](docs/ConversionOptions.md#TIFFConversionOptions)         | Converting source file or URL to single or several images in TIFF format. |
-| [BMPConversionOptions](docs/ConversionOptions.md#BMPConversionOptions)           | Converting source file or URL to single or several images in BMP format.  |
-| [PDFConversionOptions](docs/ConversionOptions.md#PDFConversionOptions)           | Converting source file or URL to PDF.                                     |
-| [XPSConversionOptions](docs/ConversionOptions.md#XPSConversionOptions)           | Converting source file or URL to XPS.                                     |
-| [DOCConversionOptions](docs/ConversionOptions.md#DOCConversionOptions)           | Converting source file or URL to DOCX.                                    |
-| [MarkdownConversionOptions](docs/ConversionOptions.md#MarkdownConversionOptions) | Converting source file or URL to Markdown.                                |
+| Options                                                                          | Description                                                   |
+|----------------------------------------------------------------------------------|---------------------------------------------------------------|
+| [ImageConversionOptions](docs/ConversionOptions.md#ImageConversionOptions)       | Converting source file or URL to single or several images.    |
+| [PDFConversionOptions](docs/ConversionOptions.md#PDFConversionOptions)           | Converting source file or URL to PDF.                         |
+| [XPSConversionOptions](docs/ConversionOptions.md#XPSConversionOptions)           | Converting source file or URL to XPS.                         |
+| [DOCConversionOptions](docs/ConversionOptions.md#DOCConversionOptions)           | Converting source file or URL to DOCX.                        |
+| [MarkdownConversionOptions](docs/ConversionOptions.md#MarkdownConversionOptions) | Converting source file or URL to Markdown.                    |
 
 ### SaveTo...
 

@@ -78,12 +78,14 @@ public class TestHelper {
              OutputStream outputStream = new FileOutputStream(savedFile))
         {
             byte[] fileReader = new byte[4096];
+            long fileSizeDownloaded = 0;
 
             while (true) {
                 int read = inputStream.read(fileReader);
                 if (read == -1) break;
 
                 outputStream.write(fileReader, 0, read);
+                fileSizeDownloaded += read;
             }
             outputStream.flush();
             return true;

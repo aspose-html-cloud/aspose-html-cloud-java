@@ -8,7 +8,6 @@ import com.aspose.html.model.ConversionResult;
 import com.aspose.html.options.ImageConversionOptions;
 import com.aspose.html.options.PDFConversionOptions;
 import com.aspose.html.options.XPSConversionOptions;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -28,7 +27,7 @@ public class ConvertHtmlTest extends BaseTest {
     @ValueSource(strings = { "pdf", "xps", "docx", "md", "mhtml", "jpeg", "bmp", "png", "tiff", "gif" })
     public void convertHtmlLocalToLocal(String ext) {
 
-        String outputFile = Configuration.getTestDstDir() + File.separator + "test." + ext;
+        String outputFile = Configuration.getTestDstDir() + File.separator + "convertHtmlLocalToLocal." + ext;
 
         File f = new File(outputFile);
         if(f.exists()) f.delete();
@@ -46,7 +45,7 @@ public class ConvertHtmlTest extends BaseTest {
     @ValueSource(strings = { "pdf", "xps", "docx", "md", "mhtml", "jpeg", "bmp", "png", "tiff", "gif" })
     public void convertHtmlLocalToStorage(String ext) {
 
-        String outputFile = "LocalToStorageTest" + File.separator + "test." + ext;
+        String outputFile = "LocalToStorageTest" + File.separator + "convertHtmlLocalToStorage." + ext;
 
         File f = new File(outputFile);
         if(f.exists()) f.delete();
@@ -64,7 +63,7 @@ public class ConvertHtmlTest extends BaseTest {
     @ValueSource(strings = { "pdf", "xps", "docx", "md", "mhtml", "jpeg", "bmp", "png", "tiff", "gif" })
     public void convertUrlToLocal(String ext) {
 
-        String outputFile = Configuration.getTestDstDir() + File.separator + "test." + ext;
+        String outputFile = Configuration.getTestDstDir() + File.separator + "convertUrlToLocal." + ext;
 
         File f = new File(outputFile);
         if(f.exists()) f.delete();
@@ -82,7 +81,7 @@ public class ConvertHtmlTest extends BaseTest {
     @ValueSource(strings = { "pdf", "xps", "docx", "md", "mhtml", "jpeg", "bmp", "png", "tiff", "gif" })
     public void convertUrlToStorage(String ext) {
 
-        String outputFile = "UrlToStorageTest" + File.separator + "test." + ext;
+        String outputFile = "UrlToStorageTest" + File.separator + "convertUrlToStorage." + ext;
 
         File f = new File(outputFile);
         if(f.exists()) f.delete();
@@ -101,23 +100,23 @@ public class ConvertHtmlTest extends BaseTest {
     @Test
     public void convertHtmlToPdfWithOptions() {
 
-        String outputFile = Configuration.getTestDstDir() + File.separator + "testWithOpt.pdf";
+        String outputFile = Configuration.getTestDstDir() + File.separator + "convertHtmlToPdfWithOptions.pdf";
 
         File f = new File(outputFile);
         if(f.exists()) f.delete();
 
-        PDFConversionOptions opt = new PDFConversionOptions()
-                .setWidth(600)
-                .setHeight(900)
-                .setTopMargin(20)
-                .setBottomMargin(20)
-                .setLeftMargin(20)
-                .setRightMargin(20)
+        PDFConversionOptions opt_A5 = new PDFConversionOptions()
+                .setWidth(5.8)
+                .setHeight(8.3)
+                .setTopMargin(0.5)
+                .setBottomMargin(0.5)
+                .setLeftMargin(0.5)
+                .setRightMargin(0.5)
                 .setQuality(95);
 
         ConverterBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
-                .useOptions(opt)
+                .useOptions(opt_A5)
                 .saveToLocal(outputFile);
 
         ConversionResult result = api.convert(builder);
@@ -130,22 +129,22 @@ public class ConvertHtmlTest extends BaseTest {
     @Test
     public void convertHtmlToXpsWithOptions() {
 
-        String outputFile = Configuration.getTestDstDir() + File.separator + "testWithOpt.xps";
+        String outputFile = Configuration.getTestDstDir() + File.separator + "convertHtmlToXpsWithOptions.xps";
 
         File f = new File(outputFile);
         if(f.exists()) f.delete();
 
-        XPSConversionOptions opt = new XPSConversionOptions()
-                .setWidth(600)
-                .setHeight(900)
-                .setTopMargin(20)
-                .setBottomMargin(20)
-                .setLeftMargin(20)
-                .setRightMargin(20);
+        XPSConversionOptions opt_A5 = new XPSConversionOptions()
+                .setWidth(5.8)
+                .setHeight(8.3)
+                .setTopMargin(0.5)
+                .setBottomMargin(0.5)
+                .setLeftMargin(0.5)
+                .setRightMargin(0.5);
 
         ConverterBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
-                .useOptions(opt)
+                .useOptions(opt_A5)
                 .saveToLocal(outputFile);
 
         ConversionResult result = api.convert(builder);
@@ -160,7 +159,7 @@ public class ConvertHtmlTest extends BaseTest {
     @ValueSource(strings = { "jpeg", "bmp", "png", "tiff", "gif" })
     public void convertHtmlToImageWithOptions(String ext) {
 
-        String outputFile = Configuration.getTestDstDir() + File.separator + "testWithOpt." + ext;
+        String outputFile = Configuration.getTestDstDir() + File.separator + "convertHtmlToImageWithOptions." + ext;
 
         File f = new File(outputFile);
         if(f.exists()) f.delete();
@@ -171,8 +170,7 @@ public class ConvertHtmlTest extends BaseTest {
                 .setTopMargin(20)
                 .setBottomMargin(20)
                 .setLeftMargin(20)
-                .setRightMargin(20)
-                .setResolution(300);
+                .setRightMargin(20);
 
         ConverterBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)

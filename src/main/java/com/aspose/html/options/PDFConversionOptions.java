@@ -1,49 +1,52 @@
 package com.aspose.html.options;
 
-import com.aspose.html.model.OutputFormats;
-
 import java.util.Optional;
 
-public class PDFConversionOptions extends FixedLayoutConversionOptions {
+public class PDFConversionOptions implements ConversionOptions {
 
+    public Optional<Double> width = Optional.empty();
+    public Optional<Double> height = Optional.empty();
+    public Optional<Double> leftMargin = Optional.empty();
+    public Optional<Double> rightMargin = Optional.empty();
+    public Optional<Double> topMargin = Optional.empty();
+    public Optional<Double> bottomMargin = Optional.empty();
     public Optional<Integer> jpegQuality = Optional.empty();
 
     public PDFConversionOptions()
     {
-        outputFormat = OutputFormats.PDF;
     }
 
-    public PDFConversionOptions setWidth(int width)
+    public PDFConversionOptions setWidth(double width)
     {
         this.width = Optional.of(width);
         return this;
     }
 
-    public PDFConversionOptions setHeight(int height)
+    public PDFConversionOptions setHeight(double height)
     {
         this.height = Optional.of(height);
         return this;
     }
 
-    public PDFConversionOptions setLeftMargin(int leftMargin)
+    public PDFConversionOptions setLeftMargin(double leftMargin)
     {
         this.leftMargin = Optional.of(leftMargin);
         return this;
     }
 
-    public PDFConversionOptions setRightMargin(int rightMargin)
+    public PDFConversionOptions setRightMargin(double rightMargin)
     {
         this.rightMargin = Optional.of(rightMargin);
         return this;
     }
 
-    public PDFConversionOptions setTopMargin(int topMargin)
+    public PDFConversionOptions setTopMargin(double topMargin)
     {
         this.topMargin = Optional.of(topMargin);
         return this;
     }
 
-    public PDFConversionOptions setBottomMargin(int bottomMargin)
+    public PDFConversionOptions setBottomMargin(double bottomMargin)
     {
         this.bottomMargin = Optional.of(bottomMargin);
         return this;

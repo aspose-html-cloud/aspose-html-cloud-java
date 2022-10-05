@@ -3,9 +3,14 @@ package com.aspose.html.options;
 
 import java.util.Optional;
 
-public class ImageConversionOptions extends FixedLayoutConversionOptions{
+public class ImageConversionOptions implements ConversionOptions{
 
-    public Optional<Integer> resolution = Optional.empty();
+    public Optional<Integer> width = Optional.empty();
+    public Optional<Integer> height = Optional.empty();
+    public Optional<Integer> leftMargin = Optional.empty();;
+    public Optional<Integer> rightMargin = Optional.empty();;
+    public Optional<Integer> topMargin = Optional.empty();;
+    public Optional<Integer> bottomMargin = Optional.empty();;
 
     public ImageConversionOptions setWidth(int width)
     {
@@ -40,12 +45,6 @@ public class ImageConversionOptions extends FixedLayoutConversionOptions{
     public ImageConversionOptions setBottomMargin(int bottomMargin)
     {
         this.bottomMargin = Optional.of(bottomMargin);
-        return this;
-    }
-
-    public ImageConversionOptions setResolution(int resolution)
-    {
-        this.resolution = Optional.of(resolution);
         return this;
     }
 

@@ -1,24 +1,24 @@
 package com.aspose.html.tests;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.aspose.html.Configuration;
+import com.aspose.html.ConverterBuilder;
 import com.aspose.html.model.ConversionResult;
 import com.aspose.html.options.ImageConversionOptions;
 import com.aspose.html.options.PDFConversionOptions;
 import com.aspose.html.options.XPSConversionOptions;
-import com.aspose.html.Configuration;
-import com.aspose.html.ConverterBuilder;
-
-import java.io.File;
-import java.nio.file.Paths;
-import java.util.concurrent.CompletableFuture;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ConvertHtmlAsyncTest extends BaseTest{
+import java.io.File;
+import java.nio.file.Paths;
+import java.util.concurrent.CompletableFuture;
+
+public class ConvertHtmlTestAsync extends BaseTest{
 
     @BeforeAll
     public static void init(){
@@ -30,7 +30,7 @@ public class ConvertHtmlAsyncTest extends BaseTest{
     @ValueSource(strings = { "pdf", "xps", "docx", "md", "mhtml", "jpeg", "bmp", "png", "tiff", "gif" })
     public void convertHtmlLocalToLocalAsync(String ext) {
 
-        String outputFile = Configuration.getTestDstDir() + File.separator + "testAsync." + ext;
+        String outputFile = Configuration.getTestDstDir() + File.separator + "convertHtmlLocalToLocalAsync." + ext;
 
         File f = new File(outputFile);
         if(f.exists()) f.delete();
@@ -59,7 +59,7 @@ public class ConvertHtmlAsyncTest extends BaseTest{
     @ValueSource(strings = { "pdf", "xps", "docx", "md", "mhtml", "jpeg", "bmp", "png", "tiff", "gif" })
     public void convertHtmlLocalToStorageAsync(String ext) {
 
-        String outputFile = "LocalToStorageTest" + File.separator + "testAsync." + ext;
+        String outputFile = "LocalToStorageTest" + File.separator + "convertHtmlLocalToStorageAsync." + ext;
 
         File f = new File(outputFile);
         if(f.exists()) f.delete();
@@ -72,7 +72,7 @@ public class ConvertHtmlAsyncTest extends BaseTest{
                 cf = CompletableFuture.supplyAsync(() -> api.convert(builder));
 
         cf.whenComplete((result, err) -> {
-        	assertTrue(TestHelper.isExist(result.getFile()));
+            assertTrue(TestHelper.isExist(result.getFile()));
             TestHelper.deleteFile(result.getFile());
         });
 
@@ -83,7 +83,7 @@ public class ConvertHtmlAsyncTest extends BaseTest{
     @ValueSource(strings = { "pdf", "xps", "docx", "md", "mhtml", "jpeg", "bmp", "png", "tiff", "gif" })
     public void convertUrlToLocalAsync(String ext) {
 
-        String outputFile = Configuration.getTestDstDir() + File.separator + "testAsync." + ext;
+        String outputFile = Configuration.getTestDstDir() + File.separator + "convertUrlToLocalAsync." + ext;
 
         File f = new File(outputFile);
         if(f.exists()) f.delete();
@@ -106,7 +106,7 @@ public class ConvertHtmlAsyncTest extends BaseTest{
     @ValueSource(strings = { "pdf", "xps", "docx", "md", "mhtml", "jpeg", "bmp", "png", "tiff", "gif" })
     public void convertUrlToStorageAsync(String ext) {
 
-        String outputFile = "UrlToStorageTest" + File.separator + "testAsync." + ext;
+        String outputFile = "UrlToStorageTest" + File.separator + "convertUrlToStorageAsync." + ext;
 
         File f = new File(outputFile);
         if(f.exists()) f.delete();
@@ -129,23 +129,23 @@ public class ConvertHtmlAsyncTest extends BaseTest{
     @Test
     public void convertHtmlToPdfWithOptionsAsync() {
 
-        String outputFile = Configuration.getTestDstDir() + File.separator + "testWithOptAsync.pdf";
+        String outputFile = Configuration.getTestDstDir() + File.separator + "convertHtmlToPdfWithOptionsAsync.pdf";
 
         File f = new File(outputFile);
         if(f.exists()) f.delete();
 
-        PDFConversionOptions opt = new PDFConversionOptions()
-                .setWidth(600)
-                .setHeight(900)
-                .setTopMargin(20)
-                .setBottomMargin(20)
-                .setLeftMargin(20)
-                .setRightMargin(20)
+        PDFConversionOptions opt_A5 = new PDFConversionOptions()
+                .setWidth(5.8)
+                .setHeight(8.3)
+                .setTopMargin(0.5)
+                .setBottomMargin(0.5)
+                .setLeftMargin(0.5)
+                .setRightMargin(0.5)
                 .setQuality(95);
 
         ConverterBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
-                .useOptions(opt)
+                .useOptions(opt_A5)
                 .saveToLocal(outputFile);
 
         CompletableFuture<ConversionResult>
@@ -163,22 +163,22 @@ public class ConvertHtmlAsyncTest extends BaseTest{
     @Test
     public void convertHtmlToXpsWithOptions() {
 
-        String outputFile = Configuration.getTestDstDir() + File.separator + "testWithOptAsync.xps";
+        String outputFile = Configuration.getTestDstDir() + File.separator + "convertHtmlToXpsWithOptions.xps";
 
         File f = new File(outputFile);
         if(f.exists()) f.delete();
 
-        XPSConversionOptions opt = new XPSConversionOptions()
-                .setWidth(600)
-                .setHeight(900)
-                .setTopMargin(20)
-                .setBottomMargin(20)
-                .setLeftMargin(20)
-                .setRightMargin(20);
+        XPSConversionOptions opt_A5 = new XPSConversionOptions()
+                .setWidth(5.8)
+                .setHeight(8.3)
+                .setTopMargin(0.5)
+                .setBottomMargin(0.5)
+                .setLeftMargin(0.5)
+                .setRightMargin(0.5);
 
         ConverterBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
-                .useOptions(opt)
+                .useOptions(opt_A5)
                 .saveToLocal(outputFile);
 
         CompletableFuture<ConversionResult>
@@ -198,7 +198,7 @@ public class ConvertHtmlAsyncTest extends BaseTest{
     @ValueSource(strings = { "jpeg", "bmp", "png", "tiff", "gif" })
     public void convertHtmlToImageWithOptionsAsync(String ext) {
 
-        String outputFile = Configuration.getTestDstDir() + File.separator + "testWithOptAsync." + ext;
+        String outputFile = Configuration.getTestDstDir() + File.separator + "convertHtmlToImageWithOptionsAsync." + ext;
 
         File f = new File(outputFile);
         if(f.exists()) f.delete();
@@ -209,8 +209,7 @@ public class ConvertHtmlAsyncTest extends BaseTest{
                 .setTopMargin(20)
                 .setBottomMargin(20)
                 .setLeftMargin(20)
-                .setRightMargin(20)
-                .setResolution(300);
+                .setRightMargin(20);
 
         ConverterBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
@@ -233,7 +232,7 @@ public class ConvertHtmlAsyncTest extends BaseTest{
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
-            	assertTrue(false);
+                assertTrue(false);
             }
         }
     }

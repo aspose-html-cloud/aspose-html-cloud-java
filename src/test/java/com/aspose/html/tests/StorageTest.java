@@ -26,16 +26,15 @@
 */
 package com.aspose.html.tests;
 
+import com.aspose.html.ApiClient;
+import com.aspose.html.Configuration;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import okhttp3.MultipartBody;
 
-import com.aspose.html.ApiClient;
-import com.aspose.html.Configuration;
 import com.aspose.html.api.StorageApi;
 import com.aspose.html.model.DiscUsage;
-import com.aspose.html.model.FileVersions;
 import com.aspose.html.model.FilesList;
 import com.aspose.html.model.FilesUploadResult;
 import com.aspose.html.model.ObjectExist;
@@ -281,7 +280,7 @@ public class StorageTest extends BaseTest{
             Call<Void> call_response = storageApi.deleteFolder(folderName, null, true);
 
             Response<Void> res1 = call_response.execute();
-            Assertions.assertTrue(res1.isSuccessful());
+            Assertions.assertTrue(res.isSuccessful());
 
             //Ensure is folder deleted
             call_exist = storageApi.objectExists(folderName,null, null);
@@ -303,6 +302,7 @@ public class StorageTest extends BaseTest{
     public void storageExists(){
 
         String storageNotExist = "NotExistStorage";
+        String storageExist = "/";
 
         try {
             Call<StorageExist> call = storageApi.storageExists(storageNotExist);
@@ -318,7 +318,7 @@ public class StorageTest extends BaseTest{
 //            assertTrue(res.isSuccessful());
 
 //            result = res.body();
-//            assertTrue("Storage exist, but result is not exist", result.isExists());
+//            assertTrue("Stotage exist, but result is not exist", result.isExists());
         } catch (Exception ex) {
             ex.printStackTrace();
             Assertions.fail();
@@ -419,5 +419,4 @@ public class StorageTest extends BaseTest{
             Assertions.fail();
         }
     }
-
 }

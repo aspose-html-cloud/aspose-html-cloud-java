@@ -16,6 +16,5 @@ public class BaseTest {
         Configuration.setTestSrcDir("sourceTest");
         Configuration.setTestDstDir("destTest");
         api = new HtmlApi("c8dda7d6445d82635b8797d1c8edd153", "2225baa2-097b-4731-9831-d0d56c28230f");
-
     }
 }

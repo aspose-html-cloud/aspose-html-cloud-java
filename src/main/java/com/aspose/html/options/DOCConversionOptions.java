@@ -2,39 +2,46 @@ package com.aspose.html.options;
 
 import java.util.Optional;
 
-public class DOCConversionOptions extends FixedLayoutConversionOptions{
+public class DOCConversionOptions implements ConversionOptions{
 
-    public DOCConversionOptions setWidth(int width)
+    public Optional<Double> width = Optional.empty();
+    public Optional<Double> height = Optional.empty();
+    public Optional<Double> leftMargin = Optional.empty();;
+    public Optional<Double> rightMargin = Optional.empty();;
+    public Optional<Double> topMargin = Optional.empty();;
+    public Optional<Double> bottomMargin = Optional.empty();;
+
+    public DOCConversionOptions setWidth(double width)
     {
         this.width = Optional.of(width);
         return this;
     }
 
-    public DOCConversionOptions setHeight(int height)
+    public DOCConversionOptions setHeight(double height)
     {
         this.height = Optional.of(height);
         return this;
     }
 
-    public DOCConversionOptions setLeftMargin(int leftMargin)
+    public DOCConversionOptions setLeftMargin(double leftMargin)
     {
         this.leftMargin = Optional.of(leftMargin);
         return this;
     }
 
-    public DOCConversionOptions setRightMargin(int rightMargin)
+    public DOCConversionOptions setRightMargin(double rightMargin)
     {
         this.rightMargin = Optional.of(rightMargin);
         return this;
     }
 
-    public DOCConversionOptions setTopMargin(int topMargin)
+    public DOCConversionOptions setTopMargin(double topMargin)
     {
         this.topMargin = Optional.of(topMargin);
         return this;
     }
 
-    public DOCConversionOptions setBottomMargin(int bottomMargin)
+    public DOCConversionOptions setBottomMargin(double bottomMargin)
     {
         this.bottomMargin = Optional.of(bottomMargin);
         return this;
