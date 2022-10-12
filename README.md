@@ -20,13 +20,10 @@ Add this dependency to your project's POM:
 
 ```xml
 <repositories>
-    ...
 	<repository>
-		<id>AsposeJavaAPI</id>
-		<name>Aspose Java API</name>
+		<id>AsposeJavaCloudAPI</id>
 		<url>https://repository.aspose.cloud/repo/</url>
 	</repository>
-	...
 </repositories>
 
 <dependencies>
