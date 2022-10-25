@@ -37,6 +37,7 @@ public enum OutputFormats {
   GIF("GIF"),
   TIFF("TIFF"),
   MD("MD"),
+  HTML("HTML"),
   MHTML("MHTML"),
   PDF("PDF"),
   XPS("XPS"),

@@ -8,8 +8,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a996f8e-729c-4601-89fa-a56d3e3120ae" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/ConvertMHTMLTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/ConvertMarkdownTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspose/html/ApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspose/html/ApiClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspose/html/model/OutputFormats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspose/html/model/OutputFormats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/BaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/BaseTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +35,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2EQuAkHhIWlmZQQRQDMm0IikSrI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -44,7 +53,12 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.com.aspose.html.tests in aspose-html-cloud">
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.aspose.html.tests" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.ConvertMarkdownTest">
     <configuration name="ConvertEpubTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="aspose-html-cloud" />
       <extension name="coverage">
@@ -55,6 +69,36 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.aspose.html.tests" />
       <option name="MAIN_CLASS_NAME" value="com.aspose.html.tests.ConvertEpubTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConvertMHTMLTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="aspose-html-cloud" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.aspose.html.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.aspose.html.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.aspose.html.tests.ConvertMHTMLTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConvertMarkdownTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="aspose-html-cloud" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.aspose.html.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.aspose.html.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.aspose.html.tests.ConvertMarkdownTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -77,11 +121,15 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.ConvertMHTMLTest" />
+      <item itemvalue="JUnit.ConvertMarkdownTest" />
       <item itemvalue="JUnit.ConvertEpubTest" />
       <item itemvalue="JUnit.com.aspose.html.tests in aspose-html-cloud" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ConvertMarkdownTest" />
+        <item itemvalue="JUnit.ConvertMHTMLTest" />
         <item itemvalue="JUnit.com.aspose.html.tests in aspose-html-cloud" />
         <item itemvalue="JUnit.ConvertEpubTest" />
       </list>

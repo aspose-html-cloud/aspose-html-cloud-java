@@ -22,7 +22,7 @@ Add this dependency to your project's POM:
 <repositories>
 	<repository>
 		<id>AsposeJavaCloudAPI</id>
-		<url>https://repository.aspose.cloud/repo/</url>
+		<url>https://releases.aspose.cloud/java/repo/</url>
 	</repository>
 </repositories>
 
@@ -31,7 +31,7 @@ Add this dependency to your project's POM:
 	<dependency>
 		<groupId>com.aspose</groupId>
 		<artifactId>aspose-html-cloud</artifactId>
-		<version>22.9.1</version>
+		<version>22.10.1</version>
 		<scope>compile</scope>
 	</dependency>
 	...
@@ -104,6 +104,12 @@ public class App {
 All URIs are relative to *https://api.aspose.cloud/
 
 
+## Possible conversions:
+- HTML -> PDF, XPS, DOCX, MD, MHTML, JPEG, BMP, PNG, TIFF, GIF
+- EPUB -> PDF, XPS, DOCX, JPEG, BMP, PNG, TIFF, GIF
+- MD -> PDF, XPS, DOCX, HTML, MHTML, JPEG, BMP, PNG, TIFF, GIF
+- MHTML -> PDF, XPS, DOCX, JPEG, BMP, PNG, TIFF, GIF
+
 ## Conversion builder
 
 | Method                                                   | Parameters                                                                             | Description                                     |
@@ -172,7 +178,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/aspose-html-cloud-22.9.1.jar
+* target/aspose-html-cloud-22.10.1.jar
 * target/lib/*.jar
 
 ## Recommendation
