@@ -9,15 +9,12 @@ public class BaseTest {
     public static String inputUrl;
 
     static {
-//        Configuration.setBasePath("https://api.aspose.cloud");
-//        Configuration.setAuthPath("https://api.aspose.cloud/connect/token");
-        Configuration.setBasePath("http://localhost:5000");
-        Configuration.setAuthPath("https://api-qa.aspose.cloud/connect/token");
+        Configuration.setBasePath("https://api.aspose.cloud");
+        Configuration.setAuthPath("https://api.aspose.cloud/connect/token");
         Configuration.setUserAgent("WebKit");
         Configuration.setDebug(true);
         Configuration.setTestSrcDir("sourceTest");
         Configuration.setTestDstDir("destTest");
-//        api = new HtmlApi("c8dda7d6445d82635b8797d1c8edd153", "2225baa2-097b-4731-9831-d0d56c28230f");
-        api = new HtmlApi("html.cloud", "html.cloud");
+        api = new HtmlApi("c8dda7d6445d82635b8797d1c8edd153", "2225baa2-097b-4731-9831-d0d56c28230f");
     }
 }

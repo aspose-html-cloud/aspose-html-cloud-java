@@ -99,6 +99,21 @@ ConversionOptions mdOpts = new MarkdownConversionOptions()
 |------------|-------------|--------------------------------------------------------------------|-------------|
 | **useGit** | **boolean** | Use [Git Markdown flavor](https://github.github.com/gfm/) to save. | [optional]  |
 
+<a name="SVGConversionOptions"></a>
+### SVGConversionOptions
+```code
+ConversionOptions svgOpts = new SVGConversionOptions()
+    .setErrorThreshold(30)
+    .setMaxIteration(25)
+    .setColorLimit(25)
+    .setLineWidth(1);
+```
+| Field               | Type                   | Description                                                                                             | Note       |
+|---------------------|------------------------|---------------------------------------------------------------------------------------------------------|------------|
+| **error_threshold** | **Optional<Double>**   | This parameter defines maximum deviation of points to fitted curve. By default it is 30.                | [optional] |
+| **max_iterations**  | **Optional<Integer>**  | This parameter defines number of iteration for least-squares approximation method. By default it is 30. | [optional] |
+| **colors_limit**    | **Optional<Integer>**  | The maximum number of colors used to quantize an image. Default value is 25.                            | [optional] |
+| **line_width**      | **Optional<Double>**   | The value of this parameter is affected by the graphics scale. Default value is 1.                      | [optional] |
 
 
 For additional information about Aspose.HTML Cloud REST API and SDKs, visit the [Aspose documentation site](https://docs.aspose.cloud/html/overview/).

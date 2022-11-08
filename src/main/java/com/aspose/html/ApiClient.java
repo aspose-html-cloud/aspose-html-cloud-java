@@ -52,7 +52,7 @@ public class ApiClient {
     private static final String clientHeaderName = "x-aspose-client";
     private static final String clientVersionHeaderName = "x-aspose-client-version";
     private static final String clientHeaderValue = "aspose.html-cloud java sdk";
-    private static final String clientVersionHeaderValue = "22.10.1";
+    private static final String clientVersionHeaderValue = "22.11.1";
 
     public ApiClient()
     {

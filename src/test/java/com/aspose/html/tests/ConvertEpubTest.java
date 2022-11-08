@@ -143,7 +143,6 @@ public class ConvertEpubTest extends BaseTest{
         ConversionResult result = api.convert(builder);
         File testFile = new File(result.getFile());
         assertTrue(testFile.exists());
-        TestHelper.deleteFile(result.getFile());
     }
 
 }

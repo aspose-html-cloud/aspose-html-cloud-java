@@ -10,7 +10,12 @@ public enum InputFormats {
   MHTML("MHTML"),
   EPUB("EPUB"),
   SVG("SVG"),
-  MD("MD");
+  MD("MD"),
+  JPEG("JPEG"),
+  BMP("BMP"),
+  GIF("GIF"),
+  TIFF("TIFF"),
+  PNG("PNG");
 
   private String value;
 

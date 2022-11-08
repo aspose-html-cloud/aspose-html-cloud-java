@@ -31,7 +31,7 @@ Add this dependency to your project's POM:
 	<dependency>
 		<groupId>com.aspose</groupId>
 		<artifactId>aspose-html-cloud</artifactId>
-		<version>22.10.1</version>
+		<version>22.11.1</version>
 		<scope>compile</scope>
 	</dependency>
 	...
@@ -101,7 +101,7 @@ public class App {
 ```
 
 # Documentation for API Endpoints
-All URIs are relative to *https://api.aspose.cloud/
+All URIs are relative to https://api.aspose.cloud/
 
 
 ## Possible conversions:
@@ -109,6 +109,8 @@ All URIs are relative to *https://api.aspose.cloud/
 - EPUB -> PDF, XPS, DOCX, JPEG, BMP, PNG, TIFF, GIF
 - MD -> PDF, XPS, DOCX, HTML, MHTML, JPEG, BMP, PNG, TIFF, GIF
 - MHTML -> PDF, XPS, DOCX, JPEG, BMP, PNG, TIFF, GIF
+- SVG -> PDF, XPS, JPEG, BMP, PNG, TIFF, GIF
+- JPEG, BMP, PNG, TIFF, GIF -> SVG
 
 ## Conversion builder
 
@@ -128,13 +130,15 @@ All URIs are relative to *https://api.aspose.cloud/
 
 Specifies the output format for conversion.
 
-| Options                                                                          | Description                                                   |
-|----------------------------------------------------------------------------------|---------------------------------------------------------------|
-| [ImageConversionOptions](docs/ConversionOptions.md#ImageConversionOptions)       | Converting source file or URL to single or several images.    |
-| [PDFConversionOptions](docs/ConversionOptions.md#PDFConversionOptions)           | Converting source file or URL to PDF.                         |
-| [XPSConversionOptions](docs/ConversionOptions.md#XPSConversionOptions)           | Converting source file or URL to XPS.                         |
-| [DOCConversionOptions](docs/ConversionOptions.md#DOCConversionOptions)           | Converting source file or URL to DOCX.                        |
-| [MarkdownConversionOptions](docs/ConversionOptions.md#MarkdownConversionOptions) | Converting source file or URL to Markdown.                    |
+| Options                                                                          | Description                                                |
+|----------------------------------------------------------------------------------|------------------------------------------------------------|
+| [ImageConversionOptions](docs/ConversionOptions.md#ImageConversionOptions)       | Converting source file or URL to single or several images. |
+| [PDFConversionOptions](docs/ConversionOptions.md#PDFConversionOptions)           | Converting source file or URL to PDF.                      |
+| [XPSConversionOptions](docs/ConversionOptions.md#XPSConversionOptions)           | Converting source file or URL to XPS.                      |
+| [DOCConversionOptions](docs/ConversionOptions.md#DOCConversionOptions)           | Converting source file or URL to DOCX.                     |
+| [MarkdownConversionOptions](docs/ConversionOptions.md#MarkdownConversionOptions) | Converting source file or URL to Markdown.                 |
+| [SVGConversionOptions](docs/ConversionOptions.md#SVGConversionOptions)           | Converting images to SVG (trace image).                    |
+
 
 ### SaveTo...
 
@@ -178,7 +182,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/aspose-html-cloud-22.10.1.jar
+* target/aspose-html-cloud-22.11.1.jar
 * target/lib/*.jar
 
 ## Recommendation

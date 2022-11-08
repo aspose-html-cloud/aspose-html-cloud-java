@@ -52,6 +52,13 @@ public class Utils {
             case "EPUB": return InputFormats.EPUB;
             case "SVG": return InputFormats.SVG;
             case "MD": return InputFormats.MD;
+            case "JPEG":
+            case "JPG": return InputFormats.JPEG;
+            case "TIF":
+            case "TIFF": return InputFormats.TIFF;
+            case "PNG": return InputFormats.PNG;
+            case "GIF": return InputFormats.GIF;
+            case "BMP": return InputFormats.BMP;
             default: return null;
         }
     }
