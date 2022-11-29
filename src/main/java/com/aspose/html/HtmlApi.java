@@ -30,9 +30,7 @@ package com.aspose.html;
 
 import com.aspose.html.api.ConversionApi;
 import com.aspose.html.api.StorageApi;
-import com.aspose.html.model.ConversionRequest;
-import com.aspose.html.model.ConversionResult;
-import com.aspose.html.model.FilesUploadResult;
+import com.aspose.html.model.*;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -194,6 +192,18 @@ public class HtmlApi {
         return resp;
     }
 
+    public ConversionResult vectorize(ConverterBuilder builder)
+    {
+        if(builder.source.inputFormat == null || !isImage(builder.source.inputFormat)) {
+            throw new IllegalArgumentException("The input file must be image");
+        }
+
+        if(builder.target.outputFormat == null || builder.target.outputFormat != OutputFormats.SVG) {
+            throw new IllegalArgumentException("The output file must be SVG");
+        }
+        return convert(builder);
+    }
+
     private boolean uploadFile(File file, String targetPath) {
         return uploadFile(file, targetPath, null);
     }
@@ -284,4 +294,11 @@ public class HtmlApi {
         }
     }
 
+    private boolean isImage(InputFormats format) {
+        return format == InputFormats.BMP
+                || format == InputFormats.GIF
+                || format == InputFormats.JPEG
+                || format == InputFormats.PNG
+                || format == InputFormats.TIFF;
+    }
 }

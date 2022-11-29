@@ -58,12 +58,13 @@ public class App {
 // There is free quota available. 
 // For more details, see https://purchase.aspose.cloud/pricing
 
-        Configuration.setAPI_KEY("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-        Configuration.setAPP_SID("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
         Configuration.setBasePath("https://api.aspose.cloud");
         Configuration.setAuthPath("https://api.aspose.cloud/connect/token");
         Configuration.setUserAgent("WebKit");
         Configuration.setDebug(true);
+		
+		HtmlApi api = new HtmlApi("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
+		
 		
 		String inputUrl = "https://stallman.org/articles/anonymous-payments-thru-phones.html";
         String outputFile = "c:/temp/Output.pdf";

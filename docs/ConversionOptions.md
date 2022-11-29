@@ -13,15 +13,15 @@ ConversionOptions pdfOpts_A4 = new PDFConversionOptions()
     .setQuality(95);
 ```
 
-| Name             | Type                 | Description                                      | Notes      |
-|------------------|----------------------|--------------------------------------------------|------------|
-| **width**        | **Optional<Double>** | Resulting document page width in inches.         | [optional] | 
-| **height**       | **Optional<Double>** | Resulting document page height in inches.        | [optional] |
-| **leftMargin**   | **Optional<Double>** | Left resulting document page margin in inches.   | [optional] |
-| **rightMargin**  | **Optional<Double>** | Right resulting document page margin in inches.  | [optional] |
-| **topMargin**    | **Optional<Double>** | Top resulting document page margin in inches.    | [optional] |
-| **bottomMargin** | **Optional<Double>** | Bottom resulting document page margin in inches. | [optional] |
-| **jpegQuality**  | **Optional<Double>** | Quality of jpeg compression in percent.          | [optional] |
+| Name             | Type                  | Description                                      | Notes      |
+|------------------|-----------------------|--------------------------------------------------|------------|
+| **width**        | **Optional<Double>**  | Resulting document page width in inches.         | [optional] | 
+| **height**       | **Optional<Double>**  | Resulting document page height in inches.        | [optional] |
+| **leftMargin**   | **Optional<Double>**  | Left resulting document page margin in inches.   | [optional] |
+| **rightMargin**  | **Optional<Double>**  | Right resulting document page margin in inches.  | [optional] |
+| **topMargin**    | **Optional<Double>**  | Top resulting document page margin in inches.    | [optional] |
+| **bottomMargin** | **Optional<Double>**  | Bottom resulting document page margin in inches. | [optional] |
+| **jpegQuality**  | **Optional<Integer>** | Quality of jpeg compression in percent.          | [optional] |
 
 <a name="XPSConversionOptions"></a>
 
