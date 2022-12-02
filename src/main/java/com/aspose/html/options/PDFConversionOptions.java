@@ -2,7 +2,7 @@ package com.aspose.html.options;
 
 import java.util.Optional;
 
-public class PDFConversionOptions implements ConversionOptions {
+public class PDFConversionOptions implements Options {
 
     public Optional<Double> width = Optional.empty();
     public Optional<Double> height = Optional.empty();

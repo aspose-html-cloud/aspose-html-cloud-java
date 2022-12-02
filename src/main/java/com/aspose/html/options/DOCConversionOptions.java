@@ -2,7 +2,7 @@ package com.aspose.html.options;
 
 import java.util.Optional;
 
-public class DOCConversionOptions implements ConversionOptions{
+public class DOCConversionOptions implements Options {
 
     public Optional<Double> width = Optional.empty();
     public Optional<Double> height = Optional.empty();

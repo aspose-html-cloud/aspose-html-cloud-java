@@ -3,7 +3,7 @@ package com.aspose.html.options;
 
 import java.util.Optional;
 
-public class ImageConversionOptions implements ConversionOptions{
+public class ImageConversionOptions implements Options {
 
     public Optional<Integer> width = Optional.empty();
     public Optional<Integer> height = Optional.empty();

@@ -1,6 +1,6 @@
 package com.aspose.html.options;
 
-public class MarkdownConversionOptions implements ConversionOptions{
+public class MarkdownConversionOptions implements Options {
 
     public boolean useGit;
 

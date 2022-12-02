@@ -2,7 +2,7 @@ package com.aspose.html.options;
 
 import java.util.Optional;
 
-public class XPSConversionOptions implements ConversionOptions{
+public class XPSConversionOptions implements Options {
     public Optional<Double> width = Optional.empty();
     public Optional<Double> height = Optional.empty();
     public Optional<Double> leftMargin = Optional.empty();

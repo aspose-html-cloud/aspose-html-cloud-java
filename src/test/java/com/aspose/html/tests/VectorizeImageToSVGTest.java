@@ -1,9 +1,10 @@
 package com.aspose.html.tests;
 
 import com.aspose.html.Configuration;
-import com.aspose.html.ConverterBuilder;
-import com.aspose.html.model.ConversionResult;
-import com.aspose.html.options.SVGConversionOptions;
+import com.aspose.html.JobBuilder;
+import com.aspose.html.VectorizationBuilder;
+import com.aspose.html.model.OperationResult;
+import com.aspose.html.options.VectorizationOptions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -28,11 +29,11 @@ public class VectorizeImageToSVGTest extends BaseTest {
         File f = new File(outputFile);
         if(f.exists()) f.delete();
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new VectorizationBuilder()
                 .fromLocalFile(inputFile + ext)
                 .saveToLocal(outputFile);
 
-        ConversionResult result = api.vectorize(builder);
+        OperationResult result = api.vectorize(builder);
         File dst = new File(result.getFile());
         assertTrue(dst.exists());
     }
@@ -46,18 +47,18 @@ public class VectorizeImageToSVGTest extends BaseTest {
         File f = new File(outputFile);
         if(f.exists()) f.delete();
 
-        SVGConversionOptions opts = new SVGConversionOptions()
+        VectorizationOptions opts = new VectorizationOptions()
                 .setErrorThreshold(50)
                 .setColorLimit(2)
                 .setLineWidth(1.5)
                 .setMaxIteration(10);
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new VectorizationBuilder()
                 .fromLocalFile(inputFile + ext)
                 .useOptions(opts)
                 .saveToLocal(outputFile);
 
-        ConversionResult result = api.vectorize(builder);
+        OperationResult result = api.vectorize(builder);
         File dst = new File(result.getFile());
         assertTrue(dst.exists());
     }

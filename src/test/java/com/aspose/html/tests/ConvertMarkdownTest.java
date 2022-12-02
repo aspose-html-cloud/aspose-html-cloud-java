@@ -2,7 +2,8 @@ package com.aspose.html.tests;
 
 import com.aspose.html.Configuration;
 import com.aspose.html.ConverterBuilder;
-import com.aspose.html.model.ConversionResult;
+import com.aspose.html.JobBuilder;
+import com.aspose.html.model.OperationResult;
 import com.aspose.html.options.ImageConversionOptions;
 import com.aspose.html.options.PDFConversionOptions;
 import com.aspose.html.options.XPSConversionOptions;
@@ -32,11 +33,11 @@ public class ConvertMarkdownTest extends BaseTest {
         File f = new File(outputFile);
         if(f.exists()) f.delete();
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
                 .saveToLocal(outputFile);
 
-        ConversionResult result = api.convert(builder);
+        OperationResult result = api.convert(builder);
         File dst = new File(result.getFile());
         assertTrue(dst.exists());
     }
@@ -50,11 +51,11 @@ public class ConvertMarkdownTest extends BaseTest {
         File f = new File(outputFile);
         if(f.exists()) f.delete();
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
                 .saveToStorage(outputFile);
 
-        ConversionResult result = api.convert(builder);
+        OperationResult result = api.convert(builder);
         assertTrue(TestHelper.isExist(result.getFile()));
         TestHelper.deleteFile(result.getFile());
     }
@@ -76,12 +77,12 @@ public class ConvertMarkdownTest extends BaseTest {
                 .setRightMargin(0.5)
                 .setQuality(95);
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
                 .useOptions(opt_A5)
                 .saveToLocal(outputFile);
 
-        ConversionResult result = api.convert(builder);
+        OperationResult result = api.convert(builder);
         String target = Paths.get(builder.target.filePath).getParent().toString()
                 + "/" + Paths.get(result.getFile()).getFileName().toString();
         File testFile = new File(target);
@@ -104,12 +105,12 @@ public class ConvertMarkdownTest extends BaseTest {
                 .setLeftMargin(0.5)
                 .setRightMargin(0.5);
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
                 .useOptions(opt_A5)
                 .saveToLocal(outputFile);
 
-        ConversionResult result = api.convert(builder);
+        OperationResult result = api.convert(builder);
         String target = Paths.get(builder.target.filePath).getParent().toString()
                 + "/" + Paths.get(result.getFile()).getFileName().toString();
         File testFile = new File(target);
@@ -134,12 +135,12 @@ public class ConvertMarkdownTest extends BaseTest {
                 .setLeftMargin(20)
                 .setRightMargin(20);
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
                 .useOptions(opt)
                 .saveToLocal(outputFile);
 
-        ConversionResult result = api.convert(builder);
+        OperationResult result = api.convert(builder);
         String target = Paths.get(builder.target.filePath).getParent().toString()
                 + "/" + Paths.get(result.getFile()).getFileName().toString();
 

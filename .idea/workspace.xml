@@ -8,11 +8,143 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a996f8e-729c-4601-89fa-a56d3e3120ae" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/VectorizeImageToSVGTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/aspose/html/JobBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/aspose/html/VectorizationBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/ConversionOptions.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/ConversionOptions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/allclasses-frame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/allclasses-noframe.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/ApiClient.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/AuthAnswer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/Configuration.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/ConverterBuilder.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/EnumConverterFactory.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/EnumUtils.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/HtmlApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/JSON.DateTypeAdapter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/JSON.LocalDateTypeAdapter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/JSON.OffsetDateTimeTypeAdapter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/JSON.OptionalTypeAdapter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/JSON.SqlDateTypeAdapter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/JSON.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/Utils.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/api/ConversionApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/api/StorageApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/api/package-frame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/api/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/api/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/ConversionData.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/ConversionDataSource.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/ConversionDataTarget.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/ConversionRequest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/ConversionResult.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/DateTime.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/DiscUsage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/FileExist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/FileVersion.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/FileVersions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/FilesList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/FilesUploadResult.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/InputFormats.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/Links.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/ObjectExist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/OperationResult.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/OutputFormats.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/ResponseMessage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/StorageExist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/StorageExistResponse.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/StorageFile.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/package-frame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/model/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/options/ConversionOptions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/options/DOCConversionOptions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/options/ImageConversionOptions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/options/MarkdownConversionOptions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/options/PDFConversionOptions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/options/SVGConversionOptions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/options/XPSConversionOptions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/options/package-frame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/options/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/options/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/package-frame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/tests/BaseTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/tests/ConvertEpubTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/tests/ConvertHtmlTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/tests/ConvertHtmlTestAsync.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/tests/ConvertImageToSVGTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/tests/ConvertMHTMLTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/tests/ConvertMarkdownTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/tests/ConvertSVGTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/tests/ConvertXhtmlTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/tests/FileFormatTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/tests/IsUrlTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/tests/SerializatorTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/tests/StorageTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/tests/TestHelper.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/tests/package-frame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/tests/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/com/aspose/html/tests/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/constant-values.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-10.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-11.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-12.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-13.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-14.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-15.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-16.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-17.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-18.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-19.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-20.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-21.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-22.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-8.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index-files/index-9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/overview-frame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/overview-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/package-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspose/html/ConverterBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspose/html/ConverterBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/aspose/html/HtmlApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspose/html/HtmlApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspose/html/api/ConversionApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspose/html/api/ConversionApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspose/html/model/ConversionData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspose/html/model/JobData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspose/html/model/ConversionDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspose/html/model/DataSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspose/html/model/ConversionDataTarget.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspose/html/model/DataTarget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspose/html/model/ConversionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspose/html/model/JobRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspose/html/model/ConversionResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspose/html/model/OperationResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspose/html/model/OperationResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspose/html/options/ConversionOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspose/html/options/Options.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspose/html/options/DOCConversionOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspose/html/options/DOCConversionOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspose/html/options/ImageConversionOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspose/html/options/ImageConversionOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspose/html/options/MarkdownConversionOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspose/html/options/MarkdownConversionOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspose/html/options/PDFConversionOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspose/html/options/PDFConversionOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspose/html/options/SVGConversionOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspose/html/options/VectorizationOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/aspose/html/options/XPSConversionOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/aspose/html/options/XPSConversionOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/ConvertEpubTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/ConvertEpubTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/ConvertHtmlTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/ConvertHtmlTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/ConvertHtmlTestAsync.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/ConvertHtmlTestAsync.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/ConvertImageToSVGTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/ConvertImageToSVGTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/ConvertMHTMLTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/ConvertMHTMLTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/ConvertMarkdownTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/ConvertMarkdownTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/ConvertSVGTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/ConvertSVGTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/ConvertXhtmlTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/ConvertXhtmlTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/SerializatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/SerializatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/VectorizeImageToSVGTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/aspose/html/tests/VectorizeImageToSVGTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +172,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2EQuAkHhIWlmZQQRQDMm0IikSrI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -59,10 +191,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.aspose.html" />
       <recent name="com.aspose.html.tests" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.VectorizeImageToSVGTest">
+  <component name="RunManager" selected="JUnit.com.aspose.html.tests in aspose-html-cloud">
     <configuration name="ConvertImageToSVGTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="aspose-html-cloud" />
       <extension name="coverage">
@@ -149,10 +282,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.com.aspose.html.tests in aspose-html-cloud" />
         <item itemvalue="JUnit.VectorizeImageToSVGTest" />
         <item itemvalue="JUnit.StorageTest.getDiscUsageAsync" />
         <item itemvalue="JUnit.ConvertImageToSVGTest" />
-        <item itemvalue="JUnit.com.aspose.html.tests in aspose-html-cloud" />
         <item itemvalue="JUnit.ConvertMarkdownTest" />
       </list>
     </recent_temporary>
@@ -184,7 +317,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/aspose/html/tests/ConvertEpubTest.java</url>
-          <line>19</line>
+          <line>20</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

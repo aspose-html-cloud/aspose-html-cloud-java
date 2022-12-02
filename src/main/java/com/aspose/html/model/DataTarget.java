@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="ConversionApi.java">
+* <copyright company="Aspose" file="DataTarget.java">
 *   Copyright (c) 2022 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
@@ -24,39 +24,9 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-package com.aspose.html.api;
 
-import com.aspose.html.model.JobRequest;
-import com.aspose.html.model.OperationResult;
-import retrofit2.Call;
-import retrofit2.http.*;
+package com.aspose.html.model;
 
-
-public interface ConversionApi {
-
-    /**
-     * Creating a conversion task on the backend.
-     *
-     * @param request JobRequest object. (required)
-     * @param from    Input format. (required)
-     * @param to      Output format. (required)
-     * @return Call	&lt;OperationResult&gt;
-     */
-    @Headers({"Content-Type:application/json"})
-    @POST("v4.0/html/conversion/{from}-{to}")
-    public Call<OperationResult> convert(
-        @Body JobRequest request,
-        @Path("from") String from,
-        @Path("to") String to);
-
-    /**
-     * Get status of the conversion.
-     *
-     * @param id Conversion ID. (required)
-     * @return Call	&lt;OperationResult&gt;
-     */
-    @Headers({"Content-Type:application/json"})
-    @GET("v4.0/html/conversion/{id}")
-    public Call<OperationResult> getConversionStatus(@Path("id") String id);
-
+public class DataTarget extends JobData {
+    public OutputFormats outputFormat;
 }

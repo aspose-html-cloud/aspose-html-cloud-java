@@ -76,9 +76,9 @@ public class HtmlApi {
      * Starting a conversion task according to parameters in the ConversionBuilder.
      *
      * @param builder ConversionBuilder with conversion parameters. (required)
-     * @return Call	&lt;ConversionResult&gt;
+     * @return Call	&lt;OperationResult&gt;
      */
-    public ConversionResult convert(ConverterBuilder builder)
+    public OperationResult convert(JobBuilder builder)
     {
         //Check parameters
         if(builder.source.inputFormat == null) {
@@ -97,7 +97,7 @@ public class HtmlApi {
             throw new IllegalArgumentException("The output format is absent");
         }
 
-        ConversionRequest req = new ConversionRequest();
+        JobRequest req = new JobRequest();
 
         if(builder.source.isLocal != null && builder.source.isLocal) {
             File file = new File(builder.source.filePath);
@@ -135,12 +135,12 @@ public class HtmlApi {
             req.setOutputFile(builder.target.filePath);
         }
 
-        Call<ConversionResult> call_convert = conversionApi.convert(
+        Call<OperationResult> call_convert = conversionApi.convert(
                 req,
                 builder.source.inputFormat.toString(),
                 builder.target.outputFormat.toString());
 
-       Response<ConversionResult> result = null;
+       Response<OperationResult> result = null;
 
         try {
             result = call_convert.execute();
@@ -149,7 +149,7 @@ public class HtmlApi {
         }
 
         // Wait for result
-        ConversionResult resp = WaitForResult(result.body().id);
+        OperationResult resp = WaitForResult(result.body().id);
 
         if(resp == null || !resp.status.equals("completed")) {
             throw new RuntimeException("Conversion failed");
@@ -192,7 +192,7 @@ public class HtmlApi {
         return resp;
     }
 
-    public ConversionResult vectorize(ConverterBuilder builder)
+    public OperationResult vectorize(JobBuilder builder)
     {
         if(builder.source.inputFormat == null || !isImage(builder.source.inputFormat)) {
             throw new IllegalArgumentException("The input file must be image");
@@ -269,12 +269,12 @@ public class HtmlApi {
         return true;
     }
 
-    private ConversionResult WaitForResult(String id) {
+    private OperationResult WaitForResult(String id) {
         try {
             for(;;) {
-                Call<ConversionResult> call = conversionApi.getConversionStatus(id);
-                Response<ConversionResult> res = call.execute();
-                ConversionResult result = res.body();
+                Call<OperationResult> call = conversionApi.getConversionStatus(id);
+                Response<OperationResult> res = call.execute();
+                OperationResult result = res.body();
                 if( result.code != 200
                     || result.status.equals("faulted")
                     || result.status.equals("canceled")

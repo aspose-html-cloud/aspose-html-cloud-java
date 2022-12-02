@@ -40,20 +40,22 @@ Add this dependency to your project's POM:
 
 
 ### Sample usage
+
 ```java
 package com.aspose.test_package;
 
 import com.aspose.html.Configuration;
 import com.aspose.html.ConverterBuilder;
-import com.aspose.html.model.ConversionResult;
+import com.aspose.html.model.OperationResult;
 import com.aspose.html.options.PDFConversionOptions;
+
 import java.io.File;
 
 public class App {
-    
+
 
     public static void main(String[] args) {
-	
+
 // Get keys from aspose site.
 // There is free quota available. 
 // For more details, see https://purchase.aspose.cloud/pricing
@@ -62,15 +64,15 @@ public class App {
         Configuration.setAuthPath("https://api.aspose.cloud/connect/token");
         Configuration.setUserAgent("WebKit");
         Configuration.setDebug(true);
-		
-		HtmlApi api = new HtmlApi("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
-		
-		
-		String inputUrl = "https://stallman.org/articles/anonymous-payments-thru-phones.html";
+
+        HtmlApi api = new HtmlApi("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
+
+
+        String inputUrl = "https://stallman.org/articles/anonymous-payments-thru-phones.html";
         String outputFile = "c:/temp/Output.pdf";
 
         File f = new File(outputFile);
-        if(f.exists()) f.delete();
+        if (f.exists()) f.delete();
 
         PDFConversionOptions opt_A5 = new PDFConversionOptions()
                 .setWidth(5.8)
@@ -86,18 +88,18 @@ public class App {
                 .useOptions(opt)
                 .saveToLocal(outputFile);
 
-        ConversionResult result = api.convert(builder);
+        OperationResult result = api.convert(builder);
 
-		String f = result.getFile();
+        String f = result.getFile();
 
-		File dst = new File(result.getFile());
-		
-        if(dst.exists()) {
-			System.out.println("Result file is " + dst);
-		} else {
-			System.out.println("Error conversion");
-		}
-	}
+        File dst = new File(result.getFile());
+
+        if (dst.exists()) {
+            System.out.println("Result file is " + dst);
+        } else {
+            System.out.println("Error conversion");
+        }
+    }
 }
 ```
 

@@ -1,12 +1,24 @@
 package com.aspose.html.model;
 
 
+import com.google.gson.annotations.SerializedName;
+
 public class OperationResult   {
-  public Integer code = null;
-  public String id = null;
-  public String status = null;
-  public String description = null;
-  public Links links = null;
+  public Integer code;
+  public String id;
+  public String status;
+  public String description;
+  public Links links;
+  public String file;
+
+  @SerializedName("file")
+  public String getFile() {
+    return file;
+  }
+
+  public void setFile(String file) {
+    this.file = file;
+  }
 
   @Override
   public String toString() {
@@ -18,6 +30,7 @@ public class OperationResult   {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
+    sb.append("    file: ").append(toIndentedString(file)).append("\n");
     sb.append("}");
     return sb.toString();
   }
