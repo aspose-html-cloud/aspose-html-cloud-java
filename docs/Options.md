@@ -3,7 +3,7 @@
 <a name="PDFConversionOptions"></a>
 ### PDFConversionOptions
 ```code
-ConversionOptions pdfOpts_A4 = new PDFConversionOptions()
+Options pdfOpts_A4 = new PDFConversionOptions()
     .setHeight(11.7)
     .setWidth(8.3)
     .setLeftMargin(0.2)
@@ -27,7 +27,7 @@ ConversionOptions pdfOpts_A4 = new PDFConversionOptions()
 
 ### XPSConversionOptions
 ```code
-ConversionOptions xpsOpts_A5 = new XPSConversionOptions()
+Options xpsOpts_A5 = new XPSConversionOptions()
     .setHeight(8.3)
     .setWidth(5.8)
     .setLeftMargin(0.5)
@@ -49,7 +49,7 @@ ConversionOptions xpsOpts_A5 = new XPSConversionOptions()
 ### DOCConversionOptions
 
 ```code
-ConversionOptions docOpts_A3 = new DOCConversionOptions()
+Options docOpts_A3 = new DOCConversionOptions()
     .setHeight(16.5)
     .setWidth(11.7)
     .setLeftMargin(0.5)
@@ -70,7 +70,7 @@ ConversionOptions docOpts_A3 = new DOCConversionOptions()
 <a name="ImageConversionOptions"></a>
 ### ImageConversionOptions
 ```code
-ConversionOptions opts = new ImageConversionOptions()
+Options opts = new ImageConversionOptions()
     .setHeight(800)
     .setWidth(1000)
     .setLeftMargin(10)
@@ -92,17 +92,17 @@ ConversionOptions opts = new ImageConversionOptions()
 <a name="MarkdownConversionOptions"></a>
 ### MarkdownConversionOptions
 ```code
-ConversionOptions mdOpts = new MarkdownConversionOptions()
+Options mdOpts = new MarkdownConversionOptions()
     .setUseGit(true);
 ```
 | Name       | Type        | Description                                                        | Notes       |
 |------------|-------------|--------------------------------------------------------------------|-------------|
 | **useGit** | **boolean** | Use [Git Markdown flavor](https://github.github.com/gfm/) to save. | [optional]  |
 
-<a name="SVGConversionOptions"></a>
-### SVGConversionOptions
+<a name="VectorizationOptions"></a>
+### VectorizationOptions
 ```code
-ConversionOptions svgOpts = new SVGConversionOptions()
+Options svgOpts = new VectorizationOptions()
     .setErrorThreshold(30)
     .setMaxIteration(25)
     .setColorLimit(25)

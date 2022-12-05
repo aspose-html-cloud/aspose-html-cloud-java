@@ -31,7 +31,7 @@ Add this dependency to your project's POM:
 	<dependency>
 		<groupId>com.aspose</groupId>
 		<artifactId>aspose-html-cloud</artifactId>
-		<version>22.11.1</version>
+		<version>22.12.1</version>
 		<scope>compile</scope>
 	</dependency>
 	...
@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 ```
 
 
-### Sample usage
+### Convert URL tp PDF format
 
 ```java
 package com.aspose.test_package;
@@ -83,7 +83,7 @@ public class App {
                 .setRightMargin(0.5)
                 .setQuality(95);
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new ConverterBuilder()
                 .fromUrl(inputUrl)
                 .useOptions(opt)
                 .saveToLocal(outputFile);
@@ -103,6 +103,61 @@ public class App {
 }
 ```
 
+
+### Vectorize the image to SVG format
+
+```java
+package com.aspose.test_package;
+
+import com.aspose.html.Configuration;
+import com.aspose.html.ConverterBuilder;
+import com.aspose.html.model.OperationResult;
+import com.aspose.html.options.PDFConversionOptions;
+
+import java.io.File;
+
+public class App {
+
+
+    public static void main(String[] args) {
+
+// Get keys from aspose site.
+// There is free quota available. 
+// For more details, see https://purchase.aspose.cloud/pricing
+
+        Configuration.setBasePath("https://api.aspose.cloud");
+        Configuration.setAuthPath("https://api.aspose.cloud/connect/token");
+        Configuration.setUserAgent("WebKit");
+        Configuration.setDebug(true);
+
+        HtmlApi api = new HtmlApi("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
+
+
+        VectorizationOptions opts = new VectorizationOptions()
+                .setErrorThreshold(50)
+                .setColorLimit(30)
+                .setLineWidth(1.5)
+                .setMaxIteration(10);
+
+        JobBuilder builder = new VectorizationBuilder()
+                .fromLocalFile("/path/to/input/file.png")
+                .useOptions(opts)
+                .saveToLocal("/path/to/output/file.svg");
+
+        OperationResult result = api.vectorize(builder);
+        File dst = new File(result.getFile());
+
+        if (dst.exists()) {
+            System.out.println("Result file is " + dst);
+        } else {
+            System.out.println("Error vectorization");
+        }
+    }
+}
+```
+
+
+
 # Documentation for API Endpoints
 All URIs are relative to https://api.aspose.cloud/
 
@@ -115,7 +170,7 @@ All URIs are relative to https://api.aspose.cloud/
 - SVG -> PDF, XPS, JPEG, BMP, PNG, TIFF, GIF
 - JPEG, BMP, PNG, TIFF, GIF -> SVG
 
-## Conversion builder
+## JobBuilder (VectorizationBuilder, ConverterBuilder)
 
 | Method                                                   | Parameters                                                                             | Description                                     |
 |----------------------------------------------------------|----------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -126,40 +181,40 @@ All URIs are relative to https://api.aspose.cloud/
 | **saveToLocal(String fileName)**                         | fileName - full path to the result.                                                    | Recreating, if the file exists.                 |
 | **saveToStorage(String fileName)**                       | fileName - full path to the result.                                                    | Recreating, if the file exists.                 |
 | **saveToStorage(String fileName, String storageName)**   | fileName - full path to the result. storageName - your storage, if exist               | Recreating, if the file exists.                 |
-| **useOptions(ConversionOptions options)**                | options - additional options for conversion.                                           | (optional)                                      |
+| **useOptions(Options options)**                          | options - additional options for operation.                                            | (optional)                                      |
 
 
-### useOptions(ConversionOptions)
+### useOptions(Options)
 
-Specifies the output format for conversion.
+Specifies the output format for operation.
 
-| Options                                                                          | Description                                                |
-|----------------------------------------------------------------------------------|------------------------------------------------------------|
-| [ImageConversionOptions](docs/ConversionOptions.md#ImageConversionOptions)       | Converting source file or URL to single or several images. |
-| [PDFConversionOptions](docs/ConversionOptions.md#PDFConversionOptions)           | Converting source file or URL to PDF.                      |
-| [XPSConversionOptions](docs/ConversionOptions.md#XPSConversionOptions)           | Converting source file or URL to XPS.                      |
-| [DOCConversionOptions](docs/ConversionOptions.md#DOCConversionOptions)           | Converting source file or URL to DOCX.                     |
-| [MarkdownConversionOptions](docs/ConversionOptions.md#MarkdownConversionOptions) | Converting source file or URL to Markdown.                 |
-| [SVGConversionOptions](docs/ConversionOptions.md#SVGConversionOptions)           | Converting images to SVG (trace image).                    |
+| Options                                                                          | Description                                      |
+|----------------------------------------------------------------------------------|--------------------------------------------------|
+| [ImageConversionOptions](docs/Options.md#ImageConversionOptions)       | Converting source file or URL to single or several images. |
+| [PDFConversionOptions](docs/Options.md#PDFConversionOptions)           | Converting source file or URL to PDF.                      |
+| [XPSConversionOptions](docs/Options.md#XPSConversionOptions)           | Converting source file or URL to XPS.                      |
+| [DOCConversionOptions](docs/Options.md#DOCConversionOptions)           | Converting source file or URL to DOCX.                     |
+| [MarkdownConversionOptions](docs/Options.md#MarkdownConversionOptions) | Converting source file or URL to Markdown.                 |
+| [VectorizationOptions](docs/Options.md#VectorizationOptions)           | Vectorize images to SVG (trace image).                     |
 
 
 ### SaveTo...
 
-The target directory for a conversion result.
+The target directory for a result.
 
-| Method                                | Parameters                                    | Description                                                          |
-|---------------------------------------|-----------------------------------------------|----------------------------------------------------------------------|
-| SaveToLocal(string outputDirectory)   | outputDirectory - directory to save a result. | A directory in the local file system to save a conversion result.    |
-| SaveToStorage(string outputDirectory) | outputDirectory - directory to save a result. | A directory in the cloud (user storage) to save a conversion result. |
+| Method                                | Parameters                                    | Description                                               |
+|---------------------------------------|-----------------------------------------------|-----------------------------------------------------------|
+| SaveToLocal(string outputDirectory)   | outputDirectory - directory to save a result. | A directory in the local file system to save a result.    |
+| SaveToStorage(string outputDirectory) | outputDirectory - directory to save a result. | A directory in the cloud (user storage) to save a result. |
 
-## ConversionResult
+## OperationResult
 
-Result object for conversion.
+Result object for operation.
 
 | Field              | Description                                       |
 |--------------------|---------------------------------------------------|
 | String file        | A result file.                                    |
-| String description | A description in case of unsuccessful conversion. |
+| String description | A description in case of unsuccessful operation.  |
 
 
 ## Build from source
@@ -185,7 +240,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/aspose-html-cloud-22.11.1.jar
+* target/aspose-html-cloud-22.12.1.jar
 * target/lib/*.jar
 
 ## Recommendation
